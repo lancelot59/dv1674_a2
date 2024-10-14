@@ -13,7 +13,7 @@ int main(int argc, char const* argv[])
         std::cerr << "Usage: " << argv[0] << " [dataset] [outfile]" << std::endl;
         std::exit(1);
     }
-
+    //we could if ive not missed anything entirely cut out std::vector for vector arrays. which should be way way quicker
     auto datasets { Dataset::read(argv[1]) };
     auto corrs { Analysis::correlation_coefficients(datasets) };
     Dataset::write(corrs, argv[2]);

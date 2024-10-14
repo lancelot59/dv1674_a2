@@ -14,7 +14,8 @@ Author: David Holmqvist <daae19@student.bth.se>
 
 namespace Dataset
 {
-    std::vector<Vector> read(std::string filename)
+    std::vector<Vector> read(std::string filename) //we can probably multithread this by splitting it up and inserting on index positions where the first thread inserts on index positions 1-dimension/(numberofthreads)
+    //while the second thread inserts on positions dimension/(numberofthreads)-dimension/(numberofthreads-1) (not sure if the exact logic works but in theory it should work)
     {
         unsigned dimension{};
         std::vector<Vector> result{};
@@ -29,11 +30,15 @@ namespace Dataset
         }
 
         f >> dimension;
-        std::string line{};
+        //result.reserve(dimension); //allocates necessary memory for the array so it doesnt have to expand while running.
+        
+        std::string line{}; //could potentially use char array
 
         std::getline(f, line); // ignore first newline
+        
 
-        while (std::getline(f, line))
+
+        while (std::getline(f, line)) //we should probably look into how optimized these functions are
         {
             std::stringstream ss{line};
             Vector new_vec{dimension};
@@ -46,7 +51,7 @@ namespace Dataset
         return result;
     }
 
-    void write(std::vector<double> data, std::string filename)
+    void write(std::vector<double> data, std::string filename)//dont think this is multithreadable
     {
         std::ofstream f{};
 
@@ -58,7 +63,7 @@ namespace Dataset
             return;
         }
 
-        for (auto i{0}; i < data.size(); i++)
+        for (auto i{0}; i < data.size(); i++) 
         {
             f << std::setprecision(std::numeric_limits<double>::digits10 + 1) << data[i] << std::endl;
         }

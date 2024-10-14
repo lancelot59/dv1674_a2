@@ -11,7 +11,7 @@ Author: David Holmqvist <daae19@student.bth.se>
 
 namespace Analysis {
 
-std::vector<double> correlation_coefficients(std::vector<Vector> datasets)
+std::vector<double> correlation_coefficients(std::vector<Vector> datasets)//this should be pretty easy to multithread
 {
     std::vector<double> result {};
 
@@ -25,7 +25,7 @@ std::vector<double> correlation_coefficients(std::vector<Vector> datasets)
     return result;
 }
 
-double pearson(Vector vec1, Vector vec2)
+double pearson(Vector vec1, Vector vec2) //this is probably multithreadable but im unsure if we get very much value from it we might lose out from the function call overheads.
 {
     auto x_mean { vec1.mean() };
     auto y_mean { vec2.mean() };

@@ -29,7 +29,7 @@ namespace Filter
 
         for (auto x{0}; x < dst.get_x_size(); x++)
         {
-            for (auto y{0}; y < dst.get_y_size(); y++)
+            for (auto y{0}; y < dst.get_y_size(); y++)//we could change the .get_ _size to happen before the for loops but the compiler probably already does that for us.
             {
                 double w[Gauss::max_radius]{};
                 Gauss::get_weights(radius, w);
