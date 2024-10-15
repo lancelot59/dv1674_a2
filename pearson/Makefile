@@ -1,9 +1,47 @@
 # Author: David Holmqvist <daae19@student.bth.se>
 
 CXX=g++
-CXXFLAGS=-std=c++17 -g -pg -Wunused -Wall -Wunused
+CXXFLAGS=-std=c++17 -g -Wunused -Wall -Wunused
 
 all: pearson
+
+test: testclean target1 target2 target3 target4
+
+target1:
+	./pearson data/128.data outputfiles/128.data
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/128gprof.txt
+	sleep 1
+	rm gmon.out
+
+target2: target1
+	./pearson data/256.data outputfiles/256.data
+	sleep 1 
+	gprof ./pearson gmon.out > outputfiles/256gprof.txt
+	sleep 1
+	rm gmon.out
+
+target3: target2
+	./pearson data/512.data outputfiles/512.data
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/512gprof.txt
+	sleep 1
+	rm gmon.out
+
+target4:target3
+	./pearson data/1024.data outputfiles/1024.data
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/1024gprof.txt
+	sleep 1
+	rm gmon.out
+memtest: clean all
+	rm outputfiles/*.data massif*
+	valgrind --tool=massif ./pearson data/128.data outputfiles/128.data
+	valgrind --tool=massif ./pearson data/256.data outputfiles/256.data
+	valgrind --tool=massif ./pearson data/512.data outputfiles/512.data
+	valgrind --tool=massif ./pearson data/1024.data outputfiles/1024.data
+
+
 
 pearson: vector dataset analysis pearson.cpp
 	$(CXX) $(CXXFLAGS) pearson.cpp vector.o dataset.o analysis.o -o pearson
@@ -19,3 +57,7 @@ vector: vector.hpp vector.cpp
 
 clean:
 	rm -rf pearson *.o *.dSYM 2> /dev/null
+
+
+testclean:
+	rm outputfiles/*
