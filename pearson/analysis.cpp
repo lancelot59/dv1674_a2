@@ -18,10 +18,13 @@ std::vector<double> correlation_coefficients(std::vector<Vector>& datasets, int 
     double y_mean;
     auto i = datasets.size();
 
+    double* array = new double[i];//creating an array for all the mean values so they only need ot be calculated once
+    for(auto sample = 0; sample < i; sample++ )
+        array[sample] = datasets[sample].mean();
 
     for (auto sample1 { 0 }; sample1 < i - 1; sample1++) {
         for (auto sample2 { sample1 + 1 }; sample2 < i; sample2++) {
-            auto corr { pearson(datasets[sample1], datasets[sample2], x_mean, y_mean) };
+            auto corr { pearson(datasets[sample1], datasets[sample2], array[sample1], array[sample2]) };
             result.push_back(corr);
         }
     }
@@ -31,9 +34,6 @@ std::vector<double> correlation_coefficients(std::vector<Vector>& datasets, int 
 
 double pearson(Vector vec1, Vector vec2, double x_mean, double y_mean) //this is probably multithreadable but im unsure if we get very much value from it we might lose out from the function call overheads.
 {
-    x_mean = vec1.mean() ;
-    y_mean = vec2.mean() ;
-
     vec1 - x_mean;
     vec2 - y_mean;
 
