@@ -36,12 +36,10 @@ Vector::Vector(unsigned size, double *data)
 Vector::Vector(const Vector &other)
     : Vector{other.size}
 {
-    for (auto i{0}; i < size; i+=4)
+    for (int i = 0; i < size; i+=4)
     {
-        data[i] = other.data[i];
-        data[i+1] = other.data[i+1];
-        data[i+2] = other.data[i+2];
-        data[i+3] = other.data[i+3];
+        __m256d dataVec = _mm256_loadu_pd(&other.data[i]);
+        _mm256_storeu_pd(&data[i], dataVec);
     }
 }
 
@@ -67,16 +65,18 @@ double &Vector::operator[](unsigned i)
 
 double Vector::mean() const
 {
-    double sum{0};
+    __m256d sumVec = _mm256_setzero_pd();
+    int i = 0;
 
-    for (auto i{0}; i < size; i+=4)
+    for (; i <= size -4; i+=4)
     {
-        sum += data[i];
-        sum += data[i+1];
-        sum += data[i+2];
-        sum += data[i+3];
+        __m256d dataVec = _mm256_loadu_pd(&data[i]);
+        sumVec = _mm256_add_pd(sumVec, dataVec);
     }
-
+    double sum = 0;
+    double temp[4];
+    _mm256_storeu_pd(temp, sumVec);
+    sum += temp[0] + temp[1] + temp[2] + temp[3];
     return sum / static_cast<double>(size);
 }
 
