@@ -34,6 +34,7 @@ target4:target3
 	gprof ./pearson gmon.out > outputfiles/1024gprof.txt
 	sleep 1
 	rm gmon.out
+	
 memtest: clean all
 	rm outputfiles/*.data massif*
 	valgrind --tool=massif ./pearson data/128.data outputfiles/128.data
