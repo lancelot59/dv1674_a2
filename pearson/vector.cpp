@@ -89,12 +89,12 @@ double Vector::magnitude()
 Vector& Vector::operator/(double div)
 {
 
+    __m256d divisor = _mm256_set1_pd(div);
     for (auto i{0}; i < size; i+=4)
     {
-        data[i] /= div;
-        data[i+1] /= div;
-        data[i+2] /= div;
-        data[i+3] /= div;
+        __m256d values = _mm256_loadu_pd(&data[i]);
+        __m256d result = _mm256_div_pd(values, divisor);
+        _mm256_storeu_pd(&data[i],result);
     }
 
     return *this;
@@ -102,13 +102,13 @@ Vector& Vector::operator/(double div)
 
 Vector& Vector::operator-(double sub)
 {
+    __m256d subtractor = _mm256_set1_pd(sub);
 
     for (auto i{0}; i < size; i+=4)
     {
-        data[i] -= sub;
-        data[i+1] -= sub;
-        data[i+2] -= sub;
-        data[i+3] -= sub;
+        __m256d values = _mm256_loadu_pd(&data[i]);
+        __m256d result = _mm256_sub_pd(values, subtractor);
+        _mm256_storeu_pd(&data[i], result);
     }
 
     return *this;
