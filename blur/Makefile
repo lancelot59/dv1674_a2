@@ -3,9 +3,14 @@
 CXX=g++
 CXXFLAGS=-std=c++17 -g -pg -Wunused -Wall -Wunused
 
-all: blur threshold
+run: clean all test
 
-test: testclean target1 target2 target3 target4
+all: blur
+
+test:  target1 target2 target3 target4
+
+test1: testclean target3
+
 
 target1:
 	./blur 15 data/im1.ppm outputfiles/im1.ppm
@@ -36,7 +41,7 @@ target4:
 	rm gmon.out
 
 memtest: clean blur
-	rm outputfiles/*.ppm
+	rm outputfiles/*.ppm massif*
 	valgrind --tool=massif --massif-out-file=massif_im1.out ./blur 15 data/im1.ppm outputfiles/im1.ppm
 	sleep 1
 	valgrind --tool=massif --massif-out-file=massif_im2.out ./blur 15 data/im2.ppm outputfiles/im2.ppm
@@ -64,4 +69,4 @@ clean:
 	rm -rf blur threshold *.ppm *.o *.dSYM 2> /dev/null
 
 testclean:
-	rm outputfiles/* massif*
+	rm outputfiles/*
