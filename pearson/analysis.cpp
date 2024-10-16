@@ -30,17 +30,16 @@ double pearson(Vector vec1, Vector vec2) //this is probably multithreadable but 
     auto x_mean { vec1.mean() };
     auto y_mean { vec2.mean() };
 
-    auto x_mm { vec1 - x_mean };
-    auto y_mm { vec2 - y_mean };
+    vec1 - x_mean;
+    vec2 - y_mean;
 
-    auto x_mag { x_mm.magnitude() };
-    auto y_mag { y_mm.magnitude() };
+    auto x_mag { vec1.magnitude() };
+    auto y_mag { vec2.magnitude() };
 
-    auto x_mm_over_x_mag { x_mm / x_mag };
-    auto y_mm_over_y_mag { y_mm / y_mag };
+    vec1 / x_mag ;
+    vec2 / y_mag ;
 
-    auto r { x_mm_over_x_mag.dot(y_mm_over_y_mag) };
 
-    return std::max(std::min(r, 1.0), -1.0);
+    return std::max(std::min(vec1.dot(vec2), 1.0), -1.0);
 }
 };
