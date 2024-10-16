@@ -16,7 +16,7 @@ std::mutex result_mutex;
 
 void correlation_coefficients(double*& result,std::vector<Vector>& datasets, double*& array, int dimension, int setstart, int setend)
 {
-    int count = setstart;
+    int count = setstart; //This is wrong
 
     for (int sample1 = setstart; sample1 < setend-1; sample1++) {
         for (auto sample2 = sample1 + 1 ; sample2 < dimension; sample2++) {
