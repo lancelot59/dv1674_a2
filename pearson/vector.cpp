@@ -73,13 +73,13 @@ double Vector::mean() const
     return sum / static_cast<double>(size);
 }
 
-double Vector::magnitude() const
+double Vector::magnitude() 
 {
     auto dot_prod{dot(*this)};
     return std::sqrt(dot_prod);
 }
 
-Vector Vector::operator/(double div)
+Vector& Vector::operator/(double div)
 {
 
     for (auto i{0}; i < size; i++)
@@ -90,7 +90,7 @@ Vector Vector::operator/(double div)
     return *this;
 }
 
-Vector Vector::operator-(double sub)
+Vector& Vector::operator-(double sub)
 {
 
     for (auto i{0}; i < size; i++)
@@ -101,7 +101,7 @@ Vector Vector::operator-(double sub)
     return *this;
 }
 
-double Vector::dot(Vector rhs) const
+double Vector::dot(Vector& rhs) const
 {
     double result{0};
 

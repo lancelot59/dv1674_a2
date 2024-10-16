@@ -5,6 +5,8 @@ CXXFLAGS=-std=c++17 -g -pg -Wunused -Wall -Wunused
 
 all: pearson
 
+run: clean all test
+
 test: testclean target1 target2 target3 target4
 
 target1:
@@ -35,6 +37,10 @@ target4:target3
 	sleep 1
 	rm gmon.out
 	
+debugg:
+	gdb ./pearson
+	data/128.data outputfiles/debugg128.data
+
 memtest: clean all
 	rm outputfiles/*.data massif*
 	valgrind --tool=massif ./pearson data/128.data outputfiles/128.data

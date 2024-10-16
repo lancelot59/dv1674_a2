@@ -14,8 +14,9 @@ int main(int argc, char const* argv[])
         std::exit(1);
     }
     //we could if ive not missed anything entirely cut out std::vector for vector arrays. which should be way way quicker
-    auto datasets { Dataset::read(argv[1]) };
-    auto corrs { Analysis::correlation_coefficients(datasets) };
+    int dimension ;
+    auto datasets { Dataset::read(argv[1],dimension) };
+    std::vector<double> corrs = Analysis::correlation_coefficients(datasets, dimension);
     Dataset::write(corrs, argv[2]);
 
     return 0;

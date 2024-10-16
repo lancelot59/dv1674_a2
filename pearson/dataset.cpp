@@ -14,10 +14,9 @@ Author: David Holmqvist <daae19@student.bth.se>
 
 namespace Dataset
 {
-    std::vector<Vector> read(std::string filename) //we can probably multithread this by splitting it up and inserting on index positions where the first thread inserts on index positions 1-dimension/(numberofthreads)
+    std::vector<Vector> read(std::string filename, int& dimension) //we can probably multithread this by splitting it up and inserting on index positions where the first thread inserts on index positions 1-dimension/(numberofthreads)
     //while the second thread inserts on positions dimension/(numberofthreads)-dimension/(numberofthreads-1) (not sure if the exact logic works but in theory it should work)
     {
-        unsigned dimension{};
         std::vector<Vector> result{};
         std::ifstream f{};
 
@@ -30,7 +29,7 @@ namespace Dataset
         }
 
         f >> dimension;
-        //result.reserve(dimension); //allocates necessary memory for the array so it doesnt have to expand while running.
+        result.reserve(dimension); //allocates necessary memory for the array so it doesnt have to expand while running.
         
         std::string line{}; //could potentially use char array
 
@@ -51,7 +50,7 @@ namespace Dataset
         return result;
     }
 
-    void write(std::vector<double> data, std::string filename)//dont think this is multithreadable
+    void write(std::vector<double>& data, std::string filename)//dont think this is multithreadable
     {
         std::ofstream f{};
 
