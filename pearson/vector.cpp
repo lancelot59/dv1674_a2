@@ -6,7 +6,6 @@ Author: David Holmqvist <daae19@student.bth.se>
 #include <iostream>
 #include <cmath>
 #include <vector>
-#include <immintrin.h>
 
 Vector::Vector()
     : size{0}, data{nullptr}
@@ -36,10 +35,12 @@ Vector::Vector(unsigned size, double *data)
 Vector::Vector(const Vector &other)
     : Vector{other.size}
 {
-    for (int i = 0; i < size; i+=4)
+    for (auto i{0}; i < size; i+=4)
     {
-        __m256d dataVec = _mm256_loadu_pd(&other.data[i]);
-        _mm256_storeu_pd(&data[i], dataVec);
+        data[i] = other.data[i];
+        data[i+1] = other.data[i+1];
+        data[i+2] = other.data[i+2];
+        data[i+3] = other.data[i+3];
     }
 }
 
@@ -65,18 +66,16 @@ double &Vector::operator[](unsigned i)
 
 double Vector::mean() const
 {
-    __m256d sumVec = _mm256_setzero_pd();
-    int i = 0;
+    double sum{0};
 
-    for (; i <= size -4; i+=4)
+    for (auto i{0}; i < size; i+=4)
     {
-        __m256d dataVec = _mm256_loadu_pd(&data[i]);
-        sumVec = _mm256_add_pd(sumVec, dataVec);
+        sum += data[i];
+        sum += data[i+1];
+        sum += data[i+2];
+        sum += data[i+3];
     }
-    double sum = 0;
-    double temp[4];
-    _mm256_storeu_pd(temp, sumVec);
-    sum += temp[0] + temp[1] + temp[2] + temp[3];
+
     return sum / static_cast<double>(size);
 }
 
@@ -89,12 +88,12 @@ double Vector::magnitude()
 Vector& Vector::operator/(double div)
 {
 
-    __m256d divisor = _mm256_set1_pd(div);
     for (auto i{0}; i < size; i+=4)
     {
-        __m256d values = _mm256_loadu_pd(&data[i]);
-        __m256d result = _mm256_div_pd(values, divisor);
-        _mm256_storeu_pd(&data[i],result);
+        data[i] /= div;
+        data[i+1] /= div;
+        data[i+2] /= div;
+        data[i+3] /= div;
     }
 
     return *this;
@@ -102,13 +101,13 @@ Vector& Vector::operator/(double div)
 
 Vector& Vector::operator-(double sub)
 {
-    __m256d subtractor = _mm256_set1_pd(sub);
 
     for (auto i{0}; i < size; i+=4)
     {
-        __m256d values = _mm256_loadu_pd(&data[i]);
-        __m256d result = _mm256_sub_pd(values, subtractor);
-        _mm256_storeu_pd(&data[i], result);
+        data[i] -= sub;
+        data[i+1] -= sub;
+        data[i+2] -= sub;
+        data[i+3] -= sub;
     }
 
     return *this;
@@ -116,19 +115,15 @@ Vector& Vector::operator-(double sub)
 
 double Vector::dot(Vector& rhs) const
 {
-    __m256d sum = _mm256_setzero_pd();
+    double result{0};
 
-    for(int i = 0; i < size; i+=4)
+    for (auto i{0}; i < size; i+=4)
     {
-        __m256d a = _mm256_loadu_pd(&data[i]);
-        __m256d b = _mm256_loadu_pd(&rhs[i]);
-
-        __m256d product = _mm256_mul_pd(a,b);
-
-        sum = _mm256_add_pd(sum,product);
+        result += data[i] * rhs[i];
+        result += data[i+1] * rhs[i+1];
+        result += data[i+2] * rhs[i+2];
+        result += data[i+3] * rhs[i+3];
     }
 
-    double result[4];
-    _mm256_storeu_pd(result,sum);
-    return result[0] + result[1] + result[2] + result[3];
+    return result;
 }

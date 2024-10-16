@@ -37,9 +37,15 @@ target4:target3
 	sleep 1
 	rm gmon.out
 	
-debugg:
-	gdb ./pearson
-	data/128.data outputfiles/debugg128.data
+
+compare:
+	@diff -q outputfiles/128.data outputfiles_par/128.data > /dev/null; \
+	if [ $$? -ne 0 ]; then \
+		echo "Error the files are different";\
+		exit 1; \
+	else \
+		echo "success, the files are the same";\
+	fi
 
 memtest: clean all
 	rm outputfiles/*.data massif*

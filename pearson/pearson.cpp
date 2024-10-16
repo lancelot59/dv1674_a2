@@ -17,8 +17,9 @@ int main(int argc, char const* argv[])
     int dimension ; //=128
     auto datasets { Dataset::read(argv[1],dimension) };
 
-    double* result = new double[dimension*dimension];
-    int num_threads = 8;
+    int arraysize = dimension*(dimension-1)/2;
+    double* result = new double[arraysize];
+    int num_threads = 1;
     int setstart, setend;
     
     double* array = new double[dimension];//creating an array for all the mean values so they only need ot be calculated once
@@ -35,7 +36,7 @@ int main(int argc, char const* argv[])
     }
     for(auto& thread: threads) //terminate threads
         thread.join();
-    Dataset::write(result, argv[2], dimension);
+    Dataset::write(result, argv[2], arraysize);
 
     delete [] array;
     delete [] result;
