@@ -3,7 +3,7 @@
 CXX=g++
 CXXFLAGS=-std=c++17 -g -pg -Wunused -Wall -Wunused
 
-run: clean all test
+run: clean all test1
 
 all: blur
 

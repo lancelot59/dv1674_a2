@@ -35,8 +35,9 @@ namespace Filter
         {
             for (auto y{0}; y < y_size; y++)
             {
-                auto r_x{w[0] * dst.r(x, y)}, g_x{w[0] * dst.g(x, y)}, b_x{w[0] * dst.b(x, y)}, n_x{w[0]};
-                auto r_y{w[0] * scratch.r(x, y)}, g_y{w[0] * scratch.g(x, y)}, b_y{w[0] * scratch.b(x, y)}, n_y{w[0]};
+                auto w_first {w[0]};
+                auto r_x{w_first * dst.r(x, y)}, g_x{w_first * dst.g(x, y)}, b_x{w_first * dst.b(x, y)}, n_x{w_first};
+                auto r_y{w_first * scratch.r(x, y)}, g_y{w_first * scratch.g(x, y)}, b_y{w_first * scratch.b(x, y)}, n_y{w_first};
 
                 for (auto wi{1}; wi <= radius; wi++)
                 {
