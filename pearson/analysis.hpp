@@ -9,7 +9,7 @@ Author: David Holmqvist <daae19@student.bth.se>
 #define ANALYSIS_HPP
 
 namespace Analysis {
-std::vector<double> correlation_coefficients(std::vector<Vector>& datasets, int dimension);
+void correlation_coefficients(double*& result,std::vector<Vector>& datasets, double*& array, int dimension, int setstart, int setend);
 double pearson(Vector vec1, Vector vec2, double, double);
 };
 

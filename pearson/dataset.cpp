@@ -50,7 +50,7 @@ namespace Dataset
         return result;
     }
 
-    void write(std::vector<double>& data, std::string filename)//dont think this is multithreadable
+    void write(double*& data, std::string filename, int dimension)//dont think this is multithreadable
     {
         std::ofstream f{};
 
@@ -62,7 +62,7 @@ namespace Dataset
             return;
         }
 
-        for (auto i{0}; i < data.size(); i++) 
+        for (auto i{0}; i < dimension; i++) 
         {
             f << std::setprecision(std::numeric_limits<double>::digits10 + 1) << data[i] << std::endl;
         }

@@ -1,13 +1,13 @@
 # Author: David Holmqvist <daae19@student.bth.se>
 
 CXX=g++
-CXXFLAGS=-std=c++17 -g -pg -Wunused -Wall -Wunused -mavx
+CXXFLAGS=-std=c++17 -g -pg -Wunused -Wall -Wunused -mavx -pthread
 
 all: pearson
 
 run: clean all test
 
-test: testclean target1 target2 target3 target4
+test: target1 target2 target3 target4
 
 target1:
 	./pearson data/128.data outputfiles/128.data

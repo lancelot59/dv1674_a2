@@ -1,35 +1,35 @@
 /*
 Author: David Holmqvist <daae19@student.bth.se>
 */
-
+#include <thread>
 #include "analysis.hpp"
 #include <algorithm>
 #include <cmath>
 #include <iostream>
 #include <list>
 #include <vector>
+#include <mutex>
 
 namespace Analysis {
 
-std::vector<double> correlation_coefficients(std::vector<Vector>& datasets, int dimension)//this should be pretty easy to multithread
+std::mutex result_mutex;
+
+void correlation_coefficients(double*& result,std::vector<Vector>& datasets, double*& array, int dimension, int setstart, int setend)//this should be pretty easy to multithread
 {
-    std::vector<double> result {};
-    double x_mean;
-    double y_mean;
-    auto i = datasets.size();
+    auto i = setend-setstart;
+    int adjustedsetstart = setstart/dimension;
+    int adjustedsetend = setend/dimension;
 
-    double* array = new double[i];//creating an array for all the mean values so they only need ot be calculated once
-    for(auto sample = 0; sample < i; sample++ )
-        array[sample] = datasets[sample].mean();
+    int count = setstart;
 
-    for (auto sample1 { 0 }; sample1 < i - 1; sample1++) {
-        for (auto sample2 { sample1 + 1 }; sample2 < i; sample2++) {
-            auto corr { pearson(datasets[sample1], datasets[sample2], array[sample1], array[sample2]) };
-            result.push_back(corr);
+    for (int sample1 = adjustedsetstart; sample1 < adjustedsetend - 1; sample1++) {
+        for (auto sample2 { sample1 + 1 }; sample2 < dimension; sample2++) {
+            result[count++] = pearson(datasets[sample1], datasets[sample2], array[sample1], array[sample2]);
+            
         }
     }
 
-    return result;
+
 }
 
 double pearson(Vector vec1, Vector vec2, double x_mean, double y_mean) //this is probably multithreadable but im unsure if we get very much value from it we might lose out from the function call overheads.
