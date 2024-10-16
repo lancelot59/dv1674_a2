@@ -6,6 +6,7 @@ Author: David Holmqvist <daae19@student.bth.se>
 #include <iostream>
 #include <cmath>
 #include <vector>
+#include <immintrin.h>
 
 Vector::Vector()
     : size{0}, data{nullptr}
@@ -115,15 +116,19 @@ Vector& Vector::operator-(double sub)
 
 double Vector::dot(Vector& rhs) const
 {
-    double result{0};
+    __m256d sum = _mm256_setzero_pd();
 
-    for (auto i{0}; i < size; i+=4)
+    for(int i = 0; i < size; i+=4)
     {
-        result += data[i] * rhs[i];
-        result += data[i+1] * rhs[i+1];
-        result += data[i+2] * rhs[i+2];
-        result += data[i+3] * rhs[i+3];
+        __m256d a = _mm256_loadu_pd(&data[i]);
+        __m256d b = _mm256_loadu_pd(&rhs[i]);
+
+        __m256d product = _mm256_mul_pd(a,b);
+
+        sum = _mm256_add_pd(sum,product);
     }
 
-    return result;
+    double result[4];
+    _mm256_storeu_pd(result,sum);
+    return result[0] + result[1] + result[2] + result[3];
 }
