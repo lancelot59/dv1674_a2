@@ -16,13 +16,10 @@ std::mutex result_mutex;
 
 void correlation_coefficients(double*& result,std::vector<Vector>& datasets, double*& array, int dimension, int setstart, int setend)//this should be pretty easy to multithread
 {
-    auto i = setend-setstart;
-    int adjustedsetstart = setstart/dimension;
-    int adjustedsetend = setend/dimension;
 
     int count = setstart;
 
-    for (int sample1 = adjustedsetstart; sample1 < adjustedsetend - 1; sample1++) {
+    for (int sample1 = setstart; sample1 < setend - 1; sample1++) {
         for (auto sample2 { sample1 + 1 }; sample2 < dimension; sample2++) {
             result[count++] = pearson(datasets[sample1], datasets[sample2], array[sample1], array[sample2]);
             

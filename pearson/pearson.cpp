@@ -29,11 +29,11 @@ int main(int argc, char const* argv[])
 
     for(int thread_num = 0; thread_num < num_threads; thread_num++)
     {
-        setstart = dimension*dimension/num_threads * thread_num; //= 2048 * threadnum
-        setend = setstart + dimension*dimension/num_threads; //= 2048 *threadnum+1
+        setstart = dimension/num_threads * thread_num; //start of block for thread 
+        setend = setstart + dimension/num_threads;  //end of block for thread
         threads.emplace_back(Analysis::correlation_coefficients,std::ref(result),std::ref(datasets), std::ref(array), dimension,setstart,setend);
     }
-    for(auto& thread: threads)
+    for(auto& thread: threads) //terminate threads
         thread.join();
     Dataset::write(result, argv[2], dimension);
 
