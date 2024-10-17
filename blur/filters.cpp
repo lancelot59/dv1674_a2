@@ -26,63 +26,79 @@ namespace Filter
     {
         Matrix scratch{PPM::max_dimension};
         auto dst{m};
+        // 1 adding getting date before the loop
         auto x_size {dst.get_x_size()};
         auto y_size {dst.get_y_size()};
+        // 2 Gaus operation before the loop not inside
         double w[Gauss::max_radius]{};
-        Gauss::get_weights(radius, w); // depends on the radius not on the x or y
+        Gauss::get_weights(radius, w);
+        // 3 move this outside of the loop
+        auto w0 {w[0]};
 
+        // dst loop
         for (auto x{0}; x < x_size; x++)
         {
             for (auto y{0}; y < y_size; y++)
             {
-                auto w_first {w[0]};
-                auto r_x{w_first * dst.r(x, y)}, g_x{w_first * dst.g(x, y)}, b_x{w_first * dst.b(x, y)}, n_x{w_first};
-                auto r_y{w_first * scratch.r(x, y)}, g_y{w_first * scratch.g(x, y)}, b_y{w_first * scratch.b(x, y)}, n_y{w_first};
+                auto r{w0 * dst.r(x, y)}, g{w0 * dst.g(x, y)}, b{w0 * dst.b(x, y)}, n{w0};
 
                 for (auto wi{1}; wi <= radius; wi++)
                 {
                     auto wc{w[wi]};
                     auto x2{x - wi};
-                    auto y2{y - wi};
 
                     if (x2 >= 0)
                     {
-                        r_x += wc * dst.r(x2, y);
-                        g_x += wc * dst.g(x2, y);
-                        b_x += wc * dst.b(x2, y);
-                        n_x += wc;
+                        r += wc * dst.r(x2, y);
+                        g += wc * dst.g(x2, y);
+                        b += wc * dst.b(x2, y);
+                        n += wc;
                     }
                     x2 = x + wi;
                     if (x2 < x_size)
                     {
-                        r_x += wc * dst.r(x2, y);
-                        g_x += wc * dst.g(x2, y);
-                        b_x += wc * dst.b(x2, y);
-                        n_x += wc;
+                        r += wc * dst.r(x2, y);
+                        g += wc * dst.g(x2, y);
+                        b += wc * dst.b(x2, y);
+                        n += wc;
                     }
+                }
+                scratch.r(x, y) = r / n;
+                scratch.g(x, y) = g / n;
+                scratch.b(x, y) = b / n;
+            }
+        }
+
+        for (auto x{0}; x < x_size; x++)
+        {
+            for (auto y{0}; y < y_size; y++)
+            {
+                auto r{w0 * scratch.r(x, y)}, g{w0 * scratch.g(x, y)}, b{w0 * scratch.b(x, y)}, n{w0};
+
+                for (auto wi{1}; wi <= radius; wi++)
+                {
+                    auto wc{w[wi]};
+                    auto y2{y - wi};
+
                     if (y2 >= 0)
                     {
-                        r_y += wc * scratch.r(x, y2);
-                        g_y += wc * scratch.g(x, y2);
-                        b_y += wc * scratch.b(x, y2);
-                        n_y += wc;
+                        r += wc * scratch.r(x, y2);
+                        g += wc * scratch.g(x, y2);
+                        b += wc * scratch.b(x, y2);
+                        n += wc;
                     }
                     y2 = y + wi;
                     if (y2 < dst.get_y_size())
                     {
-                        r_y += wc * scratch.r(x, y2);
-                        g_y += wc * scratch.g(x, y2);
-                        b_y += wc * scratch.b(x, y2);
-                        n_y += wc;
+                        r += wc * scratch.r(x, y2);
+                        g+= wc * scratch.g(x, y2);
+                        b += wc * scratch.b(x, y2);
+                        n += wc;
                     }
                 }
-                scratch.r(x, y) = r_x / n_x;
-                scratch.g(x, y) = g_x / n_x;
-                scratch.b(x, y) = b_x / n_x;
-
-                dst.r(x, y) = r_y / n_y;
-                dst.g(x, y) = g_y / n_y;
-                dst.b(x, y) = b_y / n_y;
+                dst.r(x, y) = r / n;
+                dst.g(x, y) = g / n;
+                dst.b(x, y) = b / n;
             }
         }
 
