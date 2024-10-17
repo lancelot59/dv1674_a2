@@ -5,7 +5,7 @@ CXXFLAGS=-std=c++17 -g -pg -Wunused -Wall -Wunused
 
 run: clean all test1
 
-all: blur
+all: clean blur
 
 test:  target1 target2 target3 target4
 
