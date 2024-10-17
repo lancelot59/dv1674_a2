@@ -13,35 +13,35 @@ heap_tree=empty
 snapshot=1
 #-----------
 time=2426937
-mem_heap_B=415920
+mem_heap_B=416032
 mem_heap_extra_B=8
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=2
 #-----------
-time=2707259
-mem_heap_B=890506
+time=2707193
+mem_heap_B=890618
 mem_heap_extra_B=86
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=3
 #-----------
-time=2854381
-mem_heap_B=1283722
+time=2854363
+mem_heap_B=1283834
 mem_heap_extra_B=86
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=4
 #-----------
-time=3116788
-mem_heap_B=1283722
+time=3116754
+mem_heap_B=1283834
 mem_heap_extra_B=86
 mem_stacks_B=0
 heap_tree=detailed
-n4: 1283722 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+n4: 1283834 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
  n1: 786434 0x49A5724: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
   n1: 786434 0x499B952: std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::overflow(int) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
    n1: 786434 0x49A388A: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
@@ -50,19 +50,19 @@ n4: 1283722 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
       n1: 786434 0x1105F5: PPM::Reader::fill(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:24)
        n1: 786434 0x110D53: PPM::Reader::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:105)
         n0: 786434 0x10F351: main (blur.cpp:21)
- n1: 415920 0x4CB4C12: monstartup (gmon.c:153)
-  n1: 415920 0x10F150: __gmon_start__ (in /mnt/c/Users/smiet/Desktop/Assignments/Optimazation programming/Ass 2/dv1674_a2/blur/blur)
-   n1: 415920 0x4846015: ??? (in /usr/libexec/valgrind/vgpreload_massif-amd64-linux.so)
-    n1: 415920 0x4000D57: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
-     n1: 415920 0x4006439: call_init.part.0 (dl-init.c:56)
-      n1: 415920 0x40065F8: call_init (dl-init.c:33)
-       n1: 415920 0x40065F8: _dl_init (dl-init.c:84)
-        n1: 415920 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
-         n1: 415920 0x3: ???
-          n1: 415920 0x1FFF00003E: ???
-           n1: 415920 0x1FFF000045: ???
-            n1: 415920 0x1FFF000048: ???
-             n0: 415920 0x1FFF000055: ???
+ n1: 416032 0x4CB4C12: monstartup (gmon.c:153)
+  n1: 416032 0x10F150: __gmon_start__ (in /mnt/c/Users/smiet/Desktop/Assignments/Optimazation programming/Ass 2/dv1674_a2/blur/blur)
+   n1: 416032 0x4846015: ??? (in /usr/libexec/valgrind/vgpreload_massif-amd64-linux.so)
+    n1: 416032 0x4000D57: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+     n1: 416032 0x4006439: call_init.part.0 (dl-init.c:56)
+      n1: 416032 0x40065F8: call_init (dl-init.c:33)
+       n1: 416032 0x40065F8: _dl_init (dl-init.c:84)
+        n1: 416032 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+         n1: 416032 0x3: ???
+          n1: 416032 0x1FFF00003E: ???
+           n1: 416032 0x1FFF000045: ???
+            n1: 416032 0x1FFF000048: ???
+             n0: 416032 0x1FFF000055: ???
  n1: 72704 0x4903939: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
   n1: 72704 0x400647D: call_init.part.0 (dl-init.c:70)
    n1: 72704 0x4006567: call_init (dl-init.c:33)
@@ -77,20 +77,20 @@ n4: 1283722 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
 #-----------
 snapshot=5
 #-----------
-time=3148305
-mem_heap_B=2070154
+time=3148253
+mem_heap_B=2070266
 mem_heap_extra_B=86
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=6
 #-----------
-time=3672840
-mem_heap_B=2070154
+time=3672772
+mem_heap_B=2070266
 mem_heap_extra_B=86
 mem_stacks_B=0
 heap_tree=detailed
-n4: 2070154 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+n4: 2070266 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
  n1: 1572866 0x49A5724: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
   n1: 1572866 0x499B952: std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::overflow(int) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
    n1: 1572866 0x49A388A: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
@@ -99,19 +99,19 @@ n4: 2070154 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
       n1: 1572866 0x1105F5: PPM::Reader::fill(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:24)
        n1: 1572866 0x110D53: PPM::Reader::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:105)
         n0: 1572866 0x10F351: main (blur.cpp:21)
- n1: 415920 0x4CB4C12: monstartup (gmon.c:153)
-  n1: 415920 0x10F150: __gmon_start__ (in /mnt/c/Users/smiet/Desktop/Assignments/Optimazation programming/Ass 2/dv1674_a2/blur/blur)
-   n1: 415920 0x4846015: ??? (in /usr/libexec/valgrind/vgpreload_massif-amd64-linux.so)
-    n1: 415920 0x4000D57: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
-     n1: 415920 0x4006439: call_init.part.0 (dl-init.c:56)
-      n1: 415920 0x40065F8: call_init (dl-init.c:33)
-       n1: 415920 0x40065F8: _dl_init (dl-init.c:84)
-        n1: 415920 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
-         n1: 415920 0x3: ???
-          n1: 415920 0x1FFF00003E: ???
-           n1: 415920 0x1FFF000045: ???
-            n1: 415920 0x1FFF000048: ???
-             n0: 415920 0x1FFF000055: ???
+ n1: 416032 0x4CB4C12: monstartup (gmon.c:153)
+  n1: 416032 0x10F150: __gmon_start__ (in /mnt/c/Users/smiet/Desktop/Assignments/Optimazation programming/Ass 2/dv1674_a2/blur/blur)
+   n1: 416032 0x4846015: ??? (in /usr/libexec/valgrind/vgpreload_massif-amd64-linux.so)
+    n1: 416032 0x4000D57: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+     n1: 416032 0x4006439: call_init.part.0 (dl-init.c:56)
+      n1: 416032 0x40065F8: call_init (dl-init.c:33)
+       n1: 416032 0x40065F8: _dl_init (dl-init.c:84)
+        n1: 416032 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+         n1: 416032 0x3: ???
+          n1: 416032 0x1FFF00003E: ???
+           n1: 416032 0x1FFF000045: ???
+            n1: 416032 0x1FFF000048: ???
+             n0: 416032 0x1FFF000055: ???
  n1: 72704 0x4903939: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
   n1: 72704 0x400647D: call_init.part.0 (dl-init.c:70)
    n1: 72704 0x4006567: call_init (dl-init.c:33)
@@ -126,12 +126,12 @@ n4: 2070154 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
 #-----------
 snapshot=7
 #-----------
-time=3851475
-mem_heap_B=3643018
+time=3851407
+mem_heap_B=3643130
 mem_heap_extra_B=86
 mem_stacks_B=0
 heap_tree=detailed
-n4: 3643018 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+n4: 3643130 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
  n1: 3145730 0x49A5724: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
   n1: 3145730 0x499B952: std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::overflow(int) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
    n1: 3145730 0x49A388A: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
@@ -140,19 +140,19 @@ n4: 3643018 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
       n1: 3145730 0x1105F5: PPM::Reader::fill(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:24)
        n1: 3145730 0x110D53: PPM::Reader::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:105)
         n0: 3145730 0x10F351: main (blur.cpp:21)
- n1: 415920 0x4CB4C12: monstartup (gmon.c:153)
-  n1: 415920 0x10F150: __gmon_start__ (in /mnt/c/Users/smiet/Desktop/Assignments/Optimazation programming/Ass 2/dv1674_a2/blur/blur)
-   n1: 415920 0x4846015: ??? (in /usr/libexec/valgrind/vgpreload_massif-amd64-linux.so)
-    n1: 415920 0x4000D57: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
-     n1: 415920 0x4006439: call_init.part.0 (dl-init.c:56)
-      n1: 415920 0x40065F8: call_init (dl-init.c:33)
-       n1: 415920 0x40065F8: _dl_init (dl-init.c:84)
-        n1: 415920 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
-         n1: 415920 0x3: ???
-          n1: 415920 0x1FFF00003E: ???
-           n1: 415920 0x1FFF000045: ???
-            n1: 415920 0x1FFF000048: ???
-             n0: 415920 0x1FFF000055: ???
+ n1: 416032 0x4CB4C12: monstartup (gmon.c:153)
+  n1: 416032 0x10F150: __gmon_start__ (in /mnt/c/Users/smiet/Desktop/Assignments/Optimazation programming/Ass 2/dv1674_a2/blur/blur)
+   n1: 416032 0x4846015: ??? (in /usr/libexec/valgrind/vgpreload_massif-amd64-linux.so)
+    n1: 416032 0x4000D57: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+     n1: 416032 0x4006439: call_init.part.0 (dl-init.c:56)
+      n1: 416032 0x40065F8: call_init (dl-init.c:33)
+       n1: 416032 0x40065F8: _dl_init (dl-init.c:84)
+        n1: 416032 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+         n1: 416032 0x3: ???
+          n1: 416032 0x1FFF00003E: ???
+           n1: 416032 0x1FFF000045: ???
+            n1: 416032 0x1FFF000048: ???
+             n0: 416032 0x1FFF000055: ???
  n1: 72704 0x4903939: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
   n1: 72704 0x400647D: call_init.part.0 (dl-init.c:70)
    n1: 72704 0x4006567: call_init (dl-init.c:33)
@@ -167,12 +167,12 @@ n4: 3643018 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
 #-----------
 snapshot=8
 #-----------
-time=4004471
-mem_heap_B=2586701
+time=4004403
+mem_heap_B=2586813
 mem_heap_extra_B=131
 mem_stacks_B=0
 heap_tree=detailed
-n4: 2586701 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+n4: 2586813 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
  n1: 2097153 0x49A5724: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
   n1: 2097153 0x499B952: std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::overflow(int) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
    n1: 2097153 0x49A388A: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
@@ -181,19 +181,19 @@ n4: 2586701 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
       n1: 2097153 0x1105F5: PPM::Reader::fill(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:24)
        n1: 2097153 0x110D53: PPM::Reader::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:105)
         n0: 2097153 0x10F351: main (blur.cpp:21)
- n1: 415920 0x4CB4C12: monstartup (gmon.c:153)
-  n1: 415920 0x10F150: __gmon_start__ (in /mnt/c/Users/smiet/Desktop/Assignments/Optimazation programming/Ass 2/dv1674_a2/blur/blur)
-   n1: 415920 0x4846015: ??? (in /usr/libexec/valgrind/vgpreload_massif-amd64-linux.so)
-    n1: 415920 0x4000D57: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
-     n1: 415920 0x4006439: call_init.part.0 (dl-init.c:56)
-      n1: 415920 0x40065F8: call_init (dl-init.c:33)
-       n1: 415920 0x40065F8: _dl_init (dl-init.c:84)
-        n1: 415920 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
-         n1: 415920 0x3: ???
-          n1: 415920 0x1FFF00003E: ???
-           n1: 415920 0x1FFF000045: ???
-            n1: 415920 0x1FFF000048: ???
-             n0: 415920 0x1FFF000055: ???
+ n1: 416032 0x4CB4C12: monstartup (gmon.c:153)
+  n1: 416032 0x10F150: __gmon_start__ (in /mnt/c/Users/smiet/Desktop/Assignments/Optimazation programming/Ass 2/dv1674_a2/blur/blur)
+   n1: 416032 0x4846015: ??? (in /usr/libexec/valgrind/vgpreload_massif-amd64-linux.so)
+    n1: 416032 0x4000D57: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+     n1: 416032 0x4006439: call_init.part.0 (dl-init.c:56)
+      n1: 416032 0x40065F8: call_init (dl-init.c:33)
+       n1: 416032 0x40065F8: _dl_init (dl-init.c:84)
+        n1: 416032 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+         n1: 416032 0x3: ???
+          n1: 416032 0x1FFF00003E: ???
+           n1: 416032 0x1FFF000045: ???
+            n1: 416032 0x1FFF000048: ???
+             n0: 416032 0x1FFF000055: ???
  n1: 72704 0x4903939: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
   n1: 72704 0x400647D: call_init.part.0 (dl-init.c:70)
    n1: 72704 0x4006567: call_init (dl-init.c:33)
@@ -208,132 +208,132 @@ n4: 2586701 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
 #-----------
 snapshot=9
 #-----------
-time=4136659
-mem_heap_B=2586701
+time=4136591
+mem_heap_B=2586813
 mem_heap_extra_B=131
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=10
 #-----------
-time=4310156
-mem_heap_B=2586700
+time=4310090
+mem_heap_B=2586812
 mem_heap_extra_B=108
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=11
 #-----------
-time=4474226
-mem_heap_B=2586701
+time=4474160
+mem_heap_B=2586813
 mem_heap_extra_B=131
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=12
 #-----------
-time=4599633
-mem_heap_B=2586703
+time=4599567
+mem_heap_B=2586815
 mem_heap_extra_B=153
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=13
 #-----------
-time=4835683
-mem_heap_B=2586703
+time=4835617
+mem_heap_B=2586815
 mem_heap_extra_B=153
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=14
 #-----------
-time=5071733
-mem_heap_B=2586703
+time=5071667
+mem_heap_B=2586815
 mem_heap_extra_B=153
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=15
 #-----------
-time=5261436
-mem_heap_B=2586700
+time=5261370
+mem_heap_B=2586812
 mem_heap_extra_B=108
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=16
 #-----------
-time=5531730
-mem_heap_B=2586701
+time=5531664
+mem_heap_B=2586813
 mem_heap_extra_B=131
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=17
 #-----------
-time=5777222
-mem_heap_B=2586701
+time=5777156
+mem_heap_B=2586813
 mem_heap_extra_B=131
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=18
 #-----------
-time=5928294
-mem_heap_B=2586701
+time=5928228
+mem_heap_B=2586813
 mem_heap_extra_B=131
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=19
 #-----------
-time=6079366
-mem_heap_B=2586701
+time=6079300
+mem_heap_B=2586813
 mem_heap_extra_B=131
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=20
 #-----------
-time=6249322
-mem_heap_B=2586701
+time=6249256
+mem_heap_B=2586813
 mem_heap_extra_B=131
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=21
 #-----------
-time=6471815
-mem_heap_B=2587429
+time=6471766
+mem_heap_B=2587541
 mem_heap_extra_B=147
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=22
 #-----------
-time=6622887
-mem_heap_B=2587429
+time=6622838
+mem_heap_B=2587541
 mem_heap_extra_B=147
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=23
 #-----------
-time=6903781
-mem_heap_B=2587429
+time=6903732
+mem_heap_B=2587541
 mem_heap_extra_B=147
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=24
 #-----------
-time=7054853
-mem_heap_B=2587429
+time=7054804
+mem_heap_B=2587541
 mem_heap_extra_B=147
 mem_stacks_B=0
 heap_tree=detailed
-n4: 2587429 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+n4: 2587541 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
  n1: 2097153 0x49A5724: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
   n1: 2097153 0x499B952: std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::overflow(int) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
    n1: 2097153 0x49A388A: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
@@ -342,19 +342,19 @@ n4: 2587429 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
       n1: 2097153 0x1105F5: PPM::Reader::fill(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:24)
        n1: 2097153 0x110D53: PPM::Reader::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:105)
         n0: 2097153 0x10F351: main (blur.cpp:21)
- n1: 415920 0x4CB4C12: monstartup (gmon.c:153)
-  n1: 415920 0x10F150: __gmon_start__ (in /mnt/c/Users/smiet/Desktop/Assignments/Optimazation programming/Ass 2/dv1674_a2/blur/blur)
-   n1: 415920 0x4846015: ??? (in /usr/libexec/valgrind/vgpreload_massif-amd64-linux.so)
-    n1: 415920 0x4000D57: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
-     n1: 415920 0x4006439: call_init.part.0 (dl-init.c:56)
-      n1: 415920 0x40065F8: call_init (dl-init.c:33)
-       n1: 415920 0x40065F8: _dl_init (dl-init.c:84)
-        n1: 415920 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
-         n1: 415920 0x3: ???
-          n1: 415920 0x1FFF00003E: ???
-           n1: 415920 0x1FFF000045: ???
-            n1: 415920 0x1FFF000048: ???
-             n0: 415920 0x1FFF000055: ???
+ n1: 416032 0x4CB4C12: monstartup (gmon.c:153)
+  n1: 416032 0x10F150: __gmon_start__ (in /mnt/c/Users/smiet/Desktop/Assignments/Optimazation programming/Ass 2/dv1674_a2/blur/blur)
+   n1: 416032 0x4846015: ??? (in /usr/libexec/valgrind/vgpreload_massif-amd64-linux.so)
+    n1: 416032 0x4000D57: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+     n1: 416032 0x4006439: call_init.part.0 (dl-init.c:56)
+      n1: 416032 0x40065F8: call_init (dl-init.c:33)
+       n1: 416032 0x40065F8: _dl_init (dl-init.c:84)
+        n1: 416032 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+         n1: 416032 0x3: ???
+          n1: 416032 0x1FFF00003E: ???
+           n1: 416032 0x1FFF000045: ???
+            n1: 416032 0x1FFF000048: ???
+             n0: 416032 0x1FFF000055: ???
  n1: 72704 0x4903939: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
   n1: 72704 0x400647D: call_init.part.0 (dl-init.c:70)
    n1: 72704 0x4006567: call_init (dl-init.c:33)
@@ -369,196 +369,196 @@ n4: 2587429 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
 #-----------
 snapshot=25
 #-----------
-time=7253135
-mem_heap_B=2587429
+time=7253086
+mem_heap_B=2587541
 mem_heap_extra_B=147
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=26
 #-----------
-time=7441992
-mem_heap_B=2587429
+time=7404158
+mem_heap_B=2587541
 mem_heap_extra_B=147
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=27
 #-----------
-time=7593064
-mem_heap_B=2587429
+time=7555230
+mem_heap_B=2587541
 mem_heap_extra_B=147
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=28
 #-----------
-time=7744136
-mem_heap_B=2587429
+time=7706302
+mem_heap_B=2587541
 mem_heap_extra_B=147
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=29
 #-----------
-time=7895208
-mem_heap_B=2587429
+time=7857374
+mem_heap_B=2587541
 mem_heap_extra_B=147
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=30
 #-----------
-time=8046280
-mem_heap_B=2587429
+time=8008446
+mem_heap_B=2587541
 mem_heap_extra_B=147
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=31
 #-----------
-time=8197352
-mem_heap_B=2587429
+time=8197286
+mem_heap_B=2587541
 mem_heap_extra_B=147
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=32
 #-----------
-time=8461728
-mem_heap_B=2587429
+time=8461662
+mem_heap_B=2587541
 mem_heap_extra_B=147
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=33
 #-----------
-time=8593916
-mem_heap_B=2587429
+time=8593850
+mem_heap_B=2587541
 mem_heap_extra_B=147
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=34
 #-----------
-time=8757954
-mem_heap_B=2587428
+time=8757888
+mem_heap_B=2587540
 mem_heap_extra_B=124
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=35
 #-----------
-time=8917939
-mem_heap_B=2588068
+time=8917873
+mem_heap_B=2588180
 mem_heap_extra_B=132
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=36
 #-----------
-time=9117921
-mem_heap_B=2586657
+time=9117855
+mem_heap_B=2586769
 mem_heap_extra_B=95
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=37
 #-----------
-time=9382409
-mem_heap_B=2586657
+time=9382343
+mem_heap_B=2586769
 mem_heap_extra_B=95
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=38
 #-----------
-time=9578414
-mem_heap_B=2586657
+time=9578348
+mem_heap_B=2586769
 mem_heap_extra_B=95
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=39
 #-----------
-time=9710658
-mem_heap_B=2586657
+time=9710592
+mem_heap_B=2586769
 mem_heap_extra_B=95
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=40
 #-----------
-time=9909024
-mem_heap_B=2586657
+time=9908958
+mem_heap_B=2586769
 mem_heap_extra_B=95
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=41
 #-----------
-time=10173512
-mem_heap_B=2586657
+time=10173446
+mem_heap_B=2586769
 mem_heap_extra_B=95
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=42
 #-----------
-time=10438000
-mem_heap_B=2586657
+time=10437934
+mem_heap_B=2586769
 mem_heap_extra_B=95
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=43
 #-----------
-time=10702488
-mem_heap_B=2586657
+time=10702422
+mem_heap_B=2586769
 mem_heap_extra_B=95
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=44
 #-----------
-time=10966976
-mem_heap_B=2586657
+time=10966910
+mem_heap_B=2586769
 mem_heap_extra_B=95
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=45
 #-----------
-time=11231464
-mem_heap_B=2586657
+time=11231398
+mem_heap_B=2586769
 mem_heap_extra_B=95
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=46
 #-----------
-time=11468287
-mem_heap_B=2587057
+time=11468221
+mem_heap_B=2587169
 mem_heap_extra_B=119
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=47
 #-----------
-time=231730615
-mem_heap_B=4648929
+time=231730551
+mem_heap_B=4649041
 mem_heap_extra_B=87
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=48
 #-----------
-time=470033982
-mem_heap_B=14680505
+time=470033901
+mem_heap_B=14680617
 mem_heap_extra_B=3063
 mem_stacks_B=0
 heap_tree=detailed
-n10: 14680505 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+n10: 14680617 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
  n1: 9000000 0x10FD6A: Matrix::Matrix(unsigned int) (matrix.cpp:33)
   n1: 9000000 0x1426AB: Filter::blur(Matrix, int) (filters.cpp:27)
    n0: 9000000 0x10F41C: main (blur.cpp:24)
@@ -585,29 +585,29 @@ n10: 14680505 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
  n1: 515788 0x110B5B: PPM::Reader::get_data(unsigned int, unsigned int) (ppm.cpp:81)
   n1: 515788 0x11102B: PPM::Reader::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:135)
    n0: 515788 0x10F351: main (blur.cpp:21)
- n1: 415920 0x4CB4C12: monstartup (gmon.c:153)
-  n1: 415920 0x10F150: __gmon_start__ (in /mnt/c/Users/smiet/Desktop/Assignments/Optimazation programming/Ass 2/dv1674_a2/blur/blur)
-   n1: 415920 0x4846015: ??? (in /usr/libexec/valgrind/vgpreload_massif-amd64-linux.so)
-    n1: 415920 0x4000D57: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
-     n1: 415920 0x4006439: call_init.part.0 (dl-init.c:56)
-      n1: 415920 0x40065F8: call_init (dl-init.c:33)
-       n1: 415920 0x40065F8: _dl_init (dl-init.c:84)
-        n1: 415920 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
-         n1: 415920 0x3: ???
-          n1: 415920 0x1FFF00003E: ???
-           n1: 415920 0x1FFF000045: ???
-            n1: 415920 0x1FFF000048: ???
-             n0: 415920 0x1FFF000055: ???
+ n1: 416032 0x4CB4C12: monstartup (gmon.c:153)
+  n1: 416032 0x10F150: __gmon_start__ (in /mnt/c/Users/smiet/Desktop/Assignments/Optimazation programming/Ass 2/dv1674_a2/blur/blur)
+   n1: 416032 0x4846015: ??? (in /usr/libexec/valgrind/vgpreload_massif-amd64-linux.so)
+    n1: 416032 0x4000D57: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+     n1: 416032 0x4006439: call_init.part.0 (dl-init.c:56)
+      n1: 416032 0x40065F8: call_init (dl-init.c:33)
+       n1: 416032 0x40065F8: _dl_init (dl-init.c:84)
+        n1: 416032 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+         n1: 416032 0x3: ???
+          n1: 416032 0x1FFF00003E: ???
+           n1: 416032 0x1FFF000045: ???
+            n1: 416032 0x1FFF000048: ???
+             n0: 416032 0x1FFF000055: ???
  n0: 72704 in 14 places, all below massif's threshold (1.00%)
 #-----------
 snapshot=49
 #-----------
-time=9525903785
-mem_heap_B=34227869
+time=2592981533
+mem_heap_B=34227981
 mem_heap_extra_B=9003
 mem_stacks_B=0
 heap_tree=peak
-n12: 34227869 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+n12: 34227981 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
  n1: 9000000 0x10FD6A: Matrix::Matrix(unsigned int) (matrix.cpp:33)
   n1: 9000000 0x1426AB: Filter::blur(Matrix, int) (filters.cpp:27)
    n0: 9000000 0x10F41C: main (blur.cpp:24)
@@ -646,40 +646,40 @@ n12: 34227869 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
  n1: 515788 0x110B5B: PPM::Reader::get_data(unsigned int, unsigned int) (ppm.cpp:81)
   n1: 515788 0x11102B: PPM::Reader::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:135)
    n0: 515788 0x10F351: main (blur.cpp:21)
- n1: 415920 0x4CB4C12: monstartup (gmon.c:153)
-  n1: 415920 0x10F150: __gmon_start__ (in /mnt/c/Users/smiet/Desktop/Assignments/Optimazation programming/Ass 2/dv1674_a2/blur/blur)
-   n1: 415920 0x4846015: ??? (in /usr/libexec/valgrind/vgpreload_massif-amd64-linux.so)
-    n1: 415920 0x4000D57: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
-     n1: 415920 0x4006439: call_init.part.0 (dl-init.c:56)
-      n1: 415920 0x40065F8: call_init (dl-init.c:33)
-       n1: 415920 0x40065F8: _dl_init (dl-init.c:84)
-        n1: 415920 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
-         n1: 415920 0x3: ???
-          n1: 415920 0x1FFF00003E: ???
-           n1: 415920 0x1FFF000045: ???
-            n1: 415920 0x1FFF000048: ???
-             n0: 415920 0x1FFF000055: ???
+ n1: 416032 0x4CB4C12: monstartup (gmon.c:153)
+  n1: 416032 0x10F150: __gmon_start__ (in /mnt/c/Users/smiet/Desktop/Assignments/Optimazation programming/Ass 2/dv1674_a2/blur/blur)
+   n1: 416032 0x4846015: ??? (in /usr/libexec/valgrind/vgpreload_massif-amd64-linux.so)
+    n1: 416032 0x4000D57: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+     n1: 416032 0x4006439: call_init.part.0 (dl-init.c:56)
+      n1: 416032 0x40065F8: call_init (dl-init.c:33)
+       n1: 416032 0x40065F8: _dl_init (dl-init.c:84)
+        n1: 416032 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+         n1: 416032 0x3: ???
+          n1: 416032 0x1FFF00003E: ???
+           n1: 416032 0x1FFF000045: ???
+            n1: 416032 0x1FFF000048: ???
+             n0: 416032 0x1FFF000055: ???
  n0: 72704 in 14 places, all below massif's threshold (1.00%)
 #-----------
 snapshot=50
 #-----------
-time=9764209111
-mem_heap_B=7228361
+time=2831286861
+mem_heap_B=7228473
 mem_heap_extra_B=183
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=51
 #-----------
-time=9925177653
-mem_heap_B=7228361
+time=2992255387
+mem_heap_B=7228473
 mem_heap_extra_B=183
 mem_stacks_B=0
 heap_tree=empty
 #-----------
 snapshot=52
 #-----------
-time=9925336017
+time=2992413376
 mem_heap_B=72704
 mem_heap_extra_B=8
 mem_stacks_B=0

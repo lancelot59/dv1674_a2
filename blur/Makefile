@@ -9,7 +9,7 @@ all: clean blur
 
 test: testclean target1 target2 target3 target4
 
-test1: testclean target3
+test1: clean all testclean target3
 
 callgrind:
 	sleep 5

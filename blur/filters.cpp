@@ -26,21 +26,28 @@ namespace Filter
     {
         Matrix scratch{PPM::max_dimension};
         auto dst{m};
+
         // 1 adding getting date before the loop
         auto x_size {dst.get_x_size()};
         auto y_size {dst.get_y_size()};
-        // 2 Gaus operation before the loop not inside
+
+        // 2 Gauss operation before the loop not inside
         double w[Gauss::max_radius]{};
         Gauss::get_weights(radius, w);
         // 3 move this outside of the loop
         auto w0 {w[0]};
+
+        //4 Moved those calling for those arrays outside of the loop. They are called once instead of multiple times
+        auto R_dst = dst.get_R(), G_dst = dst.get_G(), B_dst = dst.get_B();
+        auto R_scratch = scratch.get_R(), G_scratch = scratch.get_G(), B_scratch = scratch.get_B();
 
         // dst loop
         for (auto x{0}; x < x_size; x++)
         {
             for (auto y{0}; y < y_size; y++)
             {
-                auto r{w0 * dst.r(x, y)}, g{w0 * dst.g(x, y)}, b{w0 * dst.b(x, y)}, n{w0};
+                auto index {y * x_size + x};
+                auto r{w0 * R_dst[index]}, g{w0 * G_dst[index]}, b{w0 * B_dst[index]}, n{w0};
 
                 for (auto wi{1}; wi <= radius; wi++)
                 {
@@ -49,20 +56,23 @@ namespace Filter
 
                     if (x2 >= 0)
                     {
-                        r += wc * dst.r(x2, y);
-                        g += wc * dst.g(x2, y);
-                        b += wc * dst.b(x2, y);
+                        auto left_index = y * x_size + x2;
+                        r += wc * R_dst[left_index];
+                        g += wc * G_dst[left_index];
+                        b += wc * B_dst[left_index];
                         n += wc;
                     }
                     x2 = x + wi;
                     if (x2 < x_size)
                     {
-                        r += wc * dst.r(x2, y);
-                        g += wc * dst.g(x2, y);
-                        b += wc * dst.b(x2, y);
+                        auto right_index = y * x_size + x2;
+                        r += wc * R_dst[right_index];
+                        g += wc * G_dst[right_index];
+                        b += wc * B_dst[right_index];
                         n += wc;
                     }
                 }
+                // those one stays because R, G, B are const
                 scratch.r(x, y) = r / n;
                 scratch.g(x, y) = g / n;
                 scratch.b(x, y) = b / n;
@@ -73,7 +83,8 @@ namespace Filter
         {
             for (auto y{0}; y < y_size; y++)
             {
-                auto r{w0 * scratch.r(x, y)}, g{w0 * scratch.g(x, y)}, b{w0 * scratch.b(x, y)}, n{w0};
+                auto index {y * x_size + x};
+                auto r{w0 * R_scratch[index]}, g{w0 * G_scratch[index]}, b{w0 * B_scratch[index]}, n{w0};
 
                 for (auto wi{1}; wi <= radius; wi++)
                 {
@@ -82,17 +93,19 @@ namespace Filter
 
                     if (y2 >= 0)
                     {
-                        r += wc * scratch.r(x, y2);
-                        g += wc * scratch.g(x, y2);
-                        b += wc * scratch.b(x, y2);
+                        auto left_index = y2 * x_size + x;
+                        r += wc * R_scratch[left_index];
+                        g += wc * G_scratch[left_index];
+                        b += wc * B_scratch[left_index];
                         n += wc;
                     }
                     y2 = y + wi;
-                    if (y2 < dst.get_y_size())
+                    if (y2 < y_size)
                     {
-                        r += wc * scratch.r(x, y2);
-                        g+= wc * scratch.g(x, y2);
-                        b += wc * scratch.b(x, y2);
+                        auto right_index = y2 * x_size + x;
+                        r += wc * R_scratch[right_index];
+                        g += wc * G_scratch[right_index];
+                        b += wc * B_scratch[right_index];
                         n += wc;
                     }
                 }
