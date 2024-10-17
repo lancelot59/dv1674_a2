@@ -1,7 +1,7 @@
 # Author: David Holmqvist <daae19@student.bth.se>
 
 CXX=g++
-CXXFLAGS=-std=c++17 -g -pg -Wunused -Wall -Wunused -mavx
+CXXFLAGS=-std=c++17 -g -pg -Wunused -Wall -Wunused -mavx 
 
 all: pearson
 
