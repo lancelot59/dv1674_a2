@@ -39,7 +39,7 @@ Matrix::Matrix(unsigned dimension)
 {
 }
 
-Matrix::Matrix(const Matrix& other)
+Matrix::Matrix(Matrix& other)
     : R { new unsigned char[other.x_size * other.y_size] }
     , G { new unsigned char[other.x_size * other.y_size] }
     , B { new unsigned char[other.x_size * other.y_size] }
@@ -59,7 +59,7 @@ Matrix::Matrix(const Matrix& other)
     }
 }
 
-Matrix& Matrix::operator=(const Matrix other)
+Matrix& Matrix::operator=(Matrix other)
 {
     if (this == &other) {
         return *this;
@@ -122,17 +122,17 @@ unsigned Matrix::get_color_max() const
     return color_max;
 }
 
-unsigned char const* Matrix::get_R() const
+unsigned char* Matrix::get_R()
 {
     return R;
 }
 
-unsigned char const* Matrix::get_G() const
+unsigned char* Matrix::get_G()
 {
     return G;
 }
 
-unsigned char const* Matrix::get_B() const
+unsigned char* Matrix::get_B()
 {
     return B;
 }

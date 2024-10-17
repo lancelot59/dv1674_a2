@@ -73,9 +73,9 @@ namespace Filter
                     }
                 }
                 // those one stays because R, G, B are const
-                scratch.r(x, y) = r / n;
-                scratch.g(x, y) = g / n;
-                scratch.b(x, y) = b / n;
+                R_scratch[index] = r / n;
+                G_scratch[index] = g / n;
+                B_scratch[index] = b / n;
             }
         }
 
@@ -109,9 +109,9 @@ namespace Filter
                         n += wc;
                     }
                 }
-                dst.r(x, y) = r / n;
-                dst.g(x, y) = g / n;
-                dst.b(x, y) = b / n;
+                R_dst[index] = r / n;
+                G_dst[index] = g / n;
+                B_dst[index] = b / n;
             }
         }
 
