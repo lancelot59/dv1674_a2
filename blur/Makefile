@@ -3,7 +3,7 @@
 CXX=g++
 CXXFLAGS=-std=c++17 -g -pg -Wunused -Wall -Wunused
 
-all: blur threshold
+all: blur
 
 test: testclean target1 target2 target3 target4
 
