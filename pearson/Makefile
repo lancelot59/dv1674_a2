@@ -7,7 +7,7 @@ all: pearson
 
 run: clean all test
 
-test: target1 target2 target3 target4
+test: testclean target1 target2 target3 target4
 
 target1:
 	./pearson data/128.data outputfiles/128.data
