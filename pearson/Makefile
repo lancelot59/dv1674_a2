@@ -48,7 +48,14 @@ memtest: clean all
 	valgrind --tool=massif ./pearson data/512.data outputfiles/512.data
 	valgrind --tool=massif ./pearson data/1024.data outputfiles/1024.data
 
-
+compare:
+	@diff -q outputfiles/128.data outputfiles_par/128.data > /dev/null; \
+	if [ $$? -ne 0 ]; then \
+		echo "Error the files are different";\
+		exit 1; \
+	else \
+		echo "success, the files are the same";\
+	fi
 
 pearson: vector dataset analysis pearson.cpp
 	$(CXX) $(CXXFLAGS) pearson.cpp vector.o dataset.o analysis.o -o pearson
