@@ -17,9 +17,7 @@ Each sample counts as 0.01 seconds.
   0.00      0.00     0.00    16256     0.00     0.00  Vector::magnitude()
   0.00      0.00     0.00    16256     0.00     0.00  Vector::operator/(double)
   0.00      0.00     0.00    16256     0.00     0.00  Vector::operator-(double)
-  0.00      0.00     0.00    16256     0.00     0.00  Vector::mean() const
   0.00      0.00     0.00    16256     0.00     0.00  std::istream_iterator<double, char, std::char_traits<char>, long>::operator++()
-  0.00      0.00     0.00    16256     0.00     0.00  std::vector<Vector, std::allocator<Vector> >::operator[](unsigned long)
   0.00      0.00     0.00     8256     0.00     0.00  operator new(unsigned long, void*)
   0.00      0.00     0.00     8185     0.00     0.00  std::vector<double, std::allocator<double> >::size() const
   0.00      0.00     0.00     8128     0.00     0.00  Analysis::pearson(Vector, Vector, double, double)
@@ -364,8 +362,8 @@ index % time    self  children    called     name
 -----------------------------------------------
                 0.00    0.00      28/28          std::vector<double, std::allocator<double> >::_M_check_len(unsigned long, char const*) const [64]
 [53]     0.0    0.00    0.00      28         std::vector<double, std::allocator<double> >::max_size() const [53]
-                0.00    0.00      28/28          std::_Vector_base<double, std::allocator<double> >::_M_get_Tp_allocator() const [52]
                 0.00    0.00      28/28          std::vector<double, std::allocator<double> >::_S_max_size(std::allocator<double> const&) [55]
+                0.00    0.00      28/28          std::_Vector_base<double, std::allocator<double> >::_M_get_Tp_allocator() const [52]
 -----------------------------------------------
                 0.00    0.00      28/28          std::vector<double, std::allocator<double> >::_S_max_size(std::allocator<double> const&) [55]
 [54]     0.0    0.00    0.00      28         std::allocator_traits<std::allocator<double> >::max_size(std::allocator<double> const&) [54]
@@ -571,11 +569,11 @@ index % time    self  children    called     name
                 0.00    0.00   16384/16384       std::vector<Vector, std::allocator<Vector> >::operator[](unsigned long) [15]
                 0.00    0.00   16256/16384       Vector::Vector(Vector const&) [12]
                 0.00    0.00   16256/16512       Vector::~Vector() [11]
-                0.00    0.00    8128/8128        Analysis::pearson(Vector, Vector, double, double) [24]
-                0.00    0.00    8128/8128        std::vector<double, std::allocator<double> >::push_back(double const&) [27]
+                0.00    0.00    8128/8128        Analysis::pearson(Vector, Vector, double, double) [23]
+                0.00    0.00    8128/8128        std::vector<double, std::allocator<double> >::push_back(double const&) [26]
+                0.00    0.00     128/128         Vector::mean() const [34]
                 0.00    0.00       1/2           std::vector<Vector, std::allocator<Vector> >::size() const [75]
                 0.00    0.00       1/1           std::vector<double, std::allocator<double> >::vector() [134]
-                0.00    0.00       1/2           std::vector<Vector, std::allocator<Vector> >::size() const [75]
 -----------------------------------------------
                 0.00    0.00       1/1           std::allocator_traits<std::allocator<Vector> >::deallocate(std::allocator<Vector>&, Vector*, unsigned long) [125]
 [100]    0.0    0.00    0.00       1         __gnu_cxx::new_allocator<Vector>::deallocate(Vector*, unsigned long) [100]
@@ -604,8 +602,8 @@ index % time    self  children    called     name
 -----------------------------------------------
                 0.00    0.00       1/1           std::vector<Vector, std::allocator<Vector> >::reserve(unsigned long) [131]
 [108]    0.0    0.00    0.00       1         std::vector<Vector, std::allocator<Vector> >::max_size() const [108]
-                0.00    0.00       1/1           std::_Vector_base<Vector, std::allocator<Vector> >::_M_get_Tp_allocator() const [106]
                 0.00    0.00       1/1           std::vector<Vector, std::allocator<Vector> >::_S_max_size(std::allocator<Vector> const&) [129]
+                0.00    0.00       1/1           std::_Vector_base<Vector, std::allocator<Vector> >::_M_get_Tp_allocator() const [106]
 -----------------------------------------------
                 0.00    0.00       1/1           std::_Vector_base<Vector, std::allocator<Vector> >::_Vector_impl::_Vector_impl() [115]
 [109]    0.0    0.00    0.00       1         std::allocator<Vector>::allocator() [109]
@@ -632,8 +630,8 @@ index % time    self  children    called     name
 -----------------------------------------------
                 0.00    0.00       1/1           std::_Vector_base<Vector, std::allocator<Vector> >::_Vector_base() [118]
 [115]    0.0    0.00    0.00       1         std::_Vector_base<Vector, std::allocator<Vector> >::_Vector_impl::_Vector_impl() [115]
-                0.00    0.00       1/1           std::allocator<Vector>::allocator() [109]
                 0.00    0.00       1/1           std::_Vector_base<Vector, std::allocator<Vector> >::_Vector_impl_data::_Vector_impl_data() [117]
+                0.00    0.00       1/1           std::allocator<Vector>::allocator() [109]
 -----------------------------------------------
                 0.00    0.00       1/1           std::_Vector_base<Vector, std::allocator<Vector> >::~_Vector_base() [119]
 [116]    0.0    0.00    0.00       1         std::_Vector_base<Vector, std::allocator<Vector> >::_Vector_impl::~_Vector_impl() [116]
