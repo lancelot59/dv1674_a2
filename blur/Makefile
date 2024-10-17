@@ -1,7 +1,7 @@
 # Author: David Holmqvist <daae19@student.bth.se>
 
 CXX=g++
-CXXFLAGS=-std=c++17 -g -pg -Wunused -Wall -Wunused
+CXXFLAGS=-std=c++17 -g -pg -Wunused -Wall -Wunused -pthread
 
 run: clean all test
 
@@ -9,7 +9,7 @@ all: clean blur
 
 test: testclean target1 target2 target3 target4
 
-test1: clean all testclean target3
+test1: clean all testclean target4
 
 callgrind:
 	sleep 5
