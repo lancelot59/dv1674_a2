@@ -150,7 +150,7 @@ namespace Filter
         Gauss::get_weights(radius, w);
 
         //5 removed the const from getter for R, G, and B in matrix.cpp
-        const int num_threads = 4;
+        const int num_threads = 8;
         pthread_t threads[num_threads];
         std::vector<ThreadData> thread_data(num_threads);
 
@@ -158,9 +158,9 @@ namespace Filter
 
         for(int i = 0; i < num_threads; i++) {
             thread_data[i] = {&scratch, &dst, w, radius, x_size, y_size, i * rows, (i + 1) * rows};
-            if (i == num_threads - 1) {
-                thread_data[i].end = y_size;
-            }
+            // if (i == num_threads - 1) {
+            //     thread_data[i].end = y_size;
+            // }
             pthread_create(&threads[i], nullptr, thread1, &thread_data[i]);
         }
 
