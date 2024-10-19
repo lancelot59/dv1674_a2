@@ -30,16 +30,16 @@ public:
     unsigned get_y_size() const;
     unsigned get_color_max() const;
 
-    unsigned char const* get_R() const;
-    unsigned char const* get_G() const;
-    unsigned char const* get_B() const;
+    unsigned char* get_R() const;
+    unsigned char* get_G() const;
+    unsigned char* get_B() const;
 
-    unsigned char r(unsigned x, unsigned y) const;
-    unsigned char g(unsigned x, unsigned y) const;
-    unsigned char b(unsigned x, unsigned y) const;
-    unsigned char& r(unsigned x, unsigned y);
-    unsigned char& g(unsigned x, unsigned y);
-    unsigned char& b(unsigned x, unsigned y);
+    unsigned char r(unsigned index) const;
+    unsigned char g(unsigned index) const;
+    unsigned char b(unsigned index) const;
+    unsigned char& r(unsigned index);
+    unsigned char& g(unsigned index);
+    unsigned char& b(unsigned index);
 };
 
 #endif
