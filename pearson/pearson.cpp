@@ -55,9 +55,11 @@ int main(int argc, char const* argv[])
     int num_threads = 1; //set number of threads
     int setstart, setend;
     
-    double* array = new double[dimension];//creating an array for all the mean values so they only need ot be calculated once
+    double* array = new double[dimension*2];//creating an array for all the mean values so they only need ot be calculated once
     for(auto sample = 0; sample < dimension; sample++ )
         array[sample] = datasets[sample].mean();
+    for(auto sample = 0; sample < dimension; sample++)
+        array[sample+dimension] = datasets[sample].magnitude();
 
     pthread_t threads[num_threads];
     ThreadData* thread_data = new ThreadData[num_threads];
@@ -68,7 +70,6 @@ int main(int argc, char const* argv[])
         setend = setstart + blockSize;  //end of block for thread    
         if(thread_num != num_threads-1) //required for proper alignment
             setend += 1;
-        std::cout << "hello there" << std::endl;
         thread_data[thread_num] = {result, datasets, array, dimension, setstart, setend};
         if(pthread_create(&threads[thread_num], nullptr, calculate_coefficients,(void*)&thread_data[thread_num]) != 0)
         {
