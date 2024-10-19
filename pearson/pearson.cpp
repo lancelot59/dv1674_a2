@@ -58,14 +58,19 @@ int main(int argc, char const* argv[])
     int setstart, setend;
     
     double* array = new double[dimension*2];//creating an array for all the mean values so they only need ot be calculated once
-    for(auto sample = 0; sample < dimension; sample++ )
-        array[sample] = datasets[sample].mean();
+    for(auto i = 0; i < dimension; i++ )
+    {
+        datasets[i] - datasets[i].mean();
+        datasets[i] / datasets[i].magnitude();
+    }
     for(auto sample = 0; sample < dimension; sample++)
-        array[sample+dimension] = datasets[sample].magnitude();
+        array[sample+dimension] = 0;//datasets[sample].magnitude();
 
     pthread_t threads[num_threads];
     ThreadData* thread_data = new ThreadData[num_threads];
     int blockSize = dimension/num_threads; //calculate block size (needs improved implementation)
+
+
     for(int thread_num = 0; thread_num < num_threads; thread_num++)
     {
         setstart = blockSize * thread_num; //start of block for thread 

@@ -5,7 +5,10 @@ int main()
 {
     double* array = new double[8];
     for(int i = 0; i < 8; i++)
-        array[i] = i+1;
+        array[i] = i+10;
+    double* array2 = new double[8];
+    for(int i = 0; i < 8; i++)
+        array2[i] = i+10;
     Vector vec1 = {8,array}; 
     Vector vec2 = {8,array}; 
     int mean = vec1.mean();

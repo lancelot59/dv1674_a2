@@ -7,6 +7,7 @@ all: pearson
 
 run: clean all test
 
+compare: clean all testclean target1 comparison
 test: testclean target1 target2 target3 target4
 
 testrun: clean all testclean
@@ -76,7 +77,7 @@ target4:target3
 	rm gmon.out
 	
 
-compare:
+comparison:
 	@diff -q outputfiles/128.data outputfiles_par/128.data > /dev/null; \
 	if [ $$? -ne 0 ]; then \
 		echo "Error the files are different";\
