@@ -46,11 +46,11 @@ target4:
 memtest: clean blur
 	rm outputfiles/*.ppm massif*
 	valgrind --tool=massif --massif-out-file=massif_im1.out ./blur 15 data/im1.ppm outputfiles/im1.ppm
-	slee10
+	sleep 10
 	valgrind --tool=massif --massif-out-file=massif_im2.out ./blur 15 data/im2.ppm outputfiles/im2.ppm
-	sleep 10
+	sleep 20
 	valgrind --tool=massif --massif-out-file=massif_im3.out ./blur 15 data/im3.ppm outputfiles/im3.ppm
-	sleep 10
+	sleep 30
 	valgrind --tool=massif --massif-out-file=massif_im4.out ./blur 15 data/im4.ppm outputfiles/im4.ppm
 
 threshold: matrix ppm filters threshold.cpp
