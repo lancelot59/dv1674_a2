@@ -7,7 +7,7 @@ all: pearson
 
 run: clean all test
 
-compare: clean all testclean target1 comparison
+compare: clean all target1 comparison
 test: testclean target1 target2 target3 target4
 
 testrun: clean all testclean

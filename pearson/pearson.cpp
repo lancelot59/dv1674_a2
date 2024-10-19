@@ -48,6 +48,9 @@ int main(int argc, char const* argv[])
     int dimension ;
     std::vector<Vector> datasets { Dataset::read(argv[1],dimension) }; //read from file
 
+    //until here 128 copy allocations
+
+
     int arraysize = dimension*(dimension-1)/2; //calculate array size
     double* result = new double[arraysize]; //create array
 
@@ -62,9 +65,8 @@ int main(int argc, char const* argv[])
     }
 
     pthread_t threads[num_threads];
-    ThreadData* thread_data = new ThreadData[num_threads];
     int blockSize = dimension/num_threads; //calculate block size (needs improved implementation)
-
+    std::vector<ThreadData*> thread_data;
 
     for(int thread_num = 0; thread_num < num_threads; thread_num++)
     {
@@ -72,8 +74,9 @@ int main(int argc, char const* argv[])
         setend = setstart + blockSize;  //end of block for thread    
         if(thread_num != num_threads-1) //required for proper alignment
             setend += 1;
-        thread_data[thread_num] = {result, datasets,  dimension, setstart, setend};
-        if(pthread_create(&threads[thread_num], nullptr, calculate_coefficients,(void*)&thread_data[thread_num]) != 0)
+        ThreadData* thisthread = new ThreadData{result, datasets,  dimension, setstart, setend};
+        thread_data.push_back(thisthread);
+        if(pthread_create(&threads[thread_num], nullptr, calculate_coefficients,(void*)thisthread) != 0)
         {
             std::cerr << "error creating thread " << thread_num << std::endl;
             delete [] result;
@@ -86,7 +89,8 @@ int main(int argc, char const* argv[])
     Dataset::write(result, argv[2], arraysize);
 
 
-
+    for(auto& i:thread_data)
+        delete i;
     delete [] result;
 
     return 0;
