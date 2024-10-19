@@ -3,11 +3,10 @@ Flat profile:
 Each sample counts as 0.01 seconds.
   %   cumulative   self              self     total           
  time   seconds   seconds    calls  ms/call  ms/call  name    
- 89.47      0.17     0.17        1   170.00   176.67  Filter::blur(Matrix, int)
-  5.26      0.18     0.01  3094728     0.00     0.00  Matrix::b(unsigned int, unsigned int)
-  5.26      0.19     0.01        3     3.33     6.67  Matrix::Matrix(Matrix&)
-  0.00      0.19     0.00  3094728     0.00     0.00  Matrix::g(unsigned int, unsigned int)
-  0.00      0.19     0.00  3094728     0.00     0.00  Matrix::r(unsigned int, unsigned int)
+ 94.74      0.18     0.18        1   180.00   185.00  Filter::blur(Matrix, int)
+  5.26      0.19     0.01  4126304     0.00     0.00  Matrix::g(unsigned int)
+  0.00      0.19     0.00  4126304     0.00     0.00  Matrix::b(unsigned int)
+  0.00      0.19     0.00  4126304     0.00     0.00  Matrix::r(unsigned int)
   0.00      0.19     0.00     4428     0.00     0.00  __gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::base() const
   0.00      0.19     0.00     3084     0.00     0.00  __gnu_cxx::__normal_iterator<char const*, std::vector<char, std::allocator<char> > >::base() const
   0.00      0.19     0.00     2952     0.00     0.00  char* std::vector<char, std::allocator<char> >::_M_data_ptr<char>(char*) const
@@ -463,6 +462,7 @@ Each sample counts as 0.01 seconds.
   0.00      0.19     0.00        3     0.00     0.00  Matrix::get_B()
   0.00      0.19     0.00        3     0.00     0.00  Matrix::get_G()
   0.00      0.19     0.00        3     0.00     0.00  Matrix::get_R()
+  0.00      0.19     0.00        3     0.00     2.50  Matrix::Matrix(Matrix&)
   0.00      0.19     0.00        3     0.00     0.00  __gnu_cxx::new_allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::new_allocator(__gnu_cxx::new_allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&)
   0.00      0.19     0.00        3     0.00     0.00  __gnu_cxx::new_allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::new_allocator()
   0.00      0.19     0.00        3     0.00     0.00  __gnu_cxx::new_allocator<std::__cxx11::regex_traits<char>::_RegexMask>::new_allocator(__gnu_cxx::new_allocator<std::__cxx11::regex_traits<char>::_RegexMask> const&)
@@ -894,8 +894,8 @@ granularity: each sample hit covers 4 byte(s) for 5.26% of 0.19 seconds
 index % time    self  children    called     name
                                                  <spontaneous>
 [1]    100.0    0.00    0.19                 main [1]
-                0.17    0.01       1/1           Filter::blur(Matrix, int) [2]
-                0.01    0.01       2/3           Matrix::Matrix(Matrix&) [3]
+                0.18    0.01       1/1           Filter::blur(Matrix, int) [2]
+                0.00    0.01       2/3           Matrix::Matrix(Matrix&) [4]
                 0.00    0.00       4/5           Matrix::~Matrix() [381]
                 0.00    0.00       3/3           std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::allocator<char> >(char const*, std::allocator<char> const&) [547]
                 0.00    0.00       1/1           PPM::Reader::Reader() [805]
@@ -904,27 +904,31 @@ index % time    self  children    called     name
                 0.00    0.00       1/1           PPM::Writer::operator()(Matrix, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [808]
                 0.00    0.00       1/1           PPM::Reader::~Reader() [806]
 -----------------------------------------------
-                0.17    0.01       1/1           main [1]
-[2]     93.0    0.17    0.01       1         Filter::blur(Matrix, int) [2]
-                0.00    0.00       1/3           Matrix::Matrix(Matrix&) [3]
+                0.18    0.01       1/1           main [1]
+[2]     97.4    0.18    0.01       1         Filter::blur(Matrix, int) [2]
+                0.00    0.00 1031576/4126304     Matrix::g(unsigned int) [3]
+                0.00    0.00       1/3           Matrix::Matrix(Matrix&) [4]
+                0.00    0.00 1031576/4126304     Matrix::r(unsigned int) [14]
+                0.00    0.00 1031576/4126304     Matrix::b(unsigned int) [13]
                 0.00    0.00       2/3           Matrix::get_R() [469]
-                0.00    0.00       2/3           Matrix::get_G() [468]
                 0.00    0.00       2/3           Matrix::get_B() [467]
+                0.00    0.00       2/3           Matrix::get_G() [468]
                 0.00    0.00       1/1           Matrix::Matrix(unsigned int) [811]
                 0.00    0.00       1/3           Matrix::get_x_size() const [481]
                 0.00    0.00       1/3           Matrix::get_y_size() const [482]
                 0.00    0.00       1/1           Filter::Gauss::get_weights(int, double*) [809]
                 0.00    0.00       1/5           Matrix::~Matrix() [381]
 -----------------------------------------------
-                0.00    0.00       1/3           Filter::blur(Matrix, int) [2]
-                0.01    0.01       2/3           main [1]
-[3]     10.5    0.01    0.01       3         Matrix::Matrix(Matrix&) [3]
-                0.01    0.00 3094728/3094728     Matrix::b(unsigned int, unsigned int) [4]
-                0.00    0.00 3094728/3094728     Matrix::r(unsigned int, unsigned int) [14]
-                0.00    0.00 3094728/3094728     Matrix::g(unsigned int, unsigned int) [13]
+                0.00    0.00 1031576/4126304     Filter::blur(Matrix, int) [2]
+                0.01    0.00 3094728/4126304     Matrix::Matrix(Matrix&) [4]
+[3]      5.3    0.01    0.00 4126304         Matrix::g(unsigned int) [3]
 -----------------------------------------------
-                0.01    0.00 3094728/3094728     Matrix::Matrix(Matrix&) [3]
-[4]      5.3    0.01    0.00 3094728         Matrix::b(unsigned int, unsigned int) [4]
+                0.00    0.00       1/3           Filter::blur(Matrix, int) [2]
+                0.00    0.01       2/3           main [1]
+[4]      3.9    0.00    0.01       3         Matrix::Matrix(Matrix&) [4]
+                0.01    0.00 3094728/4126304     Matrix::g(unsigned int) [3]
+                0.00    0.00 3094728/4126304     Matrix::r(unsigned int) [14]
+                0.00    0.00 3094728/4126304     Matrix::b(unsigned int) [13]
 -----------------------------------------------
 [5]      0.0    0.00    0.00       2+36      <cycle 1 as a whole> [5]
                 0.00    0.00       5+11          std::__detail::_Compiler<std::__cxx11::regex_traits<char> >::_M_alternative() <cycle 1> [397]
@@ -942,11 +946,13 @@ index % time    self  children    called     name
                 0.00    0.00       2             std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_M_handle_line_end_assertion(std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_Match_mode, long) <cycle 2> [753]
                 0.00    0.00       2             std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_M_handle_line_begin_assertion(std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_Match_mode, long) <cycle 2> [754]
 -----------------------------------------------
-                0.00    0.00 3094728/3094728     Matrix::Matrix(Matrix&) [3]
-[13]     0.0    0.00    0.00 3094728         Matrix::g(unsigned int, unsigned int) [13]
+                0.00    0.00 1031576/4126304     Filter::blur(Matrix, int) [2]
+                0.00    0.00 3094728/4126304     Matrix::Matrix(Matrix&) [4]
+[13]     0.0    0.00    0.00 4126304         Matrix::b(unsigned int) [13]
 -----------------------------------------------
-                0.00    0.00 3094728/3094728     Matrix::Matrix(Matrix&) [3]
-[14]     0.0    0.00    0.00 3094728         Matrix::r(unsigned int, unsigned int) [14]
+                0.00    0.00 1031576/4126304     Filter::blur(Matrix, int) [2]
+                0.00    0.00 3094728/4126304     Matrix::Matrix(Matrix&) [4]
+[14]     0.0    0.00    0.00 4126304         Matrix::r(unsigned int) [14]
 -----------------------------------------------
                 0.00    0.00    1476/4428        bool __gnu_cxx::operator!=<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > const&, __gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > const&) [81]
                 0.00    0.00    2952/4428        __gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::difference_type __gnu_cxx::operator-<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > const&, __gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > const&) [27]
@@ -1164,8 +1170,8 @@ index % time    self  children    called     name
 -----------------------------------------------
                 0.00    0.00     744/744         std::vector<char, std::allocator<char> >::~vector() [66]
 [65]     0.0    0.00    0.00     744         std::_Vector_base<char, std::allocator<char> >::~_Vector_base() [65]
-                0.00    0.00     744/744         std::_Vector_base<char, std::allocator<char> >::_Vector_impl::~_Vector_impl() [63]
                 0.00    0.00     744/744         std::_Vector_base<char, std::allocator<char> >::_M_deallocate(char*, unsigned long) [64]
+                0.00    0.00     744/744         std::_Vector_base<char, std::allocator<char> >::_Vector_impl::~_Vector_impl() [63]
 -----------------------------------------------
                 0.00    0.00       6/744         std::__detail::_BracketMatcher<std::__cxx11::regex_traits<char>, false, false>::~_BracketMatcher() [367]
                 0.00    0.00     738/744         std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::__cxx11::regex_traits<char>::transform_primary<char const*>(char const*, char const*) const [88]
@@ -1262,8 +1268,8 @@ index % time    self  children    called     name
                 0.00    0.00    1476/1476        std::vector<char, std::allocator<char> >::size() const [31]
                 0.00    0.00     738/738         std::vector<char, std::allocator<char> >::vector<char const*, void>(char const*, char const*, std::allocator<char> const&) [101]
                 0.00    0.00     738/738         std::ctype<char>::tolower(char*, char const*) const [84]
-                0.00    0.00     738/738         std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::__cxx11::regex_traits<char>::transform<char*>(char*, char*) const [89]
                 0.00    0.00     738/744         std::vector<char, std::allocator<char> >::~vector() [66]
+                0.00    0.00     738/738         std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::__cxx11::regex_traits<char>::transform<char*>(char*, char*) const [89]
 -----------------------------------------------
                 0.00    0.00     738/738         std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::__cxx11::regex_traits<char>::transform_primary<char const*>(char const*, char const*) const [88]
 [89]     0.0    0.00    0.00     738         std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > std::__cxx11::regex_traits<char>::transform<char*>(char*, char*) const [89]
@@ -1580,8 +1586,8 @@ index % time    self  children    called     name
                 0.00    0.00      13/43          std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >& std::deque<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::allocator<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> > > >::emplace_back<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> > >(std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >&&) [240]
                 0.00    0.00      30/43          std::stack<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::deque<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::allocator<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> > > > >::top() [169]
 [147]    0.0    0.00    0.00      43         std::deque<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::allocator<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> > > >::back() [147]
-                0.00    0.00      43/43          std::_Deque_iterator<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >&, std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >*>::operator--() [146]
                 0.00    0.00      43/45          std::deque<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::allocator<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> > > >::end() [143]
+                0.00    0.00      43/43          std::_Deque_iterator<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >&, std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >*>::operator--() [146]
                 0.00    0.00      43/43          std::_Deque_iterator<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >&, std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >*>::operator*() const [145]
 -----------------------------------------------
                 0.00    0.00       2/41          std::__detail::_NFA<std::__cxx11::regex_traits<char> >::_M_eliminate_dummy() [738]
@@ -1637,8 +1643,8 @@ index % time    self  children    called     name
                 0.00    0.00       2/2           std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_M_main_dispatch(std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_Match_mode, std::integral_constant<bool, true>) [752]
 [155]    0.0    0.00    0.00      38         std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_M_dfs(std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_Match_mode, long) <cycle 2> [155]
                 0.00    0.00      38/38          std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_State_info<std::integral_constant<bool, true>, std::vector<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > > >::_M_visited(long) const [154]
-                0.00    0.00      38/83          std::vector<std::__detail::_State<char>, std::allocator<std::__detail::_State<char> > >::operator[](unsigned long) const [128]
                 0.00    0.00      38/310         std::__detail::_State<char>::_M_opcode() const [117]
+                0.00    0.00      38/83          std::vector<std::__detail::_State<char>, std::allocator<std::__detail::_State<char> > >::operator[](unsigned long) const [128]
                 0.00    0.00       2/2           std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_M_handle_accept(std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_Match_mode, long) [751]
                                   13             std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_M_handle_match(std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_Match_mode, long) <cycle 2> [244]
                                    9             std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_M_handle_repeat(std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_Match_mode, long) <cycle 2> [297]
@@ -1776,8 +1782,8 @@ index % time    self  children    called     name
                 0.00    0.00       5/28          std::__detail::_NFA<std::__cxx11::regex_traits<char> >::_M_insert_dummy() [394]
 [181]    0.0    0.00    0.00      28         std::__detail::_NFA<std::__cxx11::regex_traits<char> >::_M_insert_state(std::__detail::_State<char>) [181]
                 0.00    0.00      56/104         std::vector<std::__detail::_State<char>, std::allocator<std::__detail::_State<char> > >::size() const [126]
-                0.00    0.00      28/28          std::vector<std::__detail::_State<char>, std::allocator<std::__detail::_State<char> > >::push_back(std::__detail::_State<char>&&) [179]
                 0.00    0.00      28/119         std::remove_reference<std::__detail::_State<char>&>::type&& std::move<std::__detail::_State<char>&>(std::__detail::_State<char>&) [124]
+                0.00    0.00      28/28          std::vector<std::__detail::_State<char>, std::allocator<std::__detail::_State<char> > >::push_back(std::__detail::_State<char>&&) [179]
 -----------------------------------------------
                 0.00    0.00       2/28          std::__detail::_NFA<std::__cxx11::regex_traits<char> >::_M_insert_accept() [737]
                 0.00    0.00       2/28          std::__detail::_NFA<std::__cxx11::regex_traits<char> >::_M_insert_line_begin() [740]
@@ -1790,8 +1796,8 @@ index % time    self  children    called     name
 [182]    0.0    0.00    0.00      28         std::__detail::_State<char>::_State(std::__detail::_Opcode) [182]
                 0.00    0.00      28/28          std::__detail::_State_base::_State_base(std::__detail::_Opcode) [180]
                 0.00    0.00      28/310         std::__detail::_State<char>::_M_opcode() const [117]
-                0.00    0.00       4/184         operator new(unsigned long, void*) [121]
                 0.00    0.00       4/60          __gnu_cxx::__aligned_membuf<std::function<bool (char)> >::_M_addr() [134]
+                0.00    0.00       4/184         operator new(unsigned long, void*) [121]
                 0.00    0.00       4/4           std::function<bool (char)>::function() [453]
 -----------------------------------------------
                 0.00    0.00       1/28          void std::__detail::_Compiler<std::__cxx11::regex_traits<char> >::_M_insert_char_matcher<false, false>() [843]
@@ -1803,8 +1809,8 @@ index % time    self  children    called     name
 -----------------------------------------------
                 0.00    0.00      28/28          std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>* std::__uninitialized_default_n_1<false>::__uninit_default_n<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>*, unsigned long>(std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>*, unsigned long) [695]
 [184]    0.0    0.00    0.00      28         void std::_Construct<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>>(std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>*) [184]
-                0.00    0.00      28/184         operator new(unsigned long, void*) [121]
                 0.00    0.00      28/28          std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int, true>() [176]
+                0.00    0.00      28/184         operator new(unsigned long, void*) [121]
 -----------------------------------------------
                 0.00    0.00      28/28          std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>* std::__uninitialized_default_n_1<false>::__uninit_default_n<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>*, unsigned long>(std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>*, unsigned long) [695]
 [185]    0.0    0.00    0.00      28         std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>* std::__addressof<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int> >(std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>&) [185]
@@ -2245,8 +2251,8 @@ index % time    self  children    called     name
 -----------------------------------------------
                 0.00    0.00      11/11          std::__detail::_State<char>& std::vector<std::__detail::_State<char>, std::allocator<std::__detail::_State<char> > >::emplace_back<std::__detail::_State<char> >(std::__detail::_State<char>&&) [177]
 [270]    0.0    0.00    0.00      11         void std::vector<std::__detail::_State<char>, std::allocator<std::__detail::_State<char> > >::_M_realloc_insert<std::__detail::_State<char> >(__gnu_cxx::__normal_iterator<std::__detail::_State<char>*, std::vector<std::__detail::_State<char>, std::allocator<std::__detail::_State<char> > > >, std::__detail::_State<char>&&) [270]
-                0.00    0.00      22/104         __gnu_cxx::__normal_iterator<std::__detail::_State<char>*, std::vector<std::__detail::_State<char>, std::allocator<std::__detail::_State<char> > > >::base() const [125]
                 0.00    0.00      22/24          std::_Vector_base<std::__detail::_State<char>, std::allocator<std::__detail::_State<char> > >::_M_get_Tp_allocator() [189]
+                0.00    0.00      22/104         __gnu_cxx::__normal_iterator<std::__detail::_State<char>*, std::vector<std::__detail::_State<char>, std::allocator<std::__detail::_State<char> > > >::base() const [125]
                 0.00    0.00      22/22          std::vector<std::__detail::_State<char>, std::allocator<std::__detail::_State<char> > >::_S_relocate(std::__detail::_State<char>*, std::__detail::_State<char>*, std::__detail::_State<char>*, std::allocator<std::__detail::_State<char> >&) [197]
                 0.00    0.00      11/11          std::vector<std::__detail::_State<char>, std::allocator<std::__detail::_State<char> > >::_M_check_len(unsigned long, char const*) const [262]
                 0.00    0.00      11/13          std::vector<std::__detail::_State<char>, std::allocator<std::__detail::_State<char> > >::begin() [243]
@@ -2312,8 +2318,8 @@ index % time    self  children    called     name
                 0.00    0.00      10/10          std::function<bool (char)>::operator()(char) const [265]
 [284]    0.0    0.00    0.00      10         std::_Function_handler<bool (char), std::__detail::_BracketMatcher<std::__cxx11::regex_traits<char>, false, false> >::_M_invoke(std::_Any_data const&, char&&) [284]
                 0.00    0.00      10/44          char&& std::forward<char>(std::remove_reference<char>::type&) [144]
-                0.00    0.00      10/10          std::_Function_base::_Base_manager<std::__detail::_BracketMatcher<std::__cxx11::regex_traits<char>, false, false> >::_M_get_pointer(std::_Any_data const&) [283]
                 0.00    0.00      10/10          std::enable_if<is_invocable_r_v<bool, std::__detail::_BracketMatcher<std::__cxx11::regex_traits<char>, false, false>&, char>, bool>::type std::__invoke_r<bool, std::__detail::_BracketMatcher<std::__cxx11::regex_traits<char>, false, false>&, char>(std::__detail::_BracketMatcher<std::__cxx11::regex_traits<char>, false, false>&, char&&) [286]
+                0.00    0.00      10/10          std::_Function_base::_Base_manager<std::__detail::_BracketMatcher<std::__cxx11::regex_traits<char>, false, false> >::_M_get_pointer(std::_Any_data const&) [283]
 -----------------------------------------------
                 0.00    0.00      10/10          std::__detail::_Compiler<std::__cxx11::regex_traits<char> >::_M_term() <cycle 1> [226]
 [285]    0.0    0.00    0.00      10         std::__detail::_Compiler<std::__cxx11::regex_traits<char> >::_M_quantifier() [285]
@@ -2587,8 +2593,8 @@ index % time    self  children    called     name
 -----------------------------------------------
                 0.00    0.00       6/6           std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::~vector() [363]
 [346]    0.0    0.00    0.00       6         std::_Vector_base<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::~_Vector_base() [346]
-                0.00    0.00       6/6           std::_Vector_base<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_Vector_impl::~_Vector_impl() [343]
                 0.00    0.00       6/6           std::_Vector_base<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_deallocate(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, unsigned long) [344]
+                0.00    0.00       6/6           std::_Vector_base<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_Vector_impl::~_Vector_impl() [343]
 -----------------------------------------------
                 0.00    0.00       6/6           std::_Vector_base<std::__cxx11::regex_traits<char>::_RegexMask, std::allocator<std::__cxx11::regex_traits<char>::_RegexMask> >::~_Vector_base() [350]
 [347]    0.0    0.00    0.00       6         std::_Vector_base<std::__cxx11::regex_traits<char>::_RegexMask, std::allocator<std::__cxx11::regex_traits<char>::_RegexMask> >::_Vector_impl::~_Vector_impl() [347]
@@ -2681,8 +2687,8 @@ index % time    self  children    called     name
                 0.00    0.00       6/6           std::__detail::_BracketMatcher<std::__cxx11::regex_traits<char>, false, false>::~_BracketMatcher() [367]
 [366]    0.0    0.00    0.00       6         std::vector<std::pair<char, char>, std::allocator<std::pair<char, char> > >::~vector() [366]
                 0.00    0.00       6/6           std::_Vector_base<std::pair<char, char>, std::allocator<std::pair<char, char> > >::_M_get_Tp_allocator() [356]
-                0.00    0.00       6/6           void std::_Destroy<std::pair<char, char>*, std::pair<char, char> >(std::pair<char, char>*, std::pair<char, char>*, std::allocator<std::pair<char, char> >&) [380]
                 0.00    0.00       6/6           std::_Vector_base<std::pair<char, char>, std::allocator<std::pair<char, char> > >::~_Vector_base() [357]
+                0.00    0.00       6/6           void std::_Destroy<std::pair<char, char>*, std::pair<char, char> >(std::pair<char, char>*, std::pair<char, char>*, std::allocator<std::pair<char, char> >&) [380]
 -----------------------------------------------
                 0.00    0.00       3/6           void std::__detail::_Compiler<std::__cxx11::regex_traits<char> >::_M_insert_character_class_matcher<false, false>() [558]
                 0.00    0.00       3/6           std::_Function_base::_Base_manager<std::__detail::_BracketMatcher<std::__cxx11::regex_traits<char>, false, false> >::_M_destroy(std::_Any_data&, std::integral_constant<bool, false>) [526]
@@ -2811,8 +2817,8 @@ index % time    self  children    called     name
                 0.00    0.00      10/119         std::__detail::_State<char>::~_State() [123]
                 0.00    0.00       5/28          std::__detail::_State<char>::_State(std::__detail::_Opcode) [182]
                 0.00    0.00       5/5           std::vector<unsigned long, std::allocator<unsigned long> >::back() [391]
-                0.00    0.00       5/119         std::remove_reference<std::__detail::_State<char>&>::type&& std::move<std::__detail::_State<char>&>(std::__detail::_State<char>&) [124]
                 0.00    0.00       5/5           std::vector<unsigned long, std::allocator<unsigned long> >::pop_back() [392]
+                0.00    0.00       5/119         std::remove_reference<std::__detail::_State<char>&>::type&& std::move<std::__detail::_State<char>&>(std::__detail::_State<char>&) [124]
                 0.00    0.00       5/91          std::__detail::_State<char>::_State(std::__detail::_State<char>&&) [127]
                 0.00    0.00       5/28          std::__detail::_NFA<std::__cxx11::regex_traits<char> >::_M_insert_state(std::__detail::_State<char>) [181]
 -----------------------------------------------
@@ -2832,11 +2838,11 @@ index % time    self  children    called     name
                 0.00    0.00      22/30          std::__detail::_Compiler<std::__cxx11::regex_traits<char> >::_M_pop() [170]
                 0.00    0.00      11/16          std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >::_M_append(std::__detail::_StateSeq<std::__cxx11::regex_traits<char> > const&) [227]
                 0.00    0.00      11/17          std::stack<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::deque<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::allocator<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> > > > >::push(std::__detail::_StateSeq<std::__cxx11::regex_traits<char> > const&) [217]
-                0.00    0.00       5/5           std::__detail::_NFA<std::__cxx11::regex_traits<char> >::_M_insert_dummy() [394]
                 0.00    0.00       5/34          std::__shared_ptr_access<std::__detail::_NFA<std::__cxx11::regex_traits<char> >, (__gnu_cxx::_Lock_policy)2, false, false>::operator->() const [156]
+                0.00    0.00       5/5           std::__detail::_NFA<std::__cxx11::regex_traits<char> >::_M_insert_dummy() [394]
                 0.00    0.00       5/18          std::__shared_ptr_access<std::__detail::_NFA<std::__cxx11::regex_traits<char> >, (__gnu_cxx::_Lock_policy)2, false, false>::operator*() const [212]
-                0.00    0.00       5/18          std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >::_StateSeq(std::__detail::_NFA<std::__cxx11::regex_traits<char> >&, long) [213]
                 0.00    0.00       5/13          std::stack<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::deque<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::allocator<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> > > > >::push(std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >&&) [242]
+                0.00    0.00       5/18          std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >::_StateSeq(std::__detail::_NFA<std::__cxx11::regex_traits<char> >&, long) [213]
                                   16             std::__detail::_Compiler<std::__cxx11::regex_traits<char> >::_M_term() <cycle 1> [226]
                                   11             std::__detail::_Compiler<std::__cxx11::regex_traits<char> >::_M_alternative() <cycle 1> [397]
 -----------------------------------------------
@@ -3095,10 +3101,10 @@ index % time    self  children    called     name
                 0.00    0.00       3/4           void std::__detail::_Compiler<std::__cxx11::regex_traits<char> >::_M_insert_character_class_matcher<false, false>() [558]
 [451]    0.0    0.00    0.00       4         std::__detail::_NFA<std::__cxx11::regex_traits<char> >::_M_insert_matcher(std::function<bool (char)>) [451]
                 0.00    0.00       8/119         std::__detail::_State<char>::~_State() [123]
-                0.00    0.00       4/28          std::__detail::_State<char>::_State(std::__detail::_Opcode) [182]
                 0.00    0.00       4/24          std::remove_reference<std::function<bool (char)>&>::type&& std::move<std::function<bool (char)>&>(std::function<bool (char)>&) [191]
-                0.00    0.00       4/4           std::function<bool (char)>::operator=(std::function<bool (char)>&&) [454]
+                0.00    0.00       4/28          std::__detail::_State<char>::_State(std::__detail::_Opcode) [182]
                 0.00    0.00       4/40          std::__detail::_State<char>::_M_get_matcher() [151]
+                0.00    0.00       4/4           std::function<bool (char)>::operator=(std::function<bool (char)>&&) [454]
                 0.00    0.00       4/119         std::remove_reference<std::__detail::_State<char>&>::type&& std::move<std::__detail::_State<char>&>(std::__detail::_State<char>&) [124]
                 0.00    0.00       4/91          std::__detail::_State<char>::_State(std::__detail::_State<char>&&) [127]
                 0.00    0.00       4/28          std::__detail::_NFA<std::__cxx11::regex_traits<char> >::_M_insert_state(std::__detail::_State<char>) [181]
@@ -3334,8 +3340,8 @@ index % time    self  children    called     name
 -----------------------------------------------
                 0.00    0.00       3/3           std::_Vector_base<std::__cxx11::regex_traits<char>::_RegexMask, std::allocator<std::__cxx11::regex_traits<char>::_RegexMask> >::_Vector_base() [514]
 [510]    0.0    0.00    0.00       3         std::_Vector_base<std::__cxx11::regex_traits<char>::_RegexMask, std::allocator<std::__cxx11::regex_traits<char>::_RegexMask> >::_Vector_impl::_Vector_impl() [510]
-                0.00    0.00       3/3           std::_Vector_base<std::__cxx11::regex_traits<char>::_RegexMask, std::allocator<std::__cxx11::regex_traits<char>::_RegexMask> >::_Vector_impl_data::_Vector_impl_data() [512]
                 0.00    0.00       3/3           std::allocator<std::__cxx11::regex_traits<char>::_RegexMask>::allocator() [499]
+                0.00    0.00       3/3           std::_Vector_base<std::__cxx11::regex_traits<char>::_RegexMask, std::allocator<std::__cxx11::regex_traits<char>::_RegexMask> >::_Vector_impl_data::_Vector_impl_data() [512]
 -----------------------------------------------
                 0.00    0.00       3/3           std::_Vector_base<std::__cxx11::regex_traits<char>::_RegexMask, std::allocator<std::__cxx11::regex_traits<char>::_RegexMask> >::_Vector_impl::_Vector_impl(std::_Vector_base<std::__cxx11::regex_traits<char>::_RegexMask, std::allocator<std::__cxx11::regex_traits<char>::_RegexMask> >::_Vector_impl&&) [509]
 [511]    0.0    0.00    0.00       3         std::_Vector_base<std::__cxx11::regex_traits<char>::_RegexMask, std::allocator<std::__cxx11::regex_traits<char>::_RegexMask> >::_Vector_impl_data::_Vector_impl_data(std::_Vector_base<std::__cxx11::regex_traits<char>::_RegexMask, std::allocator<std::__cxx11::regex_traits<char>::_RegexMask> >::_Vector_impl_data&&) [511]
@@ -3510,8 +3516,8 @@ index % time    self  children    called     name
                 0.00    0.00     771/771         std::bitset<256ul>::size() const [39]
                 0.00    0.00     768/768         std::__detail::_BracketMatcher<std::__cxx11::regex_traits<char>, false, false>::_M_apply(char, std::integral_constant<bool, false>) const [49]
                 0.00    0.00     768/768         std::bitset<256ul>::operator[](unsigned long) [55]
-                0.00    0.00     768/768         std::bitset<256ul>::reference::operator=(bool) [54]
                 0.00    0.00     768/768         std::bitset<256ul>::reference::~reference() [53]
+                0.00    0.00     768/768         std::bitset<256ul>::reference::operator=(bool) [54]
 -----------------------------------------------
                 0.00    0.00       3/3           void std::__detail::_Compiler<std::__cxx11::regex_traits<char> >::_M_insert_character_class_matcher<false, false>() [558]
 [552]    0.0    0.00    0.00       3         std::__detail::_BracketMatcher<std::__cxx11::regex_traits<char>, false, false>::_M_add_character_class(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, bool) [552]
@@ -3557,8 +3563,8 @@ index % time    self  children    called     name
 -----------------------------------------------
                 0.00    0.00       3/3           std::__detail::_Scanner<char>::_M_scan_normal() [218]
 [557]    0.0    0.00    0.00       3         std::__detail::_Scanner<char>::_M_eat_escape_ecma() [557]
-                0.00    0.00       3/3           std::__detail::_ScannerBase::_M_find_escape(char) [550]
                 0.00    0.00       3/30          std::ctype<char>::narrow(char, char) const [165]
+                0.00    0.00       3/3           std::__detail::_ScannerBase::_M_find_escape(char) [550]
 -----------------------------------------------
                 0.00    0.00       3/3           std::__detail::_Compiler<std::__cxx11::regex_traits<char> >::_M_atom() <cycle 1> [247]
 [558]    0.0    0.00    0.00       3         void std::__detail::_Compiler<std::__cxx11::regex_traits<char> >::_M_insert_character_class_matcher<false, false>() [558]
@@ -3573,8 +3579,8 @@ index % time    self  children    called     name
                 0.00    0.00       3/18          std::__shared_ptr_access<std::__detail::_NFA<std::__cxx11::regex_traits<char> >, (__gnu_cxx::_Lock_policy)2, false, false>::operator*() const [212]
                 0.00    0.00       3/18          std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >::_StateSeq(std::__detail::_NFA<std::__cxx11::regex_traits<char> >&, long) [213]
                 0.00    0.00       3/13          std::stack<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::deque<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::allocator<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> > > > >::push(std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >&&) [242]
-                0.00    0.00       3/28          std::function<bool (char)>::~function() [183]
                 0.00    0.00       3/6           std::__detail::_BracketMatcher<std::__cxx11::regex_traits<char>, false, false>::~_BracketMatcher() [367]
+                0.00    0.00       3/28          std::function<bool (char)>::~function() [183]
 -----------------------------------------------
                 0.00    0.00       3/3           void std::__detail::_Compiler<std::__cxx11::regex_traits<char> >::_M_insert_character_class_matcher<false, false>() [558]
 [559]    0.0    0.00    0.00       3         std::function<bool (char)>::function<std::__detail::_BracketMatcher<std::__cxx11::regex_traits<char>, false, false>, void>(std::__detail::_BracketMatcher<std::__cxx11::regex_traits<char>, false, false>&&) [559]
@@ -3935,8 +3941,8 @@ index % time    self  children    called     name
 -----------------------------------------------
                 0.00    0.00       2/2           std::vector<std::__detail::_State<char>, std::allocator<std::__detail::_State<char> > >::~vector() [713]
 [645]    0.0    0.00    0.00       2         std::_Vector_base<std::__detail::_State<char>, std::allocator<std::__detail::_State<char> > >::~_Vector_base() [645]
-                0.00    0.00       2/13          std::_Vector_base<std::__detail::_State<char>, std::allocator<std::__detail::_State<char> > >::_M_deallocate(std::__detail::_State<char>*, unsigned long) [237]
                 0.00    0.00       2/2           std::_Vector_base<std::__detail::_State<char>, std::allocator<std::__detail::_State<char> > >::_Vector_impl::~_Vector_impl() [642]
+                0.00    0.00       2/13          std::_Vector_base<std::__detail::_State<char>, std::allocator<std::__detail::_State<char> > >::_M_deallocate(std::__detail::_State<char>*, unsigned long) [237]
 -----------------------------------------------
                 0.00    0.00       2/2           std::_Vector_base<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>, std::allocator<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int> > >::_M_create_storage(unsigned long) [650]
 [646]    0.0    0.00    0.00       2         std::_Vector_base<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>, std::allocator<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int> > >::_M_allocate(unsigned long) [646]
@@ -3974,8 +3980,8 @@ index % time    self  children    called     name
 -----------------------------------------------
                 0.00    0.00       2/2           std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_Vector_base() [657]
 [654]    0.0    0.00    0.00       2         std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_Vector_impl::_Vector_impl() [654]
-                0.00    0.00       2/2           std::allocator<unsigned long>::allocator() [610]
                 0.00    0.00       2/2           std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_Vector_impl_data::_Vector_impl_data() [656]
+                0.00    0.00       2/2           std::allocator<unsigned long>::allocator() [610]
 -----------------------------------------------
                 0.00    0.00       2/2           std::_Vector_base<unsigned long, std::allocator<unsigned long> >::~_Vector_base() [658]
 [655]    0.0    0.00    0.00       2         std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_Vector_impl::~_Vector_impl() [655]
@@ -4223,13 +4229,13 @@ index % time    self  children    called     name
                 0.00    0.00       2/6           std::vector<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > >::capacity() const [333]
                 0.00    0.00       2/16          std::_Vector_base<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > >::_M_get_Tp_allocator() [222]
                 0.00    0.00       2/2           std::vector<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > >::vector(unsigned long, std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > const&) [711]
-                0.00    0.00       2/6           std::vector<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > >::~vector() [365]
                 0.00    0.00       2/2           std::_Vector_base<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > >::_Vector_impl_data::_M_swap_data(std::_Vector_base<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > >::_Vector_impl_data&) [637]
+                0.00    0.00       2/6           std::vector<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > >::~vector() [365]
 -----------------------------------------------
                 0.00    0.00       2/2           std::vector<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > >::vector(unsigned long, std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > const&) [711]
 [705]    0.0    0.00    0.00       2         std::vector<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > >::_S_check_init_len(unsigned long, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > const&) [705]
-                0.00    0.00       2/6           std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::allocator(std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > const&) [336]
                 0.00    0.00       2/2           std::vector<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > >::_S_max_size(std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > const&) [703]
+                0.00    0.00       2/6           std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::allocator(std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > const&) [336]
                 0.00    0.00       2/10          std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::~allocator() [281]
 -----------------------------------------------
                 0.00    0.00       2/2           std::vector<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > >::vector(unsigned long, std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const&, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > const&) [711]
@@ -4296,8 +4302,8 @@ index % time    self  children    called     name
                 0.00    0.00       2/2           std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::~_Executor() [758]
 [718]    0.0    0.00    0.00       2         std::vector<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>, std::allocator<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int> > >::~vector() [718]
                 0.00    0.00       2/4           std::_Vector_base<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>, std::allocator<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int> > >::_M_get_Tp_allocator() [431]
-                0.00    0.00       2/2           std::_Vector_base<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>, std::allocator<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int> > >::~_Vector_base() [653]
                 0.00    0.00       2/2           void std::_Destroy<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>*, std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int> >(std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>*, std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>*, std::allocator<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int> >&) [791]
+                0.00    0.00       2/2           std::_Vector_base<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>, std::allocator<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int> > >::~_Vector_base() [653]
 -----------------------------------------------
                 0.00    0.00       2/2           std::__detail::_NFA_base::_NFA_base(std::regex_constants::syntax_option_type) [759]
 [719]    0.0    0.00    0.00       2         std::vector<unsigned long, std::allocator<unsigned long> >::vector() [719]
@@ -4306,8 +4312,8 @@ index % time    self  children    called     name
                 0.00    0.00       2/2           std::__detail::_NFA_base::~_NFA_base() [760]
 [720]    0.0    0.00    0.00       2         std::vector<unsigned long, std::allocator<unsigned long> >::~vector() [720]
                 0.00    0.00       2/10          std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_M_get_Tp_allocator() [282]
-                0.00    0.00       2/2           std::_Vector_base<unsigned long, std::allocator<unsigned long> >::~_Vector_base() [658]
                 0.00    0.00       2/2           void std::_Destroy<unsigned long*, unsigned long>(unsigned long*, unsigned long*, std::allocator<unsigned long>&) [793]
+                0.00    0.00       2/2           std::_Vector_base<unsigned long, std::allocator<unsigned long> >::~_Vector_base() [658]
 -----------------------------------------------
                 0.00    0.00       2/2           std::__cxx11::basic_regex<char, std::__cxx11::regex_traits<char> >::basic_regex(char const*, std::regex_constants::syntax_option_type) [722]
 [721]    0.0    0.00    0.00       2         std::__cxx11::basic_regex<char, std::__cxx11::regex_traits<char> >::_M_compile(char const*, char const*, std::regex_constants::syntax_option_type) [721]
@@ -4320,8 +4326,8 @@ index % time    self  children    called     name
                 0.00    0.00       1/2           PPM::Reader::get_dimensions() [801]
                 0.00    0.00       1/2           PPM::Reader::get_color_max() [800]
 [722]    0.0    0.00    0.00       2         std::__cxx11::basic_regex<char, std::__cxx11::regex_traits<char> >::basic_regex(char const*, std::regex_constants::syntax_option_type) [722]
-                0.00    0.00       2/2           std::shared_ptr<std::__detail::_NFA<std::__cxx11::regex_traits<char> > const>::shared_ptr() [612]
                 0.00    0.00       2/2           std::__cxx11::regex_traits<char>::length(char const*) [725]
+                0.00    0.00       2/2           std::shared_ptr<std::__detail::_NFA<std::__cxx11::regex_traits<char> > const>::shared_ptr() [612]
                 0.00    0.00       2/2           std::__cxx11::basic_regex<char, std::__cxx11::regex_traits<char> >::_M_compile(char const*, char const*, std::regex_constants::syntax_option_type) [721]
 -----------------------------------------------
                 0.00    0.00       1/2           PPM::Reader::get_dimensions() [801]
@@ -4561,8 +4567,8 @@ index % time    self  children    called     name
                 0.00    0.00       2/16          std::regex_constants::syntax_option_type& std::forward<std::regex_constants::syntax_option_type&>(std::remove_reference<std::regex_constants::syntax_option_type&>::type&) [229]
                 0.00    0.00       2/16          std::locale const& std::forward<std::locale const&>(std::remove_reference<std::locale const&>::type&) [228]
                 0.00    0.00       2/2           std::allocator<std::__detail::_NFA<std::__cxx11::regex_traits<char> > >::allocator() [604]
-                0.00    0.00       2/8           std::allocator<std::__detail::_NFA<std::__cxx11::regex_traits<char> > >::~allocator() [304]
                 0.00    0.00       2/2           std::shared_ptr<std::__detail::_NFA<std::__cxx11::regex_traits<char> > > std::allocate_shared<std::__detail::_NFA<std::__cxx11::regex_traits<char> >, std::allocator<std::__detail::_NFA<std::__cxx11::regex_traits<char> > >, std::locale const&, std::regex_constants::syntax_option_type&>(std::allocator<std::__detail::_NFA<std::__cxx11::regex_traits<char> > > const&, std::locale const&, std::regex_constants::syntax_option_type&) [769]
+                0.00    0.00       2/8           std::allocator<std::__detail::_NFA<std::__cxx11::regex_traits<char> > >::~allocator() [304]
 -----------------------------------------------
                 0.00    0.00       2/2           bool std::regex_match<std::char_traits<char>, std::allocator<char>, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, char, std::__cxx11::regex_traits<char> >(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::match_results<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::const_iterator, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > >&, std::__cxx11::basic_regex<char, std::__cxx11::regex_traits<char> > const&, std::regex_constants::match_flag_type) [763]
 [762]    0.0    0.00    0.00       2         bool std::regex_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, char, std::__cxx11::regex_traits<char> >(__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, __gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::__cxx11::match_results<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > >&, std::__cxx11::basic_regex<char, std::__cxx11::regex_traits<char> > const&, std::regex_constants::match_flag_type) [762]
@@ -4888,8 +4894,8 @@ index % time    self  children    called     name
                 0.00    0.00       1/1           void std::_Function_base::_Base_manager<std::__detail::_CharMatcher<std::__cxx11::regex_traits<char>, false, false> >::_M_init_functor<std::__detail::_CharMatcher<std::__cxx11::regex_traits<char>, false, false> >(std::_Any_data&, std::__detail::_CharMatcher<std::__cxx11::regex_traits<char>, false, false>&&) [832]
 [834]    0.0    0.00    0.00       1         void std::_Function_base::_Base_manager<std::__detail::_CharMatcher<std::__cxx11::regex_traits<char>, false, false> >::_M_create<std::__detail::_CharMatcher<std::__cxx11::regex_traits<char>, false, false> >(std::_Any_data&, std::__detail::_CharMatcher<std::__cxx11::regex_traits<char>, false, false>&&, std::integral_constant<bool, true>) [834]
                 0.00    0.00       1/3           std::__detail::_CharMatcher<std::__cxx11::regex_traits<char>, false, false>&& std::forward<std::__detail::_CharMatcher<std::__cxx11::regex_traits<char>, false, false> >(std::remove_reference<std::__detail::_CharMatcher<std::__cxx11::regex_traits<char>, false, false> >::type&) [567]
-                0.00    0.00       1/184         operator new(unsigned long, void*) [121]
                 0.00    0.00       1/8           std::_Any_data::_M_access() [314]
+                0.00    0.00       1/184         operator new(unsigned long, void*) [121]
 -----------------------------------------------
                 0.00    0.00       1/1           std::_Function_base::~_Function_base() [175]
 [835]    0.0    0.00    0.00       1         std::_Function_handler<bool (char), std::__detail::_CharMatcher<std::__cxx11::regex_traits<char>, false, false> >::_M_manager(std::_Any_data&, std::_Any_data const&, std::_Manager_operation) [835]
@@ -5113,13 +5119,13 @@ Index by function name
  [808] PPM::Writer::operator()(Matrix, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [626] std::_Deque_base<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::allocator<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> > > >::_M_deallocate_node(std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >*) [311] std::vector<unsigned long, std::allocator<unsigned long> >::_S_max_size(std::allocator<unsigned long> const&)
    [2] Filter::blur(Matrix, int) [159] std::_Deque_base<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::allocator<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> > > >::_M_get_Tp_allocator() [312] std::vector<unsigned long, std::allocator<unsigned long> >::_S_relocate(unsigned long*, unsigned long*, unsigned long*, std::allocator<unsigned long>&)
  [809] Filter::Gauss::get_weights(int, double*) [627] std::_Deque_base<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::allocator<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> > > >::_Deque_base() [313] std::vector<unsigned long, std::allocator<unsigned long> >::_S_do_relocate(unsigned long*, unsigned long*, unsigned long*, std::allocator<unsigned long>&, std::integral_constant<bool, true>)
-   [4] Matrix::b(unsigned int, unsigned int) [628] std::_Deque_base<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::allocator<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> > > >::~_Deque_base() [447] void std::vector<unsigned long, std::allocator<unsigned long> >::_M_realloc_insert<unsigned long const&>(__gnu_cxx::__normal_iterator<unsigned long*, std::vector<unsigned long, std::allocator<unsigned long> > >, unsigned long const&)
-  [13] Matrix::g(unsigned int, unsigned int) [823] std::_Tuple_impl<0ul, unsigned char*, unsigned char*, unsigned char*>::_M_head(std::_Tuple_impl<0ul, unsigned char*, unsigned char*, unsigned char*>&) [295] std::vector<unsigned long, std::allocator<unsigned long> >::end()
-  [14] Matrix::r(unsigned int, unsigned int) [824] std::_Tuple_impl<0ul, unsigned char*, unsigned char*, unsigned char*>::_Tuple_impl<unsigned char*, unsigned char*, unsigned char*, void>(unsigned char*&&, unsigned char*&&, unsigned char*&&) [391] std::vector<unsigned long, std::allocator<unsigned long> >::back()
+  [13] Matrix::b(unsigned int) [628] std::_Deque_base<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::allocator<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> > > >::~_Deque_base() [447] void std::vector<unsigned long, std::allocator<unsigned long> >::_M_realloc_insert<unsigned long const&>(__gnu_cxx::__normal_iterator<unsigned long*, std::vector<unsigned long, std::allocator<unsigned long> > >, unsigned long const&)
+   [3] Matrix::g(unsigned int) [823] std::_Tuple_impl<0ul, unsigned char*, unsigned char*, unsigned char*>::_M_head(std::_Tuple_impl<0ul, unsigned char*, unsigned char*, unsigned char*>&) [295] std::vector<unsigned long, std::allocator<unsigned long> >::end()
+  [14] Matrix::r(unsigned int) [824] std::_Tuple_impl<0ul, unsigned char*, unsigned char*, unsigned char*>::_Tuple_impl<unsigned char*, unsigned char*, unsigned char*, void>(unsigned char*&&, unsigned char*&&, unsigned char*&&) [391] std::vector<unsigned long, std::allocator<unsigned long> >::back()
  [467] Matrix::get_B()       [825] std::_Tuple_impl<1ul, unsigned char*, unsigned char*>::_M_head(std::_Tuple_impl<1ul, unsigned char*, unsigned char*>&) [448] std::vector<unsigned long, std::allocator<unsigned long> >::begin()
  [468] Matrix::get_G()       [826] std::_Tuple_impl<1ul, unsigned char*, unsigned char*>::_Tuple_impl<unsigned char*, unsigned char*, void>(unsigned char*&&, unsigned char*&&) [392] std::vector<unsigned long, std::allocator<unsigned long> >::pop_back()
  [469] Matrix::get_R()       [827] std::_Tuple_impl<2ul, unsigned char*>::_M_head(std::_Tuple_impl<2ul, unsigned char*>&) [393] std::vector<unsigned long, std::allocator<unsigned long> >::push_back(unsigned long const&)
-   [3] Matrix::Matrix(Matrix&) [828] std::_Tuple_impl<2ul, unsigned char*>::_Tuple_impl<unsigned char*>(unsigned char*&&) [719] std::vector<unsigned long, std::allocator<unsigned long> >::vector()
+   [4] Matrix::Matrix(Matrix&) [828] std::_Tuple_impl<2ul, unsigned char*>::_Tuple_impl<unsigned char*>(unsigned char*&&) [719] std::vector<unsigned long, std::allocator<unsigned long> >::vector()
  [810] Matrix::Matrix(unsigned char*, unsigned char*, unsigned char*, unsigned int, unsigned int, unsigned int) [629] std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >* std::__copy_move<false, false, std::random_access_iterator_tag>::__copy_m<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const*, std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >*>(std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const*, std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > const*, std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >*) [720] std::vector<unsigned long, std::allocator<unsigned long> >::~vector()
  [811] Matrix::Matrix(unsigned int) [90] char* std::__copy_move<false, true, std::random_access_iterator_tag>::__copy_m<char>(char const*, char const*, char*) [721] std::__cxx11::basic_regex<char, std::__cxx11::regex_traits<char> >::_M_compile(char const*, char const*, std::regex_constants::syntax_option_type)
  [381] Matrix::~Matrix()     [630] std::char_traits<char>::eof() [722] std::__cxx11::basic_regex<char, std::__cxx11::regex_traits<char> >::basic_regex(char const*, std::regex_constants::syntax_option_type)

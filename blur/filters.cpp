@@ -35,6 +35,10 @@ namespace Filter
         // 3 move this outside of the loop
         auto w0 {w[0]};
 
+        // 5 directly accessing R, G, and B - had to change the get method in MAtrix (deleted const)
+        auto dst_R {dst.get_R()}, dst_B {dst.get_B()}, dst_G {dst.get_G()};
+        auto scr_R {scratch.get_R()}, scr_B {scratch.get_B()}, scr_G {scratch.get_G()};
+
         // dst loop
         for (auto x{0}; x < x_size; x++)
         {
@@ -42,7 +46,7 @@ namespace Filter
             {
                 // 4 index is calculated before and then values are accessed by it (without calculations)
                 auto index {x + y * x_size};
-                auto r{w0 * dst.r(index)}, g{w0 * dst.g(index)}, b{w0 * dst.b(index)}, n{w0};
+                auto r{w0 * dst_R[index]}, g{w0 * dst_G[index]}, b{w0 * dst_B[index]}, n{w0};
 
                 for (auto wi{1}; wi <= radius; wi++)
                 {
@@ -52,18 +56,18 @@ namespace Filter
                     if (x2 >= 0)
                     {
                         auto left_index {x2 + y * x_size};
-                        r += wc * dst.r(left_index);
-                        g += wc * dst.g(left_index);
-                        b += wc * dst.b(left_index);
+                        r += wc * dst_R[left_index];
+                        g += wc * dst_G[left_index];
+                        b += wc * dst_B[left_index];
                         n += wc;
                     }
                     x2 = x + wi;
                     if (x2 < x_size)
                     {
                         auto right_index {x2 + y * x_size};
-                        r += wc * dst.r(right_index);
-                        g += wc * dst.g(right_index);
-                        b += wc * dst.b(right_index);
+                        r += wc * dst_R[right_index];
+                        g += wc * dst_G[right_index];
+                        b += wc * dst_B[right_index];
                         n += wc;
                     }
                 }
@@ -78,7 +82,7 @@ namespace Filter
             for (auto y{0}; y < y_size; y++)
             {
                 auto index = x + y * x_size;
-                auto r{w0 * scratch.r(index)}, g{w0 * scratch.g(index)}, b{w0 * scratch.b(index)}, n{w0};
+                auto r{w0 * scr_R[index]}, g{w0 * scr_G[index]}, b{w0 * scr_B[index]}, n{w0};
 
                 for (auto wi{1}; wi <= radius; wi++)
                 {
@@ -88,18 +92,18 @@ namespace Filter
                     if (y2 >= 0)
                     {
                         auto left_index {x + y2 * x_size};
-                        r += wc * scratch.r(left_index);
-                        g += wc * scratch.g(left_index);
-                        b += wc * scratch.b(left_index);
+                        r += wc * scr_R[left_index];
+                        g += wc * scr_G[left_index];
+                        b += wc * scr_B[left_index];
                         n += wc;
                     }
                     y2 = y + wi;
-                    if (y2 < dst.get_y_size())
+                    if (y2 < y_size)
                     {
                         auto right_index {x + y2 * x_size};
-                        r += wc * scratch.r(right_index);
-                        g+= wc * scratch.g(right_index);
-                        b += wc * scratch.b(right_index);
+                        r += wc * scr_R[right_index];
+                        g += wc * scr_G[right_index];
+                        b += wc * scr_B[right_index];
                         n += wc;
                     }
                 }
