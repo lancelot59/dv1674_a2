@@ -114,16 +114,27 @@ Vector& Vector::operator-(double sub)
     return *this;
 }
 
+void Vector::index(unsigned i, double* returnarray)
+{
+    returnarray[0] = data[i];
+    returnarray[1] = data[i+1];
+    returnarray[2] = data[i+2];
+    returnarray[3] = data[i+3];
+}
+
 double Vector::dot(Vector& rhs) const
 {
     double result{0};
+    double array[4];
+
 
     for (auto i{0}; i < size; i+=4)
     {
-        result += data[i] * rhs[i];
-        result += data[i+1] * rhs[i+1];
-        result += data[i+2] * rhs[i+2];
-        result += data[i+3] * rhs[i+3];
+        rhs.index(i, array);
+        result += data[i] * array[0];
+        result += data[i+1] * array[1];
+        result += data[i+2] * array[2];
+        result += data[i+3] * array[3];
     }
 
     return result;

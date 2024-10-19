@@ -21,6 +21,7 @@ public:
     double mean() const;
     double normalize() const;
     double dot(Vector& rhs) const;
+    void index(unsigned i, double* returnarray);
 
     unsigned get_size() const;
     double* get_data();
