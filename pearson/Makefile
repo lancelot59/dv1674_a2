@@ -9,6 +9,44 @@ run: clean all test
 
 test: testclean target1 target2 target3 target4
 
+testrun: clean all testclean
+	./pearson data/512.data outputfiles/512.1.data 1
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/512gprof1.txt
+	sleep 1
+	rm gmon.out
+	sleep 1
+	./pearson data/512.data outputfiles/512.2.data 2
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/512gprof2.txt
+	sleep 1
+	rm gmon.out
+	sleep 1
+	./pearson data/512.data outputfiles/512.4.data 4
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/512gprof4.txt
+	sleep 1
+	rm gmon.out
+	sleep 1
+	./pearson data/512.data outputfiles/512.8.data 8
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/512gprof8.txt
+	sleep 1
+	rm gmon.out
+	sleep 1
+	./pearson data/512.data outputfiles/512.16.data 16
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/512gprof16.txt
+	sleep 1
+	rm gmon.out
+	sleep 1
+	./pearson data/512.data outputfiles/512.12.data 12
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/512gprof12.txt
+	sleep 1
+	rm gmon.out
+	sleep 1
+
 target1:
 	./pearson data/128.data outputfiles/128.data
 	sleep 1
