@@ -10,22 +10,20 @@ Author: David Holmqvist <daae19@student.bth.se>
 struct ThreadData {
     double* result;
     std::vector<Vector>& datasets;
-    double* array;
     int dimension;
     int setstart;
     int setend;
     ThreadData()
-        : result(nullptr), datasets(*(new std::vector<Vector>)), array(nullptr), dimension(0), setstart(0), setend(0) {}
+        : result(nullptr), datasets(*(new std::vector<Vector>)), dimension(0), setstart(0), setend(0) {}
 
-    ThreadData(double* result, std::vector<Vector>& datasets, double* array, int dimension,int setstart,int setend)
-    :result(result),datasets(datasets),array(array),dimension(dimension),setstart(setstart),setend(setend)
+    ThreadData(double* result, std::vector<Vector>& datasets,  int dimension,int setstart,int setend)
+    :result(result),datasets(datasets),dimension(dimension),setstart(setstart),setend(setend)
     {}
     ThreadData(const ThreadData&) = delete;
     ThreadData& operator=(const ThreadData& input)
     {
         result = input.result;
         datasets = input.datasets;
-        array = input.array;
         dimension = input.dimension;
         setstart = input.setstart;
         setend = input.setend;
@@ -36,7 +34,7 @@ struct ThreadData {
 void* calculate_coefficients(void* arg)
 {
     ThreadData* data = static_cast<ThreadData*>(arg);
-    Analysis::correlation_coefficients(data->result, data->datasets, data->array, data->dimension, data->setstart, data->setend);
+    Analysis::correlation_coefficients(data->result, data->datasets, data->dimension, data->setstart, data->setend);
     return nullptr;
 }
 
@@ -57,14 +55,11 @@ int main(int argc, char const* argv[])
     int num_threads = std::stoi(argv[3]); //set number of threads
     int setstart, setend;
     
-    double* array = new double[dimension*2];//creating an array for all the mean values so they only need ot be calculated once
-    for(auto i = 0; i < dimension; i++ )
+    for(auto i = 0; i < dimension; i++ ) //perform precalculations
     {
         datasets[i] - datasets[i].mean();
         datasets[i] / datasets[i].magnitude();
     }
-    for(auto sample = 0; sample < dimension; sample++)
-        array[sample+dimension] = 0;//datasets[sample].magnitude();
 
     pthread_t threads[num_threads];
     ThreadData* thread_data = new ThreadData[num_threads];
@@ -77,11 +72,10 @@ int main(int argc, char const* argv[])
         setend = setstart + blockSize;  //end of block for thread    
         if(thread_num != num_threads-1) //required for proper alignment
             setend += 1;
-        thread_data[thread_num] = {result, datasets, array, dimension, setstart, setend};
+        thread_data[thread_num] = {result, datasets,  dimension, setstart, setend};
         if(pthread_create(&threads[thread_num], nullptr, calculate_coefficients,(void*)&thread_data[thread_num]) != 0)
         {
             std::cerr << "error creating thread " << thread_num << std::endl;
-            delete [] array;
             delete [] result;
             return 1;
         }
@@ -93,7 +87,6 @@ int main(int argc, char const* argv[])
 
 
 
-    delete [] array;
     delete [] result;
 
     return 0;

@@ -12,7 +12,7 @@ Author: David Holmqvist <daae19@student.bth.se>
 namespace Analysis {
 
 
-void correlation_coefficients(double*& result,std::vector<Vector>& datasets, double*& array, int dimension, int setstart, int setend)
+void correlation_coefficients(double*& result,std::vector<Vector>& datasets, int dimension, int setstart, int setend)
 {
 
     int count = (setstart * (2 * dimension - setstart - 1)) / 2; //calculate start position in result array
