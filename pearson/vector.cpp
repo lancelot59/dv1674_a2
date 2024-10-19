@@ -121,15 +121,23 @@ double* Vector::getdata()
 
 double Vector::dot(Vector& rhs) const
 {
-    double result{0};
+    __m256d sum = _mm256_setzero_pd();
 
     for (auto i{0}; i < size; i+=4)
     {
-        result += data[i] * rhs.data[i];
-        result += data[i+1] * rhs.data[i+1];
-        result += data[i+2] * rhs.data[i+2];
-        result += data[i+3] * rhs.data[i+3];
-    }
+        // Load 4 doubles from each vector into AVX registers
+        __m256d vec1 = _mm256_loadu_pd(&data[i]);
+        __m256d vec2 = _mm256_loadu_pd(&rhs.data[i]);
 
-    return result;
+        // Perform element-wise multiplication
+        __m256d prod = _mm256_mul_pd(vec1, vec2);
+
+        // Accumulate the result into the sum
+        sum = _mm256_add_pd(sum, prod);
+    }
+    double result[4];
+    _mm256_storeu_pd(result, sum);
+    double final_result = result[0] + result[1] + result[2] + result[3];
+
+    return final_result;
 }
