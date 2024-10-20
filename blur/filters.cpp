@@ -206,7 +206,8 @@ namespace Filter
         auto scr_R {scratch.get_R()}, scr_B {scratch.get_B()}, scr_G {scratch.get_G()};
 
         // 6 multithreading
-        const int num_threads = 4;
+        int num_threads = 8;
+
         pthread_t threads[num_threads];
         ThreadData thread_data[num_threads];
 
