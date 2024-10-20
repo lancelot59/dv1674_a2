@@ -3,12 +3,12 @@ Flat profile:
 Each sample counts as 0.01 seconds.
   %   cumulative   self              self     total           
  time   seconds   seconds    calls  ms/call  ms/call  name    
- 53.19      0.25     0.25                             Filter::vertical_thread(void*)
- 38.30      0.43     0.18                             Filter::horizontal_thread(void*)
-  4.26      0.45     0.02        3     6.67    12.43  Matrix::Matrix(Matrix&)
-  2.13      0.46     0.01  7307822     0.00     0.00  Matrix::b(unsigned int)
-  2.13      0.47     0.01  7238324     0.00     0.00  Matrix::r(unsigned int)
-  0.00      0.47     0.00  7289833     0.00     0.00  Matrix::g(unsigned int)
+ 46.81      0.22     0.22                             Filter::vertical_thread(void*)
+ 31.91      0.37     0.15                             Filter::horizontal_thread(void*)
+  8.51      0.41     0.04  7327975     0.00     0.00  Matrix::b(unsigned int)
+  8.51      0.45     0.04        3    13.33    30.52  Matrix::Matrix(Matrix&)
+  3.19      0.47     0.01  7329217     0.00     0.00  Matrix::g(unsigned int)
+  1.06      0.47     0.01  7268151     0.00     0.00  Matrix::r(unsigned int)
   0.00      0.47     0.00     4428     0.00     0.00  __gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::base() const
   0.00      0.47     0.00     3084     0.00     0.00  __gnu_cxx::__normal_iterator<char const*, std::vector<char, std::allocator<char> > >::base() const
   0.00      0.47     0.00     2952     0.00     0.00  char* std::vector<char, std::allocator<char> >::_M_data_ptr<char>(char*) const
@@ -805,7 +805,7 @@ Each sample counts as 0.01 seconds.
   0.00      0.47     0.00        1     0.00     0.00  PPM::Reader::~Reader()
   0.00      0.47     0.00        1     0.00     0.00  PPM::Reader::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)
   0.00      0.47     0.00        1     0.00     0.00  PPM::Writer::operator()(Matrix, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)
-  0.00      0.47     0.00        1     0.00    12.43  Filter::blur(Matrix, int)
+  0.00      0.47     0.00        1     0.00    30.52  Filter::blur(Matrix, int)
   0.00      0.47     0.00        1     0.00     0.00  Filter::Gauss::get_weights(int, double*)
   0.00      0.47     0.00        1     0.00     0.00  Matrix::Matrix(unsigned char*, unsigned char*, unsigned char*, unsigned int, unsigned int, unsigned int)
   0.00      0.47     0.00        1     0.00     0.00  Matrix::Matrix(unsigned int)
@@ -897,21 +897,21 @@ granularity: each sample hit covers 4 byte(s) for 2.13% of 0.47 seconds
 
 index % time    self  children    called     name
                                                  <spontaneous>
-[1]     53.5    0.25    0.00                 Filter::vertical_thread(void*) [1]
-                0.00    0.00  556677/7307822     Matrix::b(unsigned int) [6]
-                0.00    0.00  548522/7238324     Matrix::r(unsigned int) [7]
-                0.00    0.00  565416/7289833     Matrix::g(unsigned int) [16]
+[1]     47.7    0.22    0.00                 Filter::vertical_thread(void*) [1]
+                0.00    0.00  520067/7327975     Matrix::b(unsigned int) [5]
+                0.00    0.00  531327/7329217     Matrix::g(unsigned int) [7]
+                0.00    0.00  496791/7268151     Matrix::r(unsigned int) [8]
 -----------------------------------------------
                                                  <spontaneous>
-[2]     38.5    0.18    0.00                 Filter::horizontal_thread(void*) [2]
-                0.00    0.00  459689/7307822     Matrix::b(unsigned int) [6]
-                0.00    0.00  398346/7238324     Matrix::r(unsigned int) [7]
-                0.00    0.00  432961/7289833     Matrix::g(unsigned int) [16]
+[2]     32.8    0.15    0.00                 Filter::horizontal_thread(void*) [2]
+                0.00    0.00  516452/7327975     Matrix::b(unsigned int) [5]
+                0.00    0.00  506434/7329217     Matrix::g(unsigned int) [7]
+                0.00    0.00  479904/7268151     Matrix::r(unsigned int) [8]
 -----------------------------------------------
                                                  <spontaneous>
-[3]      7.9    0.00    0.04                 main [3]
-                0.01    0.01       2/3           Matrix::Matrix(Matrix&) [4]
-                0.00    0.01       1/1           Filter::blur(Matrix, int) [5]
+[3]     19.5    0.00    0.09                 main [3]
+                0.03    0.03       2/3           Matrix::Matrix(Matrix&) [4]
+                0.00    0.03       1/1           Filter::blur(Matrix, int) [6]
                 0.00    0.00       4/5           Matrix::~Matrix() [384]
                 0.00    0.00       3/3           std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::basic_string<std::allocator<char> >(char const*, std::allocator<char> const&) [551]
                 0.00    0.00       1/1           PPM::Reader::Reader() [809]
@@ -920,16 +920,21 @@ index % time    self  children    called     name
                 0.00    0.00       1/1           PPM::Writer::operator()(Matrix, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [812]
                 0.00    0.00       1/1           PPM::Reader::~Reader() [810]
 -----------------------------------------------
-                0.01    0.01       1/3           Filter::blur(Matrix, int) [5]
-                0.01    0.01       2/3           main [3]
-[4]      7.9    0.02    0.02       3         Matrix::Matrix(Matrix&) [4]
-                0.01    0.00 6291456/7238324     Matrix::r(unsigned int) [7]
-                0.01    0.00 6291456/7307822     Matrix::b(unsigned int) [6]
-                0.00    0.00 6291456/7289833     Matrix::g(unsigned int) [16]
+                0.01    0.02       1/3           Filter::blur(Matrix, int) [6]
+                0.03    0.03       2/3           main [3]
+[4]     19.5    0.04    0.05       3         Matrix::Matrix(Matrix&) [4]
+                0.03    0.00 6291456/7327975     Matrix::b(unsigned int) [5]
+                0.01    0.00 6291456/7329217     Matrix::g(unsigned int) [7]
+                0.00    0.00 6291456/7268151     Matrix::r(unsigned int) [8]
 -----------------------------------------------
-                0.00    0.01       1/1           main [3]
-[5]      2.6    0.00    0.01       1         Filter::blur(Matrix, int) [5]
-                0.01    0.01       1/3           Matrix::Matrix(Matrix&) [4]
+                0.00    0.00  516452/7327975     Filter::horizontal_thread(void*) [2]
+                0.00    0.00  520067/7327975     Filter::vertical_thread(void*) [1]
+                0.03    0.00 6291456/7327975     Matrix::Matrix(Matrix&) [4]
+[5]      8.5    0.04    0.00 7327975         Matrix::b(unsigned int) [5]
+-----------------------------------------------
+                0.00    0.03       1/1           main [3]
+[6]      6.5    0.00    0.03       1         Filter::blur(Matrix, int) [6]
+                0.01    0.02       1/3           Matrix::Matrix(Matrix&) [4]
                 0.00    0.00       8/8           Filter::ThreadData::ThreadData(Matrix*, unsigned char*, unsigned char*, unsigned char*, double*, int, unsigned int, unsigned int, int, int) [302]
                 0.00    0.00       4/4           Filter::ThreadData::ThreadData() [405]
                 0.00    0.00       2/3           Matrix::get_R() [473]
@@ -941,23 +946,23 @@ index % time    self  children    called     name
                 0.00    0.00       1/1           Filter::Gauss::get_weights(int, double*) [813]
                 0.00    0.00       1/5           Matrix::~Matrix() [384]
 -----------------------------------------------
-                0.00    0.00  459689/7307822     Filter::horizontal_thread(void*) [2]
-                0.00    0.00  556677/7307822     Filter::vertical_thread(void*) [1]
-                0.01    0.00 6291456/7307822     Matrix::Matrix(Matrix&) [4]
-[6]      2.1    0.01    0.00 7307822         Matrix::b(unsigned int) [6]
+                0.00    0.00  506434/7329217     Filter::horizontal_thread(void*) [2]
+                0.00    0.00  531327/7329217     Filter::vertical_thread(void*) [1]
+                0.01    0.00 6291456/7329217     Matrix::Matrix(Matrix&) [4]
+[7]      3.2    0.01    0.00 7329217         Matrix::g(unsigned int) [7]
 -----------------------------------------------
-                0.00    0.00  398346/7238324     Filter::horizontal_thread(void*) [2]
-                0.00    0.00  548522/7238324     Filter::vertical_thread(void*) [1]
-                0.01    0.00 6291456/7238324     Matrix::Matrix(Matrix&) [4]
-[7]      2.1    0.01    0.00 7238324         Matrix::r(unsigned int) [7]
+                0.00    0.00  479904/7268151     Filter::horizontal_thread(void*) [2]
+                0.00    0.00  496791/7268151     Filter::vertical_thread(void*) [1]
+                0.00    0.00 6291456/7268151     Matrix::Matrix(Matrix&) [4]
+[8]      1.1    0.01    0.00 7268151         Matrix::r(unsigned int) [8]
 -----------------------------------------------
-[8]      0.0    0.00    0.00       2+36      <cycle 1 as a whole> [8]
+[9]      0.0    0.00    0.00       2+36      <cycle 1 as a whole> [9]
                 0.00    0.00       5+11          std::__detail::_Compiler<std::__cxx11::regex_traits<char> >::_M_alternative() <cycle 1> [400]
                 0.00    0.00      16             std::__detail::_Compiler<std::__cxx11::regex_traits<char> >::_M_term() <cycle 1> [228]
                 0.00    0.00      12             std::__detail::_Compiler<std::__cxx11::regex_traits<char> >::_M_atom() <cycle 1> [265]
                 0.00    0.00       5             std::__detail::_Compiler<std::__cxx11::regex_traits<char> >::_M_disjunction() <cycle 1> [401]
 -----------------------------------------------
-[9]      0.0    0.00    0.00       2+91      <cycle 2 as a whole> [9]
+[10]     0.0    0.00    0.00       2+91      <cycle 2 as a whole> [10]
                 0.00    0.00      42             std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_M_dfs(std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_Match_mode, long) <cycle 2> [151]
                 0.00    0.00      15             std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_M_handle_match(std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_Match_mode, long) <cycle 2> [232]
                 0.00    0.00      11             std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_M_handle_repeat(std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_Match_mode, long) <cycle 2> [287]
@@ -966,11 +971,6 @@ index % time    self  children    called     name
                 0.00    0.00       5             std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_M_handle_subexpr_begin(std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_Match_mode, long) <cycle 2> [404]
                 0.00    0.00       2             std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_M_handle_line_end_assertion(std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_Match_mode, long) <cycle 2> [757]
                 0.00    0.00       2             std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_M_handle_line_begin_assertion(std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_Match_mode, long) <cycle 2> [758]
------------------------------------------------
-                0.00    0.00  432961/7289833     Filter::horizontal_thread(void*) [2]
-                0.00    0.00  565416/7289833     Filter::vertical_thread(void*) [1]
-                0.00    0.00 6291456/7289833     Matrix::Matrix(Matrix&) [4]
-[16]     0.0    0.00    0.00 7289833         Matrix::g(unsigned int) [16]
 -----------------------------------------------
                 0.00    0.00    1476/4428        bool __gnu_cxx::operator!=<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > const&, __gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > const&) [83]
                 0.00    0.00    2952/4428        __gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >::difference_type __gnu_cxx::operator-<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > const&, __gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > const&) [29]
@@ -2422,7 +2422,7 @@ index % time    self  children    called     name
                 0.00    0.00       3/9           void std::_Function_base::_Base_manager<std::__detail::_BracketMatcher<std::__cxx11::regex_traits<char>, false, false> >::_M_create<std::__detail::_BracketMatcher<std::__cxx11::regex_traits<char>, false, false> >(std::_Any_data&, std::__detail::_BracketMatcher<std::__cxx11::regex_traits<char>, false, false>&&, std::integral_constant<bool, false>) [534]
 [301]    0.0    0.00    0.00       9         std::__detail::_BracketMatcher<std::__cxx11::regex_traits<char>, false, false>&& std::forward<std::__detail::_BracketMatcher<std::__cxx11::regex_traits<char>, false, false> >(std::remove_reference<std::__detail::_BracketMatcher<std::__cxx11::regex_traits<char>, false, false> >::type&) [301]
 -----------------------------------------------
-                0.00    0.00       8/8           Filter::blur(Matrix, int) [5]
+                0.00    0.00       8/8           Filter::blur(Matrix, int) [6]
 [302]    0.0    0.00    0.00       8         Filter::ThreadData::ThreadData(Matrix*, unsigned char*, unsigned char*, unsigned char*, double*, int, unsigned int, unsigned int, int, int) [302]
 -----------------------------------------------
                 0.00    0.00       8/8           std::allocator<std::__detail::_NFA<std::__cxx11::regex_traits<char> > >::~allocator() [308]
@@ -2766,7 +2766,7 @@ index % time    self  children    called     name
 [383]    0.0    0.00    0.00       6         void std::_Destroy<std::pair<char, char>*, std::pair<char, char> >(std::pair<char, char>*, std::pair<char, char>*, std::allocator<std::pair<char, char> >&) [383]
                 0.00    0.00       6/6           void std::_Destroy<std::pair<char, char>*>(std::pair<char, char>*, std::pair<char, char>*) [382]
 -----------------------------------------------
-                0.00    0.00       1/5           Filter::blur(Matrix, int) [5]
+                0.00    0.00       1/5           Filter::blur(Matrix, int) [6]
                 0.00    0.00       4/5           main [3]
 [384]    0.0    0.00    0.00       5         Matrix::~Matrix() [384]
 -----------------------------------------------
@@ -2890,7 +2890,7 @@ index % time    self  children    called     name
                 0.00    0.00       5/14          std::vector<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > >::operator[](unsigned long) [234]
                                    5             std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_M_dfs(std::__detail::_Executor<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::regex_traits<char>, true>::_Match_mode, long) <cycle 2> [151]
 -----------------------------------------------
-                0.00    0.00       4/4           Filter::blur(Matrix, int) [5]
+                0.00    0.00       4/4           Filter::blur(Matrix, int) [6]
 [405]    0.0    0.00    0.00       4         Filter::ThreadData::ThreadData() [405]
 -----------------------------------------------
                 0.00    0.00       4/4           std::allocator_traits<std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > > >::deallocate(std::allocator<std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >&, std::__cxx11::sub_match<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >*, unsigned long) [443]
@@ -3195,15 +3195,15 @@ index % time    self  children    called     name
 [470]    0.0    0.00    0.00       4         __gnu_cxx::__stoa<unsigned long, unsigned long, char, int>(unsigned long (*)(char const*, char**, int), char const*, char const*, unsigned long*, int)::_Save_errno::~_Save_errno() [470]
 -----------------------------------------------
                 0.00    0.00       1/3           PPM::Writer::operator()(Matrix, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [812]
-                0.00    0.00       2/3           Filter::blur(Matrix, int) [5]
+                0.00    0.00       2/3           Filter::blur(Matrix, int) [6]
 [471]    0.0    0.00    0.00       3         Matrix::get_B() [471]
 -----------------------------------------------
                 0.00    0.00       1/3           PPM::Writer::operator()(Matrix, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [812]
-                0.00    0.00       2/3           Filter::blur(Matrix, int) [5]
+                0.00    0.00       2/3           Filter::blur(Matrix, int) [6]
 [472]    0.0    0.00    0.00       3         Matrix::get_G() [472]
 -----------------------------------------------
                 0.00    0.00       1/3           PPM::Writer::operator()(Matrix, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [812]
-                0.00    0.00       2/3           Filter::blur(Matrix, int) [5]
+                0.00    0.00       2/3           Filter::blur(Matrix, int) [6]
 [473]    0.0    0.00    0.00       3         Matrix::get_R() [473]
 -----------------------------------------------
                 0.00    0.00       3/3           std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::allocator(std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&) [500]
@@ -3240,11 +3240,11 @@ index % time    self  children    called     name
 [484]    0.0    0.00    0.00       3         __gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::difference_type __gnu_cxx::operator-<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&, __gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > const&) [484]
                 0.00    0.00       6/68          __gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::base() const [134]
 -----------------------------------------------
-                0.00    0.00       1/3           Filter::blur(Matrix, int) [5]
+                0.00    0.00       1/3           Filter::blur(Matrix, int) [6]
                 0.00    0.00       2/3           PPM::Writer::operator()(Matrix, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [812]
 [485]    0.0    0.00    0.00       3         Matrix::get_x_size() const [485]
 -----------------------------------------------
-                0.00    0.00       1/3           Filter::blur(Matrix, int) [5]
+                0.00    0.00       1/3           Filter::blur(Matrix, int) [6]
                 0.00    0.00       2/3           PPM::Writer::operator()(Matrix, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [812]
 [486]    0.0    0.00    0.00       3         Matrix::get_y_size() const [486]
 -----------------------------------------------
@@ -4816,13 +4816,13 @@ index % time    self  children    called     name
                 0.00    0.00       1/3           Matrix::get_G() [472]
                 0.00    0.00       1/3           Matrix::get_B() [471]
 -----------------------------------------------
-                0.00    0.00       1/1           Filter::blur(Matrix, int) [5]
+                0.00    0.00       1/1           Filter::blur(Matrix, int) [6]
 [813]    0.0    0.00    0.00       1         Filter::Gauss::get_weights(int, double*) [813]
 -----------------------------------------------
                 0.00    0.00       1/1           PPM::Reader::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [811]
 [814]    0.0    0.00    0.00       1         Matrix::Matrix(unsigned char*, unsigned char*, unsigned char*, unsigned int, unsigned int, unsigned int) [814]
 -----------------------------------------------
-                0.00    0.00       1/1           Filter::blur(Matrix, int) [5]
+                0.00    0.00       1/1           Filter::blur(Matrix, int) [6]
 [815]    0.0    0.00    0.00       1         Matrix::Matrix(unsigned int) [815]
 -----------------------------------------------
                 0.00    0.00       1/1           PPM::Writer::operator()(Matrix, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [812]
@@ -5145,11 +5145,11 @@ Index by function name
  [302] Filter::ThreadData::ThreadData(Matrix*, unsigned char*, unsigned char*, unsigned char*, double*, int, unsigned int, unsigned int, int, int) [629] std::_Deque_base<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::allocator<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> > > >::_M_initialize_map(unsigned long) [315] std::vector<unsigned long, std::allocator<unsigned long> >::_S_max_size(std::allocator<unsigned long> const&)
    [1] Filter::vertical_thread(void*) [630] std::_Deque_base<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::allocator<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> > > >::_M_deallocate_node(std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >*) [316] std::vector<unsigned long, std::allocator<unsigned long> >::_S_relocate(unsigned long*, unsigned long*, unsigned long*, std::allocator<unsigned long>&)
    [2] Filter::horizontal_thread(void*) [162] std::_Deque_base<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::allocator<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> > > >::_M_get_Tp_allocator() [317] std::vector<unsigned long, std::allocator<unsigned long> >::_S_do_relocate(unsigned long*, unsigned long*, unsigned long*, std::allocator<unsigned long>&, std::integral_constant<bool, true>)
-   [5] Filter::blur(Matrix, int) [631] std::_Deque_base<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::allocator<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> > > >::_Deque_base() [451] void std::vector<unsigned long, std::allocator<unsigned long> >::_M_realloc_insert<unsigned long const&>(__gnu_cxx::__normal_iterator<unsigned long*, std::vector<unsigned long, std::allocator<unsigned long> > >, unsigned long const&)
+   [6] Filter::blur(Matrix, int) [631] std::_Deque_base<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::allocator<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> > > >::_Deque_base() [451] void std::vector<unsigned long, std::allocator<unsigned long> >::_M_realloc_insert<unsigned long const&>(__gnu_cxx::__normal_iterator<unsigned long*, std::vector<unsigned long, std::allocator<unsigned long> > >, unsigned long const&)
  [813] Filter::Gauss::get_weights(int, double*) [632] std::_Deque_base<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> >, std::allocator<std::__detail::_StateSeq<std::__cxx11::regex_traits<char> > > >::~_Deque_base() [299] std::vector<unsigned long, std::allocator<unsigned long> >::end()
-   [6] Matrix::b(unsigned int) [827] std::_Tuple_impl<0ul, unsigned char*, unsigned char*, unsigned char*>::_M_head(std::_Tuple_impl<0ul, unsigned char*, unsigned char*, unsigned char*>&) [394] std::vector<unsigned long, std::allocator<unsigned long> >::back()
-  [16] Matrix::g(unsigned int) [828] std::_Tuple_impl<0ul, unsigned char*, unsigned char*, unsigned char*>::_Tuple_impl<unsigned char*, unsigned char*, unsigned char*, void>(unsigned char*&&, unsigned char*&&, unsigned char*&&) [452] std::vector<unsigned long, std::allocator<unsigned long> >::begin()
-   [7] Matrix::r(unsigned int) [829] std::_Tuple_impl<1ul, unsigned char*, unsigned char*>::_M_head(std::_Tuple_impl<1ul, unsigned char*, unsigned char*>&) [395] std::vector<unsigned long, std::allocator<unsigned long> >::pop_back()
+   [5] Matrix::b(unsigned int) [827] std::_Tuple_impl<0ul, unsigned char*, unsigned char*, unsigned char*>::_M_head(std::_Tuple_impl<0ul, unsigned char*, unsigned char*, unsigned char*>&) [394] std::vector<unsigned long, std::allocator<unsigned long> >::back()
+   [7] Matrix::g(unsigned int) [828] std::_Tuple_impl<0ul, unsigned char*, unsigned char*, unsigned char*>::_Tuple_impl<unsigned char*, unsigned char*, unsigned char*, void>(unsigned char*&&, unsigned char*&&, unsigned char*&&) [452] std::vector<unsigned long, std::allocator<unsigned long> >::begin()
+   [8] Matrix::r(unsigned int) [829] std::_Tuple_impl<1ul, unsigned char*, unsigned char*>::_M_head(std::_Tuple_impl<1ul, unsigned char*, unsigned char*>&) [395] std::vector<unsigned long, std::allocator<unsigned long> >::pop_back()
  [471] Matrix::get_B()       [830] std::_Tuple_impl<1ul, unsigned char*, unsigned char*>::_Tuple_impl<unsigned char*, unsigned char*, void>(unsigned char*&&, unsigned char*&&) [396] std::vector<unsigned long, std::allocator<unsigned long> >::push_back(unsigned long const&)
  [472] Matrix::get_G()       [831] std::_Tuple_impl<2ul, unsigned char*>::_M_head(std::_Tuple_impl<2ul, unsigned char*>&) [723] std::vector<unsigned long, std::allocator<unsigned long> >::vector()
  [473] Matrix::get_R()       [832] std::_Tuple_impl<2ul, unsigned char*>::_Tuple_impl<unsigned char*>(unsigned char*&&) [724] std::vector<unsigned long, std::allocator<unsigned long> >::~vector()
@@ -5411,5 +5411,5 @@ Index by function name
  [822] std::_Head_base<1ul, unsigned char*, false>::_Head_base<unsigned char*>(unsigned char*&&) [720] std::vector<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>, std::allocator<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int> > >::_M_default_initialize(unsigned long) [63] std::__detail::_BracketMatcher<std::__cxx11::regex_traits<char>, false, false>::_M_apply(char, std::integral_constant<bool, false>) const::{lambda()#1}::operator()() const
  [823] std::_Head_base<2ul, unsigned char*, false>::_M_head(std::_Head_base<2ul, unsigned char*, false>&) [721] std::vector<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>, std::allocator<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int> > >::vector(unsigned long, std::allocator<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int> > const&) [575] std::__detail::_Compiler<std::__cxx11::regex_traits<char> >::_M_quantifier()::{lambda()#1}::operator()() const
  [824] std::_Head_base<2ul, unsigned char*, false>::_Head_base<unsigned char*>(unsigned char*&&) [722] std::vector<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>, std::allocator<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int> > >::~vector() [123] operator new(unsigned long, void*)
- [825] unsigned int&& std::__pair_get<0ul>::__move_get<unsigned int, unsigned int>(std::pair<unsigned int, unsigned int>&&) [286] std::vector<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>, std::allocator<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int> > >::operator[](unsigned long) [8] <cycle 1>
- [826] unsigned int&& std::__pair_get<1ul>::__move_get<unsigned int, unsigned int>(std::pair<unsigned int, unsigned int>&&) [541] std::vector<std::pair<char, char>, std::allocator<std::pair<char, char> > >::vector(std::vector<std::pair<char, char>, std::allocator<std::pair<char, char> > >&&) [9] <cycle 2>
+ [825] unsigned int&& std::__pair_get<0ul>::__move_get<unsigned int, unsigned int>(std::pair<unsigned int, unsigned int>&&) [286] std::vector<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int>, std::allocator<std::pair<__gnu_cxx::__normal_iterator<char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, int> > >::operator[](unsigned long) [9] <cycle 1>
+ [826] unsigned int&& std::__pair_get<1ul>::__move_get<unsigned int, unsigned int>(std::pair<unsigned int, unsigned int>&&) [541] std::vector<std::pair<char, char>, std::allocator<std::pair<char, char> > >::vector(std::vector<std::pair<char, char>, std::allocator<std::pair<char, char> > >&&) [10] <cycle 2>

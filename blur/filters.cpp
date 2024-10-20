@@ -87,6 +87,7 @@ namespace Filter
         const int start = data->start;
         const int end = data->end;
 
+
         // 3 move this outside of the loop
         auto w0 {w[0]};
 
@@ -101,8 +102,8 @@ namespace Filter
                 for (auto wi{1}; wi <= radius; wi++)
                 {
                     auto wc{w[wi]};
-                    auto x2{x - wi};
 
+                    auto x2{x - wi};
                     if (x2 >= 0)
                     {
                         auto left_index {x2 + y * x_size};
@@ -126,6 +127,7 @@ namespace Filter
                 matrix->b(index) = b / n;
             }
         }
+
         return nullptr;
     }
 
@@ -152,6 +154,7 @@ namespace Filter
             {
                 // 4 index is calculated before and then values are accessed by it (without calculations)
                 auto index = x + y * x_size;
+                if (index < 0 || index >= x_size * y_size) continue;
                 auto r{w0 * R[index]}, g{w0 * G[index]}, b{w0 * B[index]}, n{w0};
 
                 for (auto wi{1}; wi <= radius; wi++)
@@ -182,6 +185,7 @@ namespace Filter
                 matrix->b(index) = b / n;
             }
         }
+
         return nullptr;
 
     }
