@@ -7,7 +7,7 @@ all: pearson
 
 run: clean all test
 
-compare: clean all target1 comparison
+compare: clean all target4 comparison
 test: testclean target1 target2 target3 target4
 
 testrun: clean all testclean
@@ -79,6 +79,27 @@ target4:target3
 
 comparison:
 	@diff -q outputfiles/128.data outputfiles_par/128.data > /dev/null; \
+	if [ $$? -ne 0 ]; then \
+		echo "Error the files are different";\
+		exit 1; \
+	else \
+		echo "success, the files are the same";\
+	fi
+	@diff -q outputfiles/256.data outputfiles_par/256.data > /dev/null; \
+	if [ $$? -ne 0 ]; then \
+		echo "Error the files are different";\
+		exit 1; \
+	else \
+		echo "success, the files are the same";\
+	fi
+	@diff -q outputfiles/512.data outputfiles_par/512.data > /dev/null; \
+	if [ $$? -ne 0 ]; then \
+		echo "Error the files are different";\
+		exit 1; \
+	else \
+		echo "success, the files are the same";\
+	fi
+	@diff -q outputfiles/1024.data outputfiles_par/1024.data > /dev/null; \
 	if [ $$? -ne 0 ]; then \
 		echo "Error the files are different";\
 		exit 1; \
