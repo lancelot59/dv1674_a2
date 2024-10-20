@@ -123,6 +123,7 @@ double Vector::dot(Vector& rhs) const
 {
     double result{0};
 
+    #pragma omp parallel for reduction(+:result)
     for (auto i{0}; i < size; i+=4)
     {
         __builtin_prefetch(&data[i + 16], 0, 1);
