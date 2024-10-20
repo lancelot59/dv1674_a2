@@ -125,6 +125,8 @@ double Vector::dot(Vector& rhs) const
 
     for (auto i{0}; i < size; i+=4)
     {
+        __builtin_prefetch(&data[i + 16], 0, 1);
+        __builtin_prefetch(&rhs.data[i + 16], 0, 1);
         result += data[i] * rhs.data[i];
         result += data[i+1] * rhs.data[i+1];
         result += data[i+2] * rhs.data[i+2];
