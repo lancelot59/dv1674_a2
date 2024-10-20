@@ -115,6 +115,58 @@ memtest: clean all
 	valgrind --tool=massif ./pearson data/1024.data outputfiles/1024.data
 
 
+speedtest: clean all
+	./pearson data/1024.data outputfiles/1024.data 16
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/1024gprof-1.txt
+	sleep 1
+	rm gmon.out
+	./pearson data/1024.data outputfiles/1024.data 16
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/1024gprof-2.txt
+	sleep 1
+	rm gmon.out
+	./pearson data/1024.data outputfiles/1024.data 16
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/1024gprof-3.txt
+	sleep 1
+	rm gmon.out
+	./pearson data/1024.data outputfiles/1024.data 16
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/1024gprof-4.txt
+	sleep 1
+	rm gmon.out
+	./pearson data/1024.data outputfiles/1024.data 16
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/1024gprof-5.txt
+	sleep 1
+	rm gmon.out
+	./pearson data/1024.data outputfiles/1024.data 16
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/1024gprof-6.txt
+	sleep 1
+	rm gmon.out
+	./pearson data/1024.data outputfiles/1024.data 16
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/1024gprof-7.txt
+	sleep 1
+	rm gmon.out
+	./pearson data/1024.data outputfiles/1024.data 16
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/1024gprof-8.txt
+	sleep 1
+	rm gmon.out
+	./pearson data/1024.data outputfiles/1024.data 16
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/1024gprof-9.txt
+	sleep 1
+	rm gmon.out
+	./pearson data/1024.data outputfiles/1024.data 16
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/1024gprof-10.txt
+	sleep 1
+	rm gmon.out
+
 
 pearson: vector dataset analysis pearson.cpp
 	$(CXX) $(CXXFLAGS) pearson.cpp vector.o dataset.o analysis.o -o pearson
