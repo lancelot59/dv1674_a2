@@ -25,10 +25,8 @@ namespace Filter
     }
 
     struct ThreadData {
-        Matrix* matrix;
-        unsigned char* R;
-        unsigned char* G;
-        unsigned char* B;
+        Matrix* dst;
+        Matrix* scratch;
         double* w;
         int radius;
         unsigned x_size;
@@ -36,10 +34,8 @@ namespace Filter
         int start;
         int end;
         ThreadData():
-            matrix(nullptr),
-            R(0),
-            G(0),
-            B(0),
+            dst(nullptr),
+            scratch(nullptr),
             w(nullptr),
             radius(0),
             x_size(0),
@@ -49,10 +45,8 @@ namespace Filter
             {
             }
         ThreadData(
-            Matrix* matrix,
-            unsigned char* R,
-            unsigned char* G,
-            unsigned char* B,
+            Matrix* dst,
+            Matrix* scratch,
             double* weights,
             int radius,
             unsigned x_size,
@@ -60,10 +54,8 @@ namespace Filter
             int start,
             int end
             ):
-        matrix(matrix),
-        R(R),
-        G(G),
-        B(B),
+        dst(dst),
+        scratch(scratch),
         w(weights),
         radius(radius),
         x_size(x_size),
@@ -74,12 +66,10 @@ namespace Filter
         }
     };
 
-    void* horizontal_thread(void* arg) {
+    void* blur_thread(void* arg) {
         auto* data = static_cast<ThreadData*>(arg);
-        Matrix* matrix = data->matrix;
-        unsigned char* R = data->R;
-        unsigned char* G = data->G;
-        unsigned char* B = data->B;
+        Matrix* dst = data->dst;
+        Matrix* scratch = data->scratch;
         double* w = data->w;
         const int radius = data->radius;
         const int x_size = data->x_size;
@@ -90,13 +80,16 @@ namespace Filter
         // 3 move this outside of the loop
         auto w0 {w[0]};
 
-        for (auto x{start}; x < end; x++)
-        {
-            for (auto y{0}; y < y_size; y++)
-            {
+        // 5 directly accessing R, G, and B - had to change the get method in MAtrix (deleted const)
+        auto dst_R {dst->get_R()}, dst_B {dst->get_B()}, dst_G {dst->get_G()};
+        auto scr_R {scratch->get_R()}, scr_B {scratch->get_B()}, scr_G {scratch->get_G()};
+
+        //dst
+        for (auto y{start}; y < end; y++) {
+            for (auto x{0}; x < x_size; x++) {
                 // 4 index is calculated before and then values are accessed by it (without calculations)
                 auto index {x + y * x_size};
-                auto r{w0 * R[index]}, g{w0 * G[index]}, b{w0 * B[index]}, n{w0};
+                auto r{w0 * dst_R[index]}, g{w0 * dst_G[index]}, b{w0 * dst_B[index]}, n{w0};
 
                 for (auto wi{1}; wi <= radius; wi++)
                 {
@@ -106,53 +99,30 @@ namespace Filter
                     if (x2 >= 0)
                     {
                         auto left_index {x2 + y * x_size};
-                        r += wc * R[left_index];
-                        g += wc * G[left_index];
-                        b += wc * B[left_index];
+                        r += wc * dst_R[left_index];
+                        g += wc * dst_G[left_index];
+                        b += wc * dst_B[left_index];
                         n += wc;
                     }
                     x2 = x + wi;
                     if (x2 < x_size)
                     {
                         auto right_index {x2 + y * x_size};
-                        r += wc * R[right_index];
-                        g += wc * G[right_index];
-                        b += wc * B[right_index];
+                        r += wc * dst_R[right_index];
+                        g += wc * dst_G[right_index];
+                        b += wc * dst_B[right_index];
                         n += wc;
                     }
                 }
-                matrix->r(index) = r / n;
-                matrix->g(index) = g / n;
-                matrix->b(index) = b / n;
-            }
-        }
-        return nullptr;
-    }
+                scratch->r(index) = r / n;
+                scratch->g(index) = g / n;
+                scratch->b(index) = b / n;
 
-    void* vertical_thread(void* arg) {
-        auto* data = static_cast<ThreadData*>(arg);
-        Matrix* matrix = data->matrix;
-        unsigned char* R = data->R;
-        unsigned char* G = data->G;
-        unsigned char* B = data->B;
-        double* w = data->w;
-        const int radius = data->radius;
-        const int x_size = data->x_size;
-        const int y_size = data->y_size;
-        const int start = data->start;
-        const int end = data->end;
-
-        // 3 move this outside of the loop
-        auto w0 {w[0]};
-
-
-        for (auto y{start}; y < end; y++)
-        {
-            for (auto x{0}; x < x_size; x++)
-            {
-                // 4 index is calculated before and then values are accessed by it (without calculations)
-                auto index = x + y * x_size;
-                auto r{w0 * R[index]}, g{w0 * G[index]}, b{w0 * B[index]}, n{w0};
+                //scratch
+                r = w0 * scr_R[index];
+                g = w0 * scr_G[index];
+                b = w0 * scr_B[index];
+                n = w0;
 
                 for (auto wi{1}; wi <= radius; wi++)
                 {
@@ -162,29 +132,30 @@ namespace Filter
                     if (y2 >= 0)
                     {
                         auto left_index {x + y2 * x_size};
-                        r += wc * R[left_index];
-                        g += wc * G[left_index];
-                        b += wc * B[left_index];
+                        r += wc * scr_R[left_index];
+                        g += wc * scr_G[left_index];
+                        b += wc * scr_B[left_index];
                         n += wc;
                     }
                     y2 = y + wi;
                     if (y2 < y_size)
                     {
                         auto right_index {x + y2 * x_size};
-                        r += wc * R[right_index];
-                        g += wc * G[right_index];
-                        b += wc * B[right_index];
+                        r += wc * scr_R[right_index];
+                        g += wc * scr_G[right_index];
+                        b += wc * scr_B[right_index];
                         n += wc;
                     }
                 }
-                matrix->r(index) = r / n;
-                matrix->g(index) = g / n;
-                matrix->b(index) = b / n;
+                dst->r(index) = r / n;
+                dst->g(index) = g / n;
+                dst->b(index) = b / n;
             }
         }
-        return nullptr;
 
+        return nullptr;
     }
+
 
     Matrix blur(Matrix m, const int radius)
     {
@@ -197,52 +168,27 @@ namespace Filter
         double w[Gauss::max_radius]{};
         Gauss::get_weights(radius, w);
 
-        // 5 directly accessing R, G, and B - had to change the get method in MAtrix (deleted const)
-        auto dst_R {dst.get_R()}, dst_B {dst.get_B()}, dst_G {dst.get_G()};
-        auto scr_R {scratch.get_R()}, scr_B {scratch.get_B()}, scr_G {scratch.get_G()};
-
         // 6 multithreading
         const int num_threads = 4;
         pthread_t threads[num_threads];
         ThreadData thread_data[num_threads];
 
+        int overlap = radius;
         int rows = x_size / num_threads;
 
         //horizontal blurring
         for(int i = 0; i < num_threads; i++) {
             thread_data[i] = {
-                &scratch,
-                dst_R,
-                dst_G,
-                dst_B,
-                w,
-                radius,
-                x_size,
-                y_size,
-                i * rows,
-                static_cast<int>(i == num_threads - 1 ? x_size : (i + 1) * rows)};
-            pthread_create(&threads[i], nullptr, horizontal_thread, &thread_data[i]);
-        }
-
-        for (int i = 0; i < num_threads; i++)
-        {
-            pthread_join(threads[i], nullptr);
-        }
-
-        //vertical bluring
-        for(int i = 0; i < num_threads; i++) {
-            thread_data[i] = {
                 &dst,
-                scr_R,
-                scr_G,
-                scr_B,
+                &scratch,
                 w,
                 radius,
                 x_size,
                 y_size,
-                i * rows,
-                 static_cast<int>(i == num_threads - 1 ? y_size : (i + 1) * rows)};
-            pthread_create(&threads[i], nullptr, vertical_thread, &thread_data[i]);
+                std::max(0, i * rows - overlap),
+                static_cast<int>(std::min(x_size, static_cast<unsigned>((i + 1) * rows + overlap))),
+            };
+            pthread_create(&threads[i], nullptr, blur_thread, &thread_data[i]);
         }
 
         for (int i = 0; i < num_threads; i++)
