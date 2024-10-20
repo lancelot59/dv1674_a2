@@ -1,0 +1,975 @@
+desc: --massif-out-file=massif_im3.out
+cmd: ./blur 15 data/im3.ppm outputfiles/im3.ppm
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=2429013
+mem_heap_B=416184
+mem_heap_extra_B=16
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=2557948
+mem_heap_B=489360
+mem_heap_extra_B=40
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=2709283
+mem_heap_B=890770
+mem_heap_extra_B=94
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=2856439
+mem_heap_B=1283986
+mem_heap_extra_B=94
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=3118798
+mem_heap_B=1283986
+mem_heap_extra_B=94
+mem_stacks_B=0
+heap_tree=detailed
+n4: 1283986 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 786434 0x49A5724: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 786434 0x499B952: std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::overflow(int) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+   n1: 786434 0x49A388A: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+    n1: 786434 0x4921CC3: long std::__copy_streambufs_eof<char, std::char_traits<char> >(std::basic_streambuf<char, std::char_traits<char> >*, std::basic_streambuf<char, std::char_traits<char> >*, bool&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+     n1: 786434 0x113335: __gnu_cxx::__enable_if<std::__is_char<char>::__value, std::ostreambuf_iterator<char, std::char_traits<char> > >::__type std::copy<char>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ostreambuf_iterator<char, std::char_traits<char> >) (streambuf_iterator.h:332)
+      n1: 786434 0x1105F5: PPM::Reader::fill(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:24)
+       n1: 786434 0x110D53: PPM::Reader::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:105)
+        n0: 786434 0x10F351: main (blur.cpp:21)
+ n1: 416184 0x4CB4C12: monstartup (gmon.c:153)
+  n1: 416184 0x10F150: __gmon_start__ (in /mnt/c/Users/smiet/Desktop/Assignments/Optimazation programming/Ass 2/dv1674_a2/blur/blur)
+   n1: 416184 0x4846015: ??? (in /usr/libexec/valgrind/vgpreload_massif-amd64-linux.so)
+    n1: 416184 0x4000D57: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+     n1: 416184 0x4006439: call_init.part.0 (dl-init.c:56)
+      n1: 416184 0x40065F8: call_init (dl-init.c:33)
+       n1: 416184 0x40065F8: _dl_init (dl-init.c:84)
+        n1: 416184 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+         n1: 416184 0x3: ???
+          n1: 416184 0x1FFF00005A: ???
+           n1: 416184 0x1FFF000061: ???
+            n1: 416184 0x1FFF000064: ???
+             n0: 416184 0x1FFF000071: ???
+ n1: 72704 0x4903939: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 72704 0x400647D: call_init.part.0 (dl-init.c:70)
+   n1: 72704 0x4006567: call_init (dl-init.c:33)
+    n1: 72704 0x4006567: _dl_init (dl-init.c:117)
+     n1: 72704 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+      n1: 72704 0x3: ???
+       n1: 72704 0x1FFF00005A: ???
+        n1: 72704 0x1FFF000061: ???
+         n1: 72704 0x1FFF000064: ???
+          n0: 72704 0x1FFF000071: ???
+ n0: 8664 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=6
+#-----------
+time=3150297
+mem_heap_B=2070418
+mem_heap_extra_B=94
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=3674848
+mem_heap_B=2070418
+mem_heap_extra_B=94
+mem_stacks_B=0
+heap_tree=detailed
+n4: 2070418 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 1572866 0x49A5724: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 1572866 0x499B952: std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::overflow(int) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+   n1: 1572866 0x49A388A: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+    n1: 1572866 0x4921CC3: long std::__copy_streambufs_eof<char, std::char_traits<char> >(std::basic_streambuf<char, std::char_traits<char> >*, std::basic_streambuf<char, std::char_traits<char> >*, bool&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+     n1: 1572866 0x113335: __gnu_cxx::__enable_if<std::__is_char<char>::__value, std::ostreambuf_iterator<char, std::char_traits<char> > >::__type std::copy<char>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ostreambuf_iterator<char, std::char_traits<char> >) (streambuf_iterator.h:332)
+      n1: 1572866 0x1105F5: PPM::Reader::fill(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:24)
+       n1: 1572866 0x110D53: PPM::Reader::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:105)
+        n0: 1572866 0x10F351: main (blur.cpp:21)
+ n1: 416184 0x4CB4C12: monstartup (gmon.c:153)
+  n1: 416184 0x10F150: __gmon_start__ (in /mnt/c/Users/smiet/Desktop/Assignments/Optimazation programming/Ass 2/dv1674_a2/blur/blur)
+   n1: 416184 0x4846015: ??? (in /usr/libexec/valgrind/vgpreload_massif-amd64-linux.so)
+    n1: 416184 0x4000D57: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+     n1: 416184 0x4006439: call_init.part.0 (dl-init.c:56)
+      n1: 416184 0x40065F8: call_init (dl-init.c:33)
+       n1: 416184 0x40065F8: _dl_init (dl-init.c:84)
+        n1: 416184 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+         n1: 416184 0x3: ???
+          n1: 416184 0x1FFF00005A: ???
+           n1: 416184 0x1FFF000061: ???
+            n1: 416184 0x1FFF000064: ???
+             n0: 416184 0x1FFF000071: ???
+ n1: 72704 0x4903939: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 72704 0x400647D: call_init.part.0 (dl-init.c:70)
+   n1: 72704 0x4006567: call_init (dl-init.c:33)
+    n1: 72704 0x4006567: _dl_init (dl-init.c:117)
+     n1: 72704 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+      n1: 72704 0x3: ???
+       n1: 72704 0x1FFF00005A: ???
+        n1: 72704 0x1FFF000061: ???
+         n1: 72704 0x1FFF000064: ???
+          n0: 72704 0x1FFF000071: ???
+ n0: 8664 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=8
+#-----------
+time=3853483
+mem_heap_B=2594705
+mem_heap_extra_B=71
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=3978972
+mem_heap_B=6789010
+mem_heap_extra_B=4110
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=10
+#-----------
+time=4210098
+mem_heap_B=4691857
+mem_heap_extra_B=4087
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=4460934
+mem_heap_B=13080466
+mem_heap_extra_B=8126
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=4922716
+mem_heap_B=13080466
+mem_heap_extra_B=8126
+mem_stacks_B=0
+heap_tree=detailed
+n3: 13080466 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 12582914 0x49A5724: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 12582914 0x499B952: std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::overflow(int) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+   n1: 12582914 0x49A388A: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+    n1: 12582914 0x4921CC3: long std::__copy_streambufs_eof<char, std::char_traits<char> >(std::basic_streambuf<char, std::char_traits<char> >*, std::basic_streambuf<char, std::char_traits<char> >*, bool&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+     n1: 12582914 0x113335: __gnu_cxx::__enable_if<std::__is_char<char>::__value, std::ostreambuf_iterator<char, std::char_traits<char> > >::__type std::copy<char>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ostreambuf_iterator<char, std::char_traits<char> >) (streambuf_iterator.h:332)
+      n1: 12582914 0x1105F5: PPM::Reader::fill(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:24)
+       n1: 12582914 0x110D53: PPM::Reader::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:105)
+        n0: 12582914 0x10F351: main (blur.cpp:21)
+ n1: 416184 0x4CB4C12: monstartup (gmon.c:153)
+  n1: 416184 0x10F150: __gmon_start__ (in /mnt/c/Users/smiet/Desktop/Assignments/Optimazation programming/Ass 2/dv1674_a2/blur/blur)
+   n1: 416184 0x4846015: ??? (in /usr/libexec/valgrind/vgpreload_massif-amd64-linux.so)
+    n1: 416184 0x4000D57: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+     n1: 416184 0x4006439: call_init.part.0 (dl-init.c:56)
+      n1: 416184 0x40065F8: call_init (dl-init.c:33)
+       n1: 416184 0x40065F8: _dl_init (dl-init.c:84)
+        n1: 416184 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+         n1: 416184 0x3: ???
+          n1: 416184 0x1FFF00005A: ???
+           n1: 416184 0x1FFF000061: ???
+            n1: 416184 0x1FFF000064: ???
+             n0: 416184 0x1FFF000071: ???
+ n0: 81368 in 3 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=13
+#-----------
+time=5113588
+mem_heap_B=8877969
+mem_heap_extra_B=4079
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=5277370
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=5419000
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=5570072
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=5797859
+mem_heap_B=8878377
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=5935965
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=19
+#-----------
+time=6096479
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=6332529
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=6568579
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=6804629
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=7040679
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=7276729
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=7512779
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=7738796
+mem_heap_B=8879105
+mem_heap_extra_B=4135
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=7860679
+mem_heap_B=8879108
+mem_heap_extra_B=4180
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=7974863
+mem_heap_B=8879105
+mem_heap_extra_B=4135
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=29
+#-----------
+time=8122706
+mem_heap_B=8879108
+mem_heap_extra_B=4180
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=8358756
+mem_heap_B=8879108
+mem_heap_extra_B=4180
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=8594806
+mem_heap_B=8879108
+mem_heap_extra_B=4180
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=8830856
+mem_heap_B=8879108
+mem_heap_extra_B=4180
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=9066906
+mem_heap_B=8879108
+mem_heap_extra_B=4180
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=9302956
+mem_heap_B=8879108
+mem_heap_extra_B=4180
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=9417123
+mem_heap_B=8879105
+mem_heap_extra_B=4135
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=9539006
+mem_heap_B=8879108
+mem_heap_extra_B=4180
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=9653173
+mem_heap_B=8879105
+mem_heap_extra_B=4135
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=9876257
+mem_heap_B=8879106
+mem_heap_extra_B=4158
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=10024077
+mem_heap_B=8880793
+mem_heap_extra_B=4159
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=10191750
+mem_heap_B=8878377
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=41
+#-----------
+time=10321897
+mem_heap_B=8878377
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=10454141
+mem_heap_B=8878377
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=10684385
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=detailed
+n3: 8878378 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 8388609 0x49A5724: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 8388609 0x499B952: std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::overflow(int) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+   n1: 8388609 0x49A388A: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+    n1: 8388609 0x4921CC3: long std::__copy_streambufs_eof<char, std::char_traits<char> >(std::basic_streambuf<char, std::char_traits<char> >*, std::basic_streambuf<char, std::char_traits<char> >*, bool&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+     n1: 8388609 0x113335: __gnu_cxx::__enable_if<std::__is_char<char>::__value, std::ostreambuf_iterator<char, std::char_traits<char> > >::__type std::copy<char>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ostreambuf_iterator<char, std::char_traits<char> >) (streambuf_iterator.h:332)
+      n1: 8388609 0x1105F5: PPM::Reader::fill(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:24)
+       n1: 8388609 0x110D53: PPM::Reader::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:105)
+        n0: 8388609 0x10F351: main (blur.cpp:21)
+ n1: 416184 0x4CB4C12: monstartup (gmon.c:153)
+  n1: 416184 0x10F150: __gmon_start__ (in /mnt/c/Users/smiet/Desktop/Assignments/Optimazation programming/Ass 2/dv1674_a2/blur/blur)
+   n1: 416184 0x4846015: ??? (in /usr/libexec/valgrind/vgpreload_massif-amd64-linux.so)
+    n1: 416184 0x4000D57: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+     n1: 416184 0x4006439: call_init.part.0 (dl-init.c:56)
+      n1: 416184 0x40065F8: call_init (dl-init.c:33)
+       n1: 416184 0x40065F8: _dl_init (dl-init.c:84)
+        n1: 416184 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+         n1: 416184 0x3: ???
+          n1: 416184 0x1FFF00005A: ???
+           n1: 416184 0x1FFF000061: ???
+            n1: 416184 0x1FFF000064: ???
+             n0: 416184 0x1FFF000071: ???
+ n0: 73585 in 13 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=44
+#-----------
+time=10816629
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=45
+#-----------
+time=10948873
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=11113000
+mem_heap_B=8878377
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=11245244
+mem_heap_B=8878377
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=11377488
+mem_heap_B=8878377
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=49
+#-----------
+time=11509732
+mem_heap_B=8878377
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=50
+#-----------
+time=11543988
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=51
+#-----------
+time=11575854
+mem_heap_B=8878377
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=52
+#-----------
+time=11610110
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=11641976
+mem_heap_B=8878377
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=54
+#-----------
+time=11676232
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=detailed
+n3: 8878378 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 8388609 0x49A5724: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 8388609 0x499B952: std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::overflow(int) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+   n1: 8388609 0x49A388A: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+    n1: 8388609 0x4921CC3: long std::__copy_streambufs_eof<char, std::char_traits<char> >(std::basic_streambuf<char, std::char_traits<char> >*, std::basic_streambuf<char, std::char_traits<char> >*, bool&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+     n1: 8388609 0x113335: __gnu_cxx::__enable_if<std::__is_char<char>::__value, std::ostreambuf_iterator<char, std::char_traits<char> > >::__type std::copy<char>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ostreambuf_iterator<char, std::char_traits<char> >) (streambuf_iterator.h:332)
+      n1: 8388609 0x1105F5: PPM::Reader::fill(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:24)
+       n1: 8388609 0x110D53: PPM::Reader::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:105)
+        n0: 8388609 0x10F351: main (blur.cpp:21)
+ n1: 416184 0x4CB4C12: monstartup (gmon.c:153)
+  n1: 416184 0x10F150: __gmon_start__ (in /mnt/c/Users/smiet/Desktop/Assignments/Optimazation programming/Ass 2/dv1674_a2/blur/blur)
+   n1: 416184 0x4846015: ??? (in /usr/libexec/valgrind/vgpreload_massif-amd64-linux.so)
+    n1: 416184 0x4000D57: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+     n1: 416184 0x4006439: call_init.part.0 (dl-init.c:56)
+      n1: 416184 0x40065F8: call_init (dl-init.c:33)
+       n1: 416184 0x40065F8: _dl_init (dl-init.c:84)
+        n1: 416184 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+         n1: 416184 0x3: ???
+          n1: 416184 0x1FFF00005A: ???
+           n1: 416184 0x1FFF000061: ???
+            n1: 416184 0x1FFF000064: ???
+             n0: 416184 0x1FFF000071: ???
+ n0: 73585 in 13 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=55
+#-----------
+time=11708098
+mem_heap_B=8878377
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=56
+#-----------
+time=11742354
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=11774220
+mem_heap_B=8878377
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=58
+#-----------
+time=11808476
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=59
+#-----------
+time=11840342
+mem_heap_B=8878377
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=60
+#-----------
+time=11874598
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=61
+#-----------
+time=11906464
+mem_heap_B=8878377
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=62
+#-----------
+time=11940720
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=63
+#-----------
+time=11972586
+mem_heap_B=8878377
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=64
+#-----------
+time=12006842
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=detailed
+n3: 8878378 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 8388609 0x49A5724: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 8388609 0x499B952: std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::overflow(int) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+   n1: 8388609 0x49A388A: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+    n1: 8388609 0x4921CC3: long std::__copy_streambufs_eof<char, std::char_traits<char> >(std::basic_streambuf<char, std::char_traits<char> >*, std::basic_streambuf<char, std::char_traits<char> >*, bool&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+     n1: 8388609 0x113335: __gnu_cxx::__enable_if<std::__is_char<char>::__value, std::ostreambuf_iterator<char, std::char_traits<char> > >::__type std::copy<char>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ostreambuf_iterator<char, std::char_traits<char> >) (streambuf_iterator.h:332)
+      n1: 8388609 0x1105F5: PPM::Reader::fill(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:24)
+       n1: 8388609 0x110D53: PPM::Reader::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:105)
+        n0: 8388609 0x10F351: main (blur.cpp:21)
+ n1: 416184 0x4CB4C12: monstartup (gmon.c:153)
+  n1: 416184 0x10F150: __gmon_start__ (in /mnt/c/Users/smiet/Desktop/Assignments/Optimazation programming/Ass 2/dv1674_a2/blur/blur)
+   n1: 416184 0x4846015: ??? (in /usr/libexec/valgrind/vgpreload_massif-amd64-linux.so)
+    n1: 416184 0x4000D57: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+     n1: 416184 0x4006439: call_init.part.0 (dl-init.c:56)
+      n1: 416184 0x40065F8: call_init (dl-init.c:33)
+       n1: 416184 0x40065F8: _dl_init (dl-init.c:84)
+        n1: 416184 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+         n1: 416184 0x3: ???
+          n1: 416184 0x1FFF00005A: ???
+           n1: 416184 0x1FFF000061: ???
+            n1: 416184 0x1FFF000064: ???
+             n0: 416184 0x1FFF000071: ???
+ n0: 73585 in 13 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=65
+#-----------
+time=12038708
+mem_heap_B=8878377
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=66
+#-----------
+time=12072964
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=67
+#-----------
+time=12104830
+mem_heap_B=8878377
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=68
+#-----------
+time=12139086
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=69
+#-----------
+time=12170952
+mem_heap_B=8878377
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=70
+#-----------
+time=12205208
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=71
+#-----------
+time=12237074
+mem_heap_B=8878377
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=72
+#-----------
+time=12271330
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=73
+#-----------
+time=12303196
+mem_heap_B=8878377
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=74
+#-----------
+time=12337452
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=detailed
+n3: 8878378 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 8388609 0x49A5724: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 8388609 0x499B952: std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::overflow(int) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+   n1: 8388609 0x49A388A: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+    n1: 8388609 0x4921CC3: long std::__copy_streambufs_eof<char, std::char_traits<char> >(std::basic_streambuf<char, std::char_traits<char> >*, std::basic_streambuf<char, std::char_traits<char> >*, bool&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+     n1: 8388609 0x113335: __gnu_cxx::__enable_if<std::__is_char<char>::__value, std::ostreambuf_iterator<char, std::char_traits<char> > >::__type std::copy<char>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ostreambuf_iterator<char, std::char_traits<char> >) (streambuf_iterator.h:332)
+      n1: 8388609 0x1105F5: PPM::Reader::fill(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:24)
+       n1: 8388609 0x110D53: PPM::Reader::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:105)
+        n0: 8388609 0x10F351: main (blur.cpp:21)
+ n1: 416184 0x4CB4C12: monstartup (gmon.c:153)
+  n1: 416184 0x10F150: __gmon_start__ (in /mnt/c/Users/smiet/Desktop/Assignments/Optimazation programming/Ass 2/dv1674_a2/blur/blur)
+   n1: 416184 0x4846015: ??? (in /usr/libexec/valgrind/vgpreload_massif-amd64-linux.so)
+    n1: 416184 0x4000D57: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+     n1: 416184 0x4006439: call_init.part.0 (dl-init.c:56)
+      n1: 416184 0x40065F8: call_init (dl-init.c:33)
+       n1: 416184 0x40065F8: _dl_init (dl-init.c:84)
+        n1: 416184 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+         n1: 416184 0x3: ???
+          n1: 416184 0x1FFF00005A: ???
+           n1: 416184 0x1FFF000061: ???
+            n1: 416184 0x1FFF000064: ???
+             n0: 416184 0x1FFF000071: ???
+ n0: 73585 in 13 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=75
+#-----------
+time=12369318
+mem_heap_B=8878377
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=76
+#-----------
+time=12403574
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=77
+#-----------
+time=12435440
+mem_heap_B=8878377
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=78
+#-----------
+time=12469696
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=79
+#-----------
+time=12501562
+mem_heap_B=8878377
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=80
+#-----------
+time=12535818
+mem_heap_B=8878378
+mem_heap_extra_B=4142
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=81
+#-----------
+time=12568795
+mem_heap_B=8878913
+mem_heap_extra_B=4143
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=82
+#-----------
+time=12601774
+mem_heap_B=8879489
+mem_heap_extra_B=4143
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=83
+#-----------
+time=12634854
+mem_heap_B=8878601
+mem_heap_extra_B=4119
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=84
+#-----------
+time=12672263
+mem_heap_B=8878777
+mem_heap_extra_B=4143
+mem_stacks_B=0
+heap_tree=detailed
+n3: 8878777 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 8388609 0x49A5724: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 8388609 0x499B952: std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::overflow(int) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+   n1: 8388609 0x49A388A: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+    n1: 8388609 0x4921CC3: long std::__copy_streambufs_eof<char, std::char_traits<char> >(std::basic_streambuf<char, std::char_traits<char> >*, std::basic_streambuf<char, std::char_traits<char> >*, bool&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+     n1: 8388609 0x113335: __gnu_cxx::__enable_if<std::__is_char<char>::__value, std::ostreambuf_iterator<char, std::char_traits<char> > >::__type std::copy<char>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ostreambuf_iterator<char, std::char_traits<char> >) (streambuf_iterator.h:332)
+      n1: 8388609 0x1105F5: PPM::Reader::fill(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:24)
+       n1: 8388609 0x110D53: PPM::Reader::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:105)
+        n0: 8388609 0x10F351: main (blur.cpp:21)
+ n1: 416184 0x4CB4C12: monstartup (gmon.c:153)
+  n1: 416184 0x10F150: __gmon_start__ (in /mnt/c/Users/smiet/Desktop/Assignments/Optimazation programming/Ass 2/dv1674_a2/blur/blur)
+   n1: 416184 0x4846015: ??? (in /usr/libexec/valgrind/vgpreload_massif-amd64-linux.so)
+    n1: 416184 0x4000D57: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+     n1: 416184 0x4006439: call_init.part.0 (dl-init.c:56)
+      n1: 416184 0x40065F8: call_init (dl-init.c:33)
+       n1: 416184 0x40065F8: _dl_init (dl-init.c:84)
+        n1: 416184 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+         n1: 416184 0x3: ???
+          n1: 416184 0x1FFF00005A: ???
+           n1: 416184 0x1FFF000061: ???
+            n1: 416184 0x1FFF000064: ???
+             n0: 416184 0x1FFF000071: ???
+ n0: 73984 in 13 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=85
+#-----------
+time=832533745
+mem_heap_B=16557497
+mem_heap_extra_B=4095
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=86
+#-----------
+time=1719595689
+mem_heap_B=29397497
+mem_heap_extra_B=7063
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=87
+#-----------
+time=46874487336
+mem_heap_B=53157497
+mem_heap_extra_B=12991
+mem_stacks_B=0
+heap_tree=peak
+n11: 53157497 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 9000000 0x10FD6A: Matrix::Matrix(unsigned int) (matrix.cpp:33)
+  n1: 9000000 0x1426AB: Filter::blur(Matrix, int) (filters.cpp:27)
+   n0: 9000000 0x10F41C: main (blur.cpp:24)
+ n1: 9000000 0x10FD84: Matrix::Matrix(unsigned int) (matrix.cpp:34)
+  n1: 9000000 0x1426AB: Filter::blur(Matrix, int) (filters.cpp:27)
+   n0: 9000000 0x10F41C: main (blur.cpp:24)
+ n1: 9000000 0x10FD9F: Matrix::Matrix(unsigned int) (matrix.cpp:35)
+  n1: 9000000 0x1426AB: Filter::blur(Matrix, int) (filters.cpp:27)
+   n0: 9000000 0x10F41C: main (blur.cpp:24)
+ n1: 8388609 0x49A5724: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::reserve(unsigned long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 8388609 0x499B952: std::__cxx11::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >::overflow(int) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+   n1: 8388609 0x49A388A: std::basic_streambuf<char, std::char_traits<char> >::xsputn(char const*, long) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+    n1: 8388609 0x4921CC3: long std::__copy_streambufs_eof<char, std::char_traits<char> >(std::basic_streambuf<char, std::char_traits<char> >*, std::basic_streambuf<char, std::char_traits<char> >*, bool&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+     n1: 8388609 0x113335: __gnu_cxx::__enable_if<std::__is_char<char>::__value, std::ostreambuf_iterator<char, std::char_traits<char> > >::__type std::copy<char>(std::istreambuf_iterator<char, std::char_traits<char> >, std::istreambuf_iterator<char, std::char_traits<char> >, std::ostreambuf_iterator<char, std::char_traits<char> >) (streambuf_iterator.h:332)
+      n1: 8388609 0x1105F5: PPM::Reader::fill(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:24)
+       n1: 8388609 0x110D53: PPM::Reader::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:105)
+        n0: 8388609 0x10F351: main (blur.cpp:21)
+ n2: 3840000 0x10FE02: Matrix::Matrix(Matrix const&) (matrix.cpp:43)
+  n0: 1920000 0x10F401: main (blur.cpp:24)
+  n1: 1920000 0x1426C4: Filter::blur(Matrix, int) (filters.cpp:28)
+   n0: 1920000 0x10F41C: main (blur.cpp:24)
+ n2: 3840000 0x10FE27: Matrix::Matrix(Matrix const&) (matrix.cpp:44)
+  n0: 1920000 0x10F401: main (blur.cpp:24)
+  n1: 1920000 0x1426C4: Filter::blur(Matrix, int) (filters.cpp:28)
+   n0: 1920000 0x10F41C: main (blur.cpp:24)
+ n2: 3840000 0x10FE4D: Matrix::Matrix(Matrix const&) (matrix.cpp:45)
+  n0: 1920000 0x10F401: main (blur.cpp:24)
+  n1: 1920000 0x1426C4: Filter::blur(Matrix, int) (filters.cpp:28)
+   n0: 1920000 0x10F41C: main (blur.cpp:24)
+ n1: 1920000 0x110B3D: PPM::Reader::get_data(unsigned int, unsigned int) (ppm.cpp:81)
+  n1: 1920000 0x11102B: PPM::Reader::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:135)
+   n0: 1920000 0x10F351: main (blur.cpp:21)
+ n1: 1920000 0x110B4C: PPM::Reader::get_data(unsigned int, unsigned int) (ppm.cpp:81)
+  n1: 1920000 0x11102B: PPM::Reader::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:135)
+   n0: 1920000 0x10F351: main (blur.cpp:21)
+ n1: 1920000 0x110B5B: PPM::Reader::get_data(unsigned int, unsigned int) (ppm.cpp:81)
+  n1: 1920000 0x11102B: PPM::Reader::operator()(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) (ppm.cpp:135)
+   n0: 1920000 0x10F351: main (blur.cpp:21)
+ n0: 488888 in 14 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=88
+#-----------
+time=47761551205
+mem_heap_B=26157989
+mem_heap_extra_B=4171
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=89
+#-----------
+time=48360713015
+mem_heap_B=26157989
+mem_heap_extra_B=4171
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=90
+#-----------
+time=48360871584
+mem_heap_B=72704
+mem_heap_extra_B=8
+mem_stacks_B=0
+heap_tree=empty
