@@ -7,7 +7,7 @@ all: pearson
 
 run: clean all test
 
-compare: clean all target1 comparison
+compare: clean all target4 comparison
 test: testclean target1 target2 target3 target4
 
 testrun: clean all testclean
@@ -85,6 +85,27 @@ comparison:
 	else \
 		echo "success, the files are the same";\
 	fi
+	@diff -q outputfiles/256.data outputfiles_par/256.data > /dev/null; \
+	if [ $$? -ne 0 ]; then \
+		echo "Error the files are different";\
+		exit 1; \
+	else \
+		echo "success, the files are the same";\
+	fi
+	@diff -q outputfiles/512.data outputfiles_par/512.data > /dev/null; \
+	if [ $$? -ne 0 ]; then \
+		echo "Error the files are different";\
+		exit 1; \
+	else \
+		echo "success, the files are the same";\
+	fi
+	@diff -q outputfiles/1024.data outputfiles_par/1024.data > /dev/null; \
+	if [ $$? -ne 0 ]; then \
+		echo "Error the files are different";\
+		exit 1; \
+	else \
+		echo "success, the files are the same";\
+	fi
 
 memtest: clean all
 	rm outputfiles/*.data massif*
@@ -93,6 +114,58 @@ memtest: clean all
 	valgrind --tool=massif ./pearson data/512.data outputfiles/512.data
 	valgrind --tool=massif ./pearson data/1024.data outputfiles/1024.data
 
+
+speedtest: clean all
+	./pearson data/1024.data outputfiles/1024.data 16
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/1024gprof-1.txt
+	sleep 1
+	rm gmon.out
+	./pearson data/1024.data outputfiles/1024.data 16
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/1024gprof-2.txt
+	sleep 1
+	rm gmon.out
+	./pearson data/1024.data outputfiles/1024.data 16
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/1024gprof-3.txt
+	sleep 1
+	rm gmon.out
+	./pearson data/1024.data outputfiles/1024.data 16
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/1024gprof-4.txt
+	sleep 1
+	rm gmon.out
+	./pearson data/1024.data outputfiles/1024.data 16
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/1024gprof-5.txt
+	sleep 1
+	rm gmon.out
+	./pearson data/1024.data outputfiles/1024.data 16
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/1024gprof-6.txt
+	sleep 1
+	rm gmon.out
+	./pearson data/1024.data outputfiles/1024.data 16
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/1024gprof-7.txt
+	sleep 1
+	rm gmon.out
+	./pearson data/1024.data outputfiles/1024.data 16
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/1024gprof-8.txt
+	sleep 1
+	rm gmon.out
+	./pearson data/1024.data outputfiles/1024.data 16
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/1024gprof-9.txt
+	sleep 1
+	rm gmon.out
+	./pearson data/1024.data outputfiles/1024.data 16
+	sleep 1
+	gprof ./pearson gmon.out > outputfiles/1024gprof-10.txt
+	sleep 1
+	rm gmon.out
 
 
 pearson: vector dataset analysis pearson.cpp

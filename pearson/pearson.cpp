@@ -12,12 +12,14 @@ struct ThreadData {
     std::vector<Vector>& datasets;
     int dimension;
     int setstart;
+    int secondstart;
     int setend;
+    int secondend;
     ThreadData()
-        : result(nullptr), datasets(*(new std::vector<Vector>)), dimension(0), setstart(0), setend(0) {}
+        : result(nullptr), datasets(*(new std::vector<Vector>)), dimension(0), setstart(0), secondstart(0), setend(0), secondend(0) {}
 
-    ThreadData(double* result, std::vector<Vector>& datasets,  int dimension,int setstart,int setend)
-    :result(result),datasets(datasets),dimension(dimension),setstart(setstart),setend(setend)
+    ThreadData(double* result, std::vector<Vector>& datasets,  int dimension,int setstart, int secondstart ,int setend, int secondend)
+    :result(result),datasets(datasets),dimension(dimension),setstart(setstart),secondstart(secondstart),setend(setend), secondend(secondend)
     {}
     ThreadData(const ThreadData&) = delete;
     ThreadData& operator=(const ThreadData& input)
@@ -34,7 +36,7 @@ struct ThreadData {
 void* calculate_coefficients(void* arg)
 {
     ThreadData* data = static_cast<ThreadData*>(arg);
-    Analysis::correlation_coefficients(data->result, data->datasets, data->dimension, data->setstart, data->setend);
+    Analysis::correlation_coefficients(data->result, data->datasets, data->dimension, data->setstart, data->secondstart, data->setend, data->secondend);
     return nullptr;
 }
 
@@ -56,7 +58,7 @@ int main(int argc, char const* argv[])
 
 
     int num_threads = std::stoi(argv[3]); //set number of threads
-    int setstart, setend;
+    int setstart, secondstart, setend, secondend;
     
     for(auto i = 0; i < dimension; i++ ) //perform precalculations
     {
@@ -65,16 +67,19 @@ int main(int argc, char const* argv[])
     }
 
     pthread_t threads[num_threads];
-    int blockSize = dimension/num_threads; //calculate block size (needs improved implementation)
+    int blockSize = dimension/num_threads/2; //calculate block size (needs improved implementation)
     std::vector<ThreadData*> thread_data;
 
     for(int thread_num = 0; thread_num < num_threads; thread_num++)
     {
         setstart = blockSize * thread_num; //start of block for thread 
-        setend = setstart + blockSize;  //end of block for thread    
-        if(thread_num != num_threads-1) //required for proper alignment
-            setend += 1;
-        ThreadData* thisthread = new ThreadData{result, datasets,  dimension, setstart, setend};
+        setend = setstart + blockSize + 1;  //end of block for thread
+        secondstart = dimension - blockSize - blockSize*thread_num;
+        secondend = dimension - blockSize*thread_num; 
+        if(thread_num != 0)
+            secondend +=1;
+
+        ThreadData* thisthread = new ThreadData{result, datasets,  dimension, setstart, secondstart, setend, secondend};
         thread_data.push_back(thisthread);
         if(pthread_create(&threads[thread_num], nullptr, calculate_coefficients,(void*)thisthread) != 0)
         {
