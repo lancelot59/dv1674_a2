@@ -11,6 +11,8 @@ Author: David Holmqvist <daae19@student.bth.se>
 
 namespace Filter
 {
+    pthread_mutex_t mutex;
+
 
     namespace Gauss
     {
@@ -99,8 +101,7 @@ namespace Filter
                 auto index {x + y * x_size};
                 auto r{w0 * R[index]}, g{w0 * G[index]}, b{w0 * B[index]}, n{w0};
 
-                for (auto wi{1}; wi <= radius; wi++)
-                {
+                for (auto wi{1}; wi <= radius; wi++) {
                     auto wc{w[wi]};
 
                     auto x2{x - wi};
@@ -125,6 +126,7 @@ namespace Filter
                 matrix->r(index) = r / n;
                 matrix->g(index) = g / n;
                 matrix->b(index) = b / n;
+
             }
         }
 
@@ -190,7 +192,7 @@ namespace Filter
 
     }
 
-    Matrix blur(Matrix m, const int radius)
+    Matrix blur(Matrix m, const int radius, int num_threads)
     {
         Matrix scratch{PPM::max_dimension};
         auto dst{m};
@@ -206,8 +208,6 @@ namespace Filter
         auto scr_R {scratch.get_R()}, scr_B {scratch.get_B()}, scr_G {scratch.get_G()};
 
         // 6 multithreading
-        int num_threads = 8;
-
         pthread_t threads[num_threads];
         ThreadData thread_data[num_threads];
 
@@ -254,6 +254,7 @@ namespace Filter
         {
             pthread_join(threads[i], nullptr);
         }
+
 
         return dst;
     }
