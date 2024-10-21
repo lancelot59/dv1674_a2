@@ -42,8 +42,8 @@ void* calculate_coefficients(void* arg)
 
 int main(int argc, char const* argv[])
 {
-    if (argc != 4) {
-        std::cerr << "Usage: " << argv[0] << " [dataset] [outfile] [numberofthreads]" << std::endl;
+    if (argc != 3) {
+        std::cerr << "Usage: " << argv[0] << " [dataset] [outfile]" << std::endl;
         std::exit(1);
     }
     //we could if ive not missed anything entirely cut out std::vector for vector arrays. which should be way way quicker
@@ -57,7 +57,7 @@ int main(int argc, char const* argv[])
     double* result = new double[arraysize]; //create array
 
 
-    int num_threads = std::stoi(argv[3]); //set number of threads
+    int num_threads = 1; //set number of threads
     int setstart, secondstart, setend, secondend;
     
     for(auto i = 0; i < dimension; i++ ) //perform precalculations
