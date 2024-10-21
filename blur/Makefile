@@ -37,18 +37,18 @@ target4:
 	sleep 1
 	rm gmon.out
 
-memtest: clean blur	mem_test_im1 mem_test_im2 mem_test_im3 mem_test_im4
+memtest: clean blur_valgrind memclean mem_test
 
-mem_test_im1:
+blur_valgrind: matrix ppm filters blur.cpp
+	$(CXX) -std=c++17 -g -Wunused -Wall -Wunused blur.cpp matrix.o ppm.o filters.o -o blur
+
+mem_test:
 	valgrind --tool=massif --massif-out-file=massif_im1.out ./blur 15 data/im1.ppm outputfiles/im1.ppm
-
-mem_test_im2:
+	sleep 1
 	valgrind --tool=massif --massif-out-file=massif_im2.out ./blur 15 data/im2.ppm outputfiles/im2.ppm
-
-mem_test_im3:
+	sleep 1
 	valgrind --tool=massif --massif-out-file=massif_im3.out ./blur 15 data/im3.ppm outputfiles/im3.ppm
-
-mem_test_im4:
+	sleep 1
 	valgrind --tool=massif --massif-out-file=massif_im4.out ./blur 15 data/im4.ppm outputfiles/im4.ppm
 
 threshold: matrix ppm filters threshold.cpp
@@ -71,3 +71,6 @@ clean:
 
 testclean:
 	rm outputfiles/*
+
+memclean:
+	rm outputfiles/*.ppm massif*
