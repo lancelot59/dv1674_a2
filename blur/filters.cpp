@@ -27,7 +27,7 @@ namespace Filter
         Matrix scratch{PPM::max_dimension};
         auto dst{m};
 
-        // 1 adding getting date before the loop
+        //1 Getting heights and width of the images before the loop, and then using it in conditions of for-loops
         auto x_size {dst.get_x_size()};
         auto y_size {dst.get_y_size()};
 
