@@ -1,13 +1,13 @@
 # Author: David Holmqvist <daae19@student.bth.se>
 
 CXX=g++
-CXXFLAGS=-std=c++17 -g -pg -Wunused -Wall -Wunused -mavx
+CXXFLAGS=-std=c++17 -pg -Wunused -Wall -Wunused -mavx -pthread
 
 all: pearson
 
 run: clean all test
 
-test: testclean target1 target2 target3 target4
+test: testclean target4
 
 target1:
 	./pearson data/128.data outputfiles/128.data 16
@@ -42,11 +42,10 @@ debugg:
 	data/128.data outputfiles/debugg128.data
 
 memtest: clean all
-	rm outputfiles/*.data massif*
-	valgrind --tool=massif ./pearson data/128.data outputfiles/128.data
-	valgrind --tool=massif ./pearson data/256.data outputfiles/256.data
-	valgrind --tool=massif ./pearson data/512.data outputfiles/512.data
-	valgrind --tool=massif ./pearson data/1024.data outputfiles/1024.data
+	valgrind --tool=massif ./pearson data/128.data outputfiles/128.data 16
+	valgrind --tool=massif ./pearson data/256.data outputfiles/256.data 16 
+	valgrind --tool=massif ./pearson data/512.data outputfiles/512.data 16 
+	valgrind --tool=massif ./pearson data/1024.data outputfiles/1024.data 16
 
 compare:
 	@diff -q outputfiles/128.data outputfiles_par/128.data > /dev/null; \
