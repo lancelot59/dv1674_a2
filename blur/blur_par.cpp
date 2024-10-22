@@ -1,3 +1,6 @@
+/*
+Author: David Holmqvist <daae19@student.bth.se>
+*/
 
 #include "matrix.hpp"
 #include "ppm.hpp"

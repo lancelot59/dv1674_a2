@@ -10,8 +10,8 @@ Author: David Holmqvist <daae19@student.bth.se>
 
 int main(int argc, char const* argv[])
 {
-    if (argc != 5) {
-        std::cerr << "Usage: " << argv[0] << " [radius] [infile] [outfile] [threads] " << std::endl;
+    if (argc != 4) {
+        std::cerr << "Usage: " << argv[0] << " [radius] [infile] [outfile]" << std::endl;
         std::exit(1);
     }
 
