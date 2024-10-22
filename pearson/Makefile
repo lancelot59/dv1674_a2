@@ -10,28 +10,28 @@ run: clean all test
 test: testclean target1 target2 target3 target4
 
 target1:
-	./pearson data/128.data outputfiles/128.data
+	./pearson data/128.data outputfiles/128.data 16
 	sleep 1
 	gprof ./pearson gmon.out > outputfiles/128gprof.txt
 	sleep 1
 	rm gmon.out
 
 target2: target1
-	./pearson data/256.data outputfiles/256.data
+	./pearson data/256.data outputfiles/256.data 16
 	sleep 1 
 	gprof ./pearson gmon.out > outputfiles/256gprof.txt
 	sleep 1
 	rm gmon.out
 
 target3: target2
-	./pearson data/512.data outputfiles/512.data
+	./pearson data/512.data outputfiles/512.data 16
 	sleep 1
 	gprof ./pearson gmon.out > outputfiles/512gprof.txt
 	sleep 1
 	rm gmon.out
 
 target4:target3
-	./pearson data/1024.data outputfiles/1024.data
+	./pearson data/1024.data outputfiles/1024.data 16
 	sleep 1
 	gprof ./pearson gmon.out > outputfiles/1024gprof.txt
 	sleep 1
