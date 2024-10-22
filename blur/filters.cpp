@@ -31,17 +31,15 @@ namespace Filter
         auto x_size {dst.get_x_size()};
         auto y_size {dst.get_y_size()};
 
+        //2 Gauss weight calculation is done before the loop - they are also read-only values used for calculations
+        // of pixel's new colors values
+        double w[Gauss::max_radius]{};
+        Gauss::get_weights(radius, w);
+
         for (auto x{0}; x < x_size; x++)
         {
-            for (auto y{0}; y < y_size; y++)//we could change the .get_ _size to happen before the for loops but the compiler probably already does that for us.
+            for (auto y{0}; y < y_size; y++)
             {
-                double w[Gauss::max_radius]{};
-                Gauss::get_weights(radius, w);
-
-                // unsigned char Matrix::r(unsigned x, unsigned y) const
-                // {
-                //     return R[y * x_size + x];
-                // }
 
                 auto r{w[0] * dst.r(x, y)}, g{w[0] * dst.g(x, y)}, b{w[0] * dst.b(x, y)}, n{w[0]};
 
@@ -75,9 +73,6 @@ namespace Filter
         {
             for (auto y{0}; y < y_size; y++)
             {
-                double w[Gauss::max_radius]{};
-                Gauss::get_weights(radius, w);
-
                 auto r{w[0] * scratch.r(x, y)}, g{w[0] * scratch.g(x, y)}, b{w[0] * scratch.b(x, y)}, n{w[0]};
 
                 for (auto wi{1}; wi <= radius; wi++)

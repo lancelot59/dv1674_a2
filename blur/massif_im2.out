@@ -937,7 +937,7 @@ heap_tree=empty
 #-----------
 snapshot=94
 #-----------
-time=19200520973
+time=14186232932
 mem_heap_B=40704193
 mem_heap_extra_B=12975
 mem_stacks_B=0
@@ -985,7 +985,7 @@ n11: 40704193 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
 #-----------
 snapshot=95
 #-----------
-time=19559149132
+time=14544861091
 mem_heap_B=13704685
 mem_heap_extra_B=4155
 mem_stacks_B=0
@@ -993,7 +993,7 @@ heap_tree=empty
 #-----------
 snapshot=96
 #-----------
-time=19886377003
+time=14872088962
 mem_heap_B=13704685
 mem_heap_extra_B=4155
 mem_stacks_B=0
