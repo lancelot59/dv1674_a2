@@ -7,7 +7,7 @@ run: clean all test
 
 all: clean blur
 
-test: testclean target1 target2 target3 target4
+test: testclean target1 target2 target3 target4 memtest
 
 target1:
 	./blur 15 data/im1.ppm outputfiles/im1.ppm

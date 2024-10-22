@@ -27,9 +27,13 @@ namespace Filter
         Matrix scratch{PPM::max_dimension};
         auto dst{m};
 
-        for (auto x{0}; x < dst.get_x_size(); x++)
+        // 1 adding getting date before the loop
+        auto x_size {dst.get_x_size()};
+        auto y_size {dst.get_y_size()};
+
+        for (auto x{0}; x < x_size; x++)
         {
-            for (auto y{0}; y < dst.get_y_size(); y++)//we could change the .get_ _size to happen before the for loops but the compiler probably already does that for us.
+            for (auto y{0}; y < y_size; y++)//we could change the .get_ _size to happen before the for loops but the compiler probably already does that for us.
             {
                 double w[Gauss::max_radius]{};
                 Gauss::get_weights(radius, w);
@@ -53,7 +57,7 @@ namespace Filter
                         n += wc;
                     }
                     x2 = x + wi;
-                    if (x2 < dst.get_x_size())
+                    if (x2 < x_size)
                     {
                         r += wc * dst.r(x2, y);
                         g += wc * dst.g(x2, y);
@@ -67,9 +71,9 @@ namespace Filter
             }
         }
 
-        for (auto x{0}; x < dst.get_x_size(); x++)
+        for (auto x{0}; x < x_size; x++)
         {
-            for (auto y{0}; y < dst.get_y_size(); y++)
+            for (auto y{0}; y < y_size; y++)
             {
                 double w[Gauss::max_radius]{};
                 Gauss::get_weights(radius, w);
@@ -88,7 +92,7 @@ namespace Filter
                         n += wc;
                     }
                     y2 = y + wi;
-                    if (y2 < dst.get_y_size())
+                    if (y2 < y_size)
                     {
                         r += wc * scratch.r(x, y2);
                         g += wc * scratch.g(x, y2);
