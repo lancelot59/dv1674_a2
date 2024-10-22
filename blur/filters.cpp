@@ -199,15 +199,7 @@ namespace Filter
         //Horizontal blurring
         for(int i = 0; i < num_threads; i++) {
             thread_data[i] = {
-                &scratch,
-                dst_R,
-                dst_G,
-                dst_B,
-                w,
-                radius,
-                x_size,
-                y_size,
-                i * rows,
+                &scratch,dst_R,dst_G,dst_B,w,radius,x_size,y_size,i * rows,
                 static_cast<int>(i == num_threads - 1 ? x_size : (i + 1) * rows) //ensures all rows will be blurred
             };
             pthread_create(&threads[i], nullptr, horizontal_thread, &thread_data[i]);
@@ -221,16 +213,8 @@ namespace Filter
         //Vertical blurring
         for(int i = 0; i < num_threads; i++) {
             thread_data[i] = {
-                &dst,
-                scr_R,
-                scr_G,
-                scr_B,
-                w,
-                radius,
-                x_size,
-                y_size,
-                i * rows,
-                 static_cast<int>(i == num_threads - 1 ? y_size : (i + 1) * rows) //ensures all rows will be blurred
+                &dst,scr_R,scr_G,scr_B,w,radius,x_size,y_size,i * rows,
+                static_cast<int>(i == num_threads - 1 ? y_size : (i + 1) * rows) //ensures all rows will be blurred
             };
             pthread_create(&threads[i], nullptr, vertical_thread, &thread_data[i]);
         }
