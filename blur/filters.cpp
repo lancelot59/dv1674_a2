@@ -26,25 +26,28 @@ namespace Filter
     {
         Matrix scratch{PPM::max_dimension};
         auto dst{m};
-        // 1 adding getting date before the loop
+        //1 Getting heights and width of the images before the loop, and then using it in conditions of for-loops
         auto x_size {dst.get_x_size()};
         auto y_size {dst.get_y_size()};
-        // 2 Gaus operation before the loop not inside
+        //2 Gauss weight calculation is done before the loop - they are also read-only values used for calculations
+        // of pixel's new colors values
         double w[Gauss::max_radius]{};
         Gauss::get_weights(radius, w);
-        // 3 move this outside of the loop
+        //3 Moved getting first weight out of the loop - it does not change (read-only), and it is used to calculate
+        // new values for colors of pixels
         auto w0 {w[0]};
 
-        // 5 directly accessing R, G, and B - had to change the get method in MAtrix (deleted const)
+        //5 Directly accessing R, G, and B - they are also read-only values used for calculations and this recduced
+        // the amount of function calls
         auto dst_R {dst.get_R()}, dst_B {dst.get_B()}, dst_G {dst.get_G()};
         auto scr_R {scratch.get_R()}, scr_B {scratch.get_B()}, scr_G {scratch.get_G()};
 
-        // dst loop
+        //Horizontal blurring
         for (auto x{0}; x < x_size; x++)
         {
             for (auto y{0}; y < y_size; y++)
             {
-                // 4 index is calculated before and then values are accessed by it (without calculations)
+                //4 Index is calculated before accessing the values in the arrays
                 auto index {x + y * x_size};
                 auto r{w0 * dst_R[index]}, g{w0 * dst_G[index]}, b{w0 * dst_B[index]}, n{w0};
 
@@ -77,10 +80,12 @@ namespace Filter
             }
         }
 
+        //Vertical blurring
         for (auto x{0}; x < x_size; x++)
         {
             for (auto y{0}; y < y_size; y++)
             {
+                //4 Index is calculated before accessing the values in the arrays
                 auto index = x + y * x_size;
                 auto r{w0 * scr_R[index]}, g{w0 * scr_G[index]}, b{w0 * scr_B[index]}, n{w0};
 

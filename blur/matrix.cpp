@@ -124,6 +124,7 @@ unsigned Matrix::get_color_max() const
     return color_max;
 }
 
+//5 Deleted const in order to allow the R, G, and B to be accessed directly for performing blurring operation
 unsigned char* Matrix::get_R()
 {
     return R;
@@ -139,6 +140,7 @@ unsigned char* Matrix::get_B()
     return B;
 }
 
+//4 Index is being pre-calculated in the loop and then used to access values for colors
 unsigned char Matrix::r(unsigned index) const
 {
     return R[index];
