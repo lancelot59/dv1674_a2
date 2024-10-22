@@ -139,6 +139,7 @@ unsigned char* Matrix::get_B() const
     return B;
 }
 
+//4 Index is being pre-calculated in the loop and then used to access values for colors
 unsigned char Matrix::r(unsigned index) const
 {
     return R[index];
