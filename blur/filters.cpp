@@ -26,13 +26,17 @@ namespace Filter
     {
         Matrix scratch{PPM::max_dimension};
         auto dst{m};
-        // 1 adding getting date before the loop
+        //1 Getting heights and width of the images before the loop, and then using it in conditions of for-loops
         auto x_size {dst.get_x_size()};
         auto y_size {dst.get_y_size()};
-        // 2 Gaus operation before the loop not inside
+
+        //2 Gauss weight calculation is done before the loop - they are also read-only values used for calculations
+        // of pixel's new colors values
         double w[Gauss::max_radius]{};
         Gauss::get_weights(radius, w);
-        // 3 move this outside of the loop
+
+        //3 Moved getting first weight out of the loop - it does not change (read-only), and it is used to calculate
+        // new values for colors of pixels
         auto w0 {w[0]};
 
         // dst loop
