@@ -6,7 +6,7 @@ CXXFLAGS=-std=c++17 -g -pg -Wunused -Wall -pthread
 IMAGES = im1 im2 im3 im4
 THREADS = 1 2 4 8 12 16 32
 
-run: clean all seq_test par_test
+run: clean all par_test
 
 run_mem_test: seq_memtest par_memtest
 
